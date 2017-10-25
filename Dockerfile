@@ -13,10 +13,11 @@ RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime \
         python \
         python-dev \
         python-pip \
+        python-setuptools \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN pip install -U pip \
+RUN pip install -U pip setuptools \
     && pip --no-cache-dir install \
         numpy \
         pandas \

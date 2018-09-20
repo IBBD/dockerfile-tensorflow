@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM tensorflow/tensorflow
+FROM tensorflow/tensorflow:latest-py3
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

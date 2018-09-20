@@ -8,7 +8,7 @@ FROM tensorflow/tensorflow
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # Pick up some TF dependencies
-RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
+#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
 
 RUN pip install -U pip setuptools \
     && pip --no-cache-dir install \

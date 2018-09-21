@@ -1,9 +1,9 @@
 #
-# tensorflow Dockerfile
+# tensorflow GPU Dockerfile
 #
 
 # Pull base image.
-FROM tensorflow/tensorflow:latest-py3
+FROM tensorflow/tensorflow:latest-gpu-py3
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

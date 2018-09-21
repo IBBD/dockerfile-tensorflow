@@ -3,8 +3,7 @@
 #
 
 # Pull base image.
-#FROM tensorflow/tensorflow:latest-py3
-FROM python:3.6-stretch
+FROM tensorflow/tensorflow:latest-py3
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -19,14 +18,8 @@ RUN pip install -U pip setuptools \
         scipy \
         sklearn 
 
-# install tensorflow, keras
-ARG TF_PACKAGE=tensorflow
-RUN pip --no-cache-dir install \
-    ${$TF_PACKAGE} \
-    keras
-
-COPY bashrc /etc/bash.bashrc
-RUN chmod a+rwx /etc/bash.bashrc
+# install keras
+RUN pip install keras
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

@@ -9,6 +9,7 @@ cpu版本基于`python:3.6-stretch`构建，gpu版本基于`tensorflow/tensorflo
 - sklearn
 - matplotlib
 - tensorflow
+- keras
 
 辅助包：
 

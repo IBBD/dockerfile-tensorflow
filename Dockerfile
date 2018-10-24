@@ -20,7 +20,6 @@ RUN pip install -U pip setuptools \
         sklearn 
 
 # install tensorflow, keras
-ARG TF_PACKAGE=tensorflow
 RUN pip --no-cache-dir install \
     ${TF_PACKAGE} \
     keras

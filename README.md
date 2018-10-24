@@ -1,5 +1,5 @@
 # dockerfile-tensorflow
-基于debian:stretch-slim镜像和python2.7构建。
+cpu版本基于`python:3.6-stretch`构建，gpu版本基于`tensorflow/tensorflow:latest-gpu-py3`构建。
 
 ## pip install
 
@@ -9,5 +9,11 @@
 - sklearn
 - matplotlib
 - tensorflow
+
+辅助包：
+
+- flask
+- flask_jsonrpc
+- fire
 
 

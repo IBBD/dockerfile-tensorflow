@@ -21,6 +21,12 @@ RUN pip install -U pip setuptools \
 # install keras
 RUN pip install keras
 
+# 安装服务常用包
+RUN pip --no-cache-dir install \
+    flask \
+    flask_jsonrpc \
+    fire
+
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
 ENV TERM xterm

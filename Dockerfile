@@ -25,6 +25,12 @@ RUN pip --no-cache-dir install \
     ${TF_PACKAGE} \
     keras
 
+# 安装服务常用包
+RUN pip --no-cache-dir install \
+    flask \
+    flask_jsonrpc \
+    fire
+
 COPY bashrc /etc/bash.bashrc
 RUN chmod a+rwx /etc/bash.bashrc
 

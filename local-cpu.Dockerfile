@@ -19,7 +19,7 @@ RUN pip install -U pip setuptools \
         scipy \
         sklearn 
 
-# install tensorflow
+# install tensorflow: 自己在本地编译好的版本
 ARG TF_PACKAGE=tensorflow
 COPY build/tensorflow-1.11.0-cp36-cp36m-linux_x86_64.whl /tensorflow-1.11.0-cp36-cp36m-linux_x86_64.whl
 RUN pip install /tensorflow-1.11.0-cp36-cp36m-linux_x86_64.whl \

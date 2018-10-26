@@ -5,7 +5,7 @@ tag说明：
 
 - latest: 默认的cpu版本
 - intel-cpu: tf使用Intel编译的cpu版本
-- local-cpu: tf使用本地编译的cpu版本
+- local-cpu: tf使用本地编译的cpu版本（在我们的服务器上Intel cpu版本并不可用）
 - gpu: 默认gpu版本
 
 ## pip install

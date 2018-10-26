@@ -21,7 +21,7 @@ RUN pip install -U pip setuptools \
 
 # install tensorflow, keras
 RUN pip --no-cache-dir install \
-    ${TF_PACKAGE} \
+    tensorflow \
     keras
 
 # 安装服务常用包

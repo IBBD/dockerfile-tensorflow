@@ -13,4 +13,4 @@ RUN pip --no-cache-dir install \
 
 RUN pip --no-cache-dir install git+https://github.com/ibbd-dev/python-fire-rest.git
 
-RUN apt-get remove cmake
+RUN apt-get remove -y cmake

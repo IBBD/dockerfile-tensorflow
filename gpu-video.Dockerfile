@@ -1,7 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/tensorflow:gpu
 
 RUN apt-get update -y \
-    && apt-get install -y cmake
+    && apt-get install -y cmake git
 
 RUN pip --no-cache-dir install \
     jsonschema \
@@ -13,4 +13,4 @@ RUN pip --no-cache-dir install \
 
 RUN pip --no-cache-dir install git+https://github.com/ibbd-dev/python-fire-rest.git
 
-RUN apt-get remove -y cmake
+RUN apt-get remove -y cmake git

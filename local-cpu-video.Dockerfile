@@ -1,6 +1,7 @@
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/tensorflow:local-cpu
 
-RUN apt-get install -y cmake
+RUN apt-get update -y \
+    && apt-get install -y cmake
 
 RUN pip --no-cache-dir install \
     jsonschema \

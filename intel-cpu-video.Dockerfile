@@ -1,42 +1,23 @@
-#
-# tensorflow Dockerfile
-#
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/tensorflow:intel-cpu
 
-# Pull base image.
-#FROM tensorflow/tensorflow:latest-py3
-FROM python:3.6-stretch
+# opencv依赖libsm6, libxext6
+# 对视频的操作需要ffmpeg
+RUN add-apt-repository ppa:jonathonf/ffmpeg-4 \
+    && apt-get update -y \
+    && apt-get install -y cmake git \
+    && apt-get install -y ffmpeg \
+    && apt-get install -y libsm6 libxext6
 
-MAINTAINER Alex Cai "cyy0523xc@gmail.com"
-
-# Pick up some TF dependencies
-#RUN cp /usr/share/zoneinfo/Asia/Shanghai /etc/localtime 
-
-# 安装基础库
-RUN pip install -U pip setuptools \
-    && pip --no-cache-dir install \
-        numpy \
-        pandas \
-        scipy \
-        sklearn 
-
-# install tensorflow
-ARG TF_PACKAGE=tensorflow
 RUN pip --no-cache-dir install \
-    https://storage.googleapis.com/intel-optimized-tensorflow/tensorflow-1.11.0-cp36-cp36m-linux_x86_64.whl
+    jsonschema \
+    dlib \
+    opencv-python \
+    face_recognition \
+    moviepy \
+    flask_restful
 
-# 安装服务常用包
-RUN pip --no-cache-dir install \
-    keras \
-    flask \
-    flask_jsonrpc \
-    fire
+RUN pip --no-cache-dir install git+https://github.com/ibbd-dev/python-fire-rest.git
 
-COPY bashrc /etc/bash.bashrc
-RUN chmod a+rwx /etc/bash.bashrc
+# 移除不必要的依赖
+RUN apt-get remove -y cmake git 
 
-# 终端设置
-# 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
-ENV TERM xterm
-
-# 解决时区问题
-ENV TZ "Asia/Shanghai"

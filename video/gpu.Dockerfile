@@ -8,15 +8,15 @@ FROM mettainnovations/dlib:19.16-cuda10.0
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # install base
+        #tesseract-ocr-chi-sim-vert \
+        #tesseract-ocr-chi-tra-vert
 RUN add-apt-repository ppa:jonathonf/ffmpeg-4 \
     && apt-get update \
     && apt-get install -y python3-pip \
         ffmpeg \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
-        tesseract-ocr-chi-sim-vert \
-        tesseract-ocr-chi-tra \
-        tesseract-ocr-chi-tra-vert
+        tesseract-ocr-chi-tra 
     
 # 安装基础库
 RUN pip3 install -U pip \

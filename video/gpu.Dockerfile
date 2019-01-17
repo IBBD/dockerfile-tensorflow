@@ -19,7 +19,7 @@ RUN add-apt-repository ppa:jonathonf/ffmpeg-4 \
         tesseract-ocr-chi-tra 
     
 # 安装基础库
-RUN pip3 install -U pip setuptools \
+RUN pip3 install -U setuptools \
     && pip3 --no-cache-dir install \
         numpy \
         pandas \

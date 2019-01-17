@@ -9,7 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # install base
 #tesseract-ocr-chi-sim-vert \
-        #tesseract-ocr-chi-tra-vert
+#tesseract-ocr-chi-tra-vert
 RUN add-apt-repository ppa:jonathonf/ffmpeg-4 \
     && apt-get update \
     && apt-get install -y python3-pip \

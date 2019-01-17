@@ -8,7 +8,7 @@ FROM mettainnovations/dlib:19.16-cuda10.0
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # install base
-        #tesseract-ocr-chi-sim-vert \
+#tesseract-ocr-chi-sim-vert \
         #tesseract-ocr-chi-tra-vert
 RUN add-apt-repository ppa:jonathonf/ffmpeg-4 \
     && apt-get update \

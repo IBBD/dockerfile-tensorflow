@@ -28,7 +28,7 @@ RUN python3 -m pip install -U setuptools \
         numpy \
         pandas \
         scipy \
-        sklearn \
+        scikit-learn \
         opencv-python \
         pytesseract \
         moviepy

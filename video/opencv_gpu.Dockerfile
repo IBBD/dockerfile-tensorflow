@@ -60,7 +60,7 @@ RUN apt-get -y update && \
       -D WITH_IPP=OFF \
       -D WITH_FFMPEG=ON \
       -D WITH_CUDA=ON \
-      -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-8.0 \
+      -D CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda-10.0 \
       -D WITH_CUBLAS=ON \
       -D WITH_V4L=ON .. \
     && \

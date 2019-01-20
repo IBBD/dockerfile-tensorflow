@@ -1,4 +1,5 @@
 # https://www.learnopencv.com/install-opencv3-on-ubuntu/
+# docker build -t ibbd/video:opencv_cuda -f opencv_cuda.Dockerfile .
 
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:opencv_cuda_base
 LABEL maintainer Aaron "wanglj@ibbd.net"

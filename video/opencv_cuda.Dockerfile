@@ -3,7 +3,6 @@
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:opencv_cuda_base
 LABEL maintainer Aaron "wanglj@ibbd.net"
 
-ENV OPENCV_VERSION 3.4.2
 # Install OpenCV
 RUN \
 # Prepare build

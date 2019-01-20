@@ -3,10 +3,8 @@
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:cuda10_cudnn7_py3
 LABEL maintainer Aaron "wanglj@ibbd.net"
 
-# Install all dependencies for OpenCV
-RUN apt-get -y update && \
-
 # Install OpenCV
+RUN \
     wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip -O opencv3.zip && \
     unzip -q opencv3.zip && \
     mv /opencv-$OPENCV_VERSION /opencv && \
@@ -39,10 +37,10 @@ RUN apt-get -y update && \
     cd /opencv/build && \
     make -j$(nproc) && \
     make install && \
-    ldconfig \
-    && \
+    ldconfig
 
 # Clean
+RUN \
    apt-get -y remove \
         python3-dev \
         libatlas-base-dev \

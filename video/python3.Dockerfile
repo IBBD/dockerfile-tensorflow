@@ -2,7 +2,6 @@
 
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 LABEL maintainer Aaron "wanglj@ibbd.net"
-ENV OPENCV_VERSION 3.4.2
 
 # Install all dependencies for OpenCV
 RUN apt-get -y update && \

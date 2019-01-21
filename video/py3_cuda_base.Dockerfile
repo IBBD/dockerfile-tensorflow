@@ -68,7 +68,7 @@ RUN apt-get -y update && \
         libv4l-dev 
 
 # Download OpenCV
-ENV OPENCV_VERSION 3.4.5
+ENV OPENCV_VERSION 3.4.2
 RUN wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip -O opencv3.zip && \
     unzip -q opencv3.zip && \
     mv /opencv-$OPENCV_VERSION /opencv && \

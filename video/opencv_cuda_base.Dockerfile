@@ -25,10 +25,10 @@ RUN apt-get -y update && \
         libpng-dev \
         libtiff-dev \
         libjasper-dev \
-        libv4l-dev \
+        libv4l-dev 
 
-ENV OPENCV_VERSION 3.4.5
 # Download OpenCV
+ENV OPENCV_VERSION 3.4.5
 RUN wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip -O opencv3.zip && \
     unzip -q opencv3.zip && \
     mv /opencv-$OPENCV_VERSION /opencv && \
@@ -37,4 +37,4 @@ RUN wget https://github.com/opencv/opencv/archive/$OPENCV_VERSION.zip -O opencv3
     unzip -q opencv_contrib3.zip && \
     mv /opencv_contrib-$OPENCV_VERSION /opencv_contrib && \
     rm opencv_contrib3.zip && \
-    rm -rf /var/lib/apt/lists/* \
+    rm -rf /var/lib/apt/lists/* 

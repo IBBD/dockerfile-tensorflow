@@ -27,7 +27,7 @@ RUN python3 -m pip install -U setuptools \
         moviepy
         
 # 更新 cmake
-RUN apt remove cmake && \
+RUN apt remove -y cmake && \
     cd /root/ && \
     wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3.tar.gz && \
     tar -xvf cmake-3.13.3.tar.gz && \

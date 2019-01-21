@@ -29,7 +29,6 @@ RUN python3 -m pip install -U setuptools \
         pandas \
         scipy \
         scikit-learn \
-        opencv-python \
         pytesseract \
         moviepy
         
@@ -44,6 +43,7 @@ RUN cd /root/ && \
 # 安装服务常用包
 RUN python3 -m pip --no-cache-dir install \
     flask \
+    flask-restful \
     flask_jsonrpc \
     fire \
     requests_toolbelt \

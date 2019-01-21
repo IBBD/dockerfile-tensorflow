@@ -12,6 +12,7 @@ RUN apt-get -y update && \
         git \
         wget \
         unzip \
+        cmake \
         build-essential \
         pkg-config \
         libatlas-base-dev \

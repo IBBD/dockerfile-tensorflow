@@ -1,7 +1,7 @@
 # create registry.cn-hangzhou.aliyuncs.com/ibbd/video:py3_cuda_base
 
 # Pull base image.
-FROM mettainnovations/ubuntu-base:16.04-cuda10
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:cuda_base
 
 LABEL maintainer Aaron "wanglj@ibbd.net"
 

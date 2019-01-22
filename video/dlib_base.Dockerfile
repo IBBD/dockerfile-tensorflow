@@ -39,7 +39,7 @@ RUN cd /root/ && \
     python3 setup.py install && \
     cd .. && \
     rm -r dlib
-    
+  
 # 安装服务常用包
 RUN python3 -m pip --no-cache-dir install \
     flask \

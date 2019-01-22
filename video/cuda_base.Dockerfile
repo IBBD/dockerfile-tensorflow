@@ -43,4 +43,5 @@ RUN apt-get update -y && \
     
 # Casa Blanca and DocumentDBCpp dependencies
 RUN apt-get install -y libcpprest-dev libssl-dev uuid-dev && \
-    apt-get clean -y
+    apt-get clean -y && \
+    rm -rf /var/lib/apt/lists/*

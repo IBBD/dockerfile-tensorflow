@@ -1,6 +1,6 @@
 # create registry.cn-hangzhou.aliyuncs.com/ibbd/video:py3_cuda_opencv_dlib
 
-FROM From registry.cn-hangzhou.aliyuncs.com/ibbd/video:py3_cuda_opencv
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:py3_cuda_opencv
 LABEL maintainer Aaron "wanglj@ibbd.net"
 
 # 安装 DLIB

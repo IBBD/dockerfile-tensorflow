@@ -9,6 +9,8 @@ RUN \
 # Prepare build
     mkdir /opencv/build && cd /opencv/build && \
     cmake -D CMAKE_BUILD_TYPE=RELEASE \
+      -D BUILD_PERF_TESTS=OFF \
+      -D BUILD_TESTS=OFF \
       -D BUILD_PYTHON_SUPPORT=ON \
       -D CMAKE_INSTALL_PREFIX=/usr/local \
       -D OPENCV_EXTRA_MODULES_PATH=/opencv_contrib/modules \

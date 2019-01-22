@@ -1,4 +1,9 @@
-FROM mettainnovations/ubuntu-base:16.04-cuda10
+#
+# tensorflow GPU Dockerfile
+#
+
+# Pull base image.
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:cuda_base
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -23,20 +28,10 @@ RUN python3 -m pip install -U setuptools \
         numpy \
         pandas \
         scipy \
+        scikit-learn \
         pytesseract \
         moviepy
         
-# 更新 cmake
-RUN apt remove -y cmake && \
-    cd /root/ && \
-    wget https://github.com/Kitware/CMake/releases/download/v3.13.3/cmake-3.13.3.tar.gz && \
-    tar -xvf cmake-3.13.3.tar.gz && \
-    cd cmake-3.13.3 && \
-    ./bootstrap && make && make install && \
-    cd /root/ && \
-    rm -r cmake-3.13.3 && \
-    rm cmake-3.13.3.tar.gz
-
 # 安装 DLIB
 RUN cd /root/ && \
     git clone https://github.com/davisking/dlib.git && \
@@ -44,10 +39,11 @@ RUN cd /root/ && \
     python3 setup.py install && \
     cd .. && \
     rm -r dlib
-    
+  
 # 安装服务常用包
 RUN python3 -m pip --no-cache-dir install \
     flask \
+    flask-restful \
     flask_jsonrpc \
     fire \
     requests_toolbelt \

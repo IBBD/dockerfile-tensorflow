@@ -1,4 +1,4 @@
-FROM 10.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 LABEL maintainer Aaron "wanglj@ibbd.net"
 
 RUN apt-get update && apt-get install -y --no-install-recommends \

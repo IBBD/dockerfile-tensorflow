@@ -8,9 +8,10 @@ LABEL maintainer Aaron "wanglj@ibbd.net"
 # install base
 #tesseract-ocr-chi-sim-vert \
 #tesseract-ocr-chi-tra-vert
-RUN add-apt-repository ppa:jonathonf/ffmpeg-4 \
-    && apt-get update \
-    && apt-get install -y python3 \
+RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
+    add-apt-repository ppa:alex-p/tesseract-ocr && \
+    apt-get update && \
+    apt-get install -y python3 \
         python3-pip \
         ffmpeg \
         tesseract-ocr \

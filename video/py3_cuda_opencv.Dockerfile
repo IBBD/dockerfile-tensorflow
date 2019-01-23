@@ -51,6 +51,4 @@ RUN \
     && \
     apt-get clean && \
     rm -rf /opencv /opencv_contrib /var/lib/apt/lists/*
-
-# Define default command.
-CMD ["python3 --version"]
+    

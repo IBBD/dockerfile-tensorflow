@@ -6,7 +6,7 @@
 `registry.cn-hangzhou.aliyuncs.com/ibbd/video`
 
 #### tags: 
-
+* `gpu`(gpu.Dockerfile)
 * `cuda_base` (cuda_base.Dockerfile)
 * `py3_cuda_base` (py3_cuda_base.Dockerfile)
 * `py3_cuda_opencv` (py3_cuda_opencv.Dockerfile)
@@ -20,9 +20,19 @@
 
 可根据需要修改重新制作镜像。
 
+   
+
+## 1 gpu
+
+1.1 使用`mettainnovations/ubuntu-base:16.04-cuda10`作为基础镜像。
+
+1.2 该镜像编译了opencv（CPU）、dlib（CUDA）、ocr包等。
+
+1.4 在阿里云 `docker build` 。
 
 
-## 1 cuda_base
+
+## 2 cuda_base
 
 1.1 使用`nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04`作为基础镜像。
 
@@ -34,7 +44,7 @@
 
 
 
-## 2 py3_cuda_base 
+## 3 py3_cuda_base 
 
 2.1 安装python3 ,一些基础包（按需增减），下载 opencv安装包。
 
@@ -42,7 +52,7 @@
 
 
 
-## 3 py3_cuda_opencv
+## 4 py3_cuda_opencv
 
 3.1 编译opencv cuda 版本。
 
@@ -54,7 +64,7 @@ docker build -t registry.cn-hangzhou.aliyuncs.com/ibbd/video:py3_cuda_opencv -f 
 
 
 
-## 4 py3_cuda_opencv_dlib 
+## 5 py3_cuda_opencv_dlib 
 
 4.1 编译 dlib cuda 版本。
 
@@ -68,7 +78,7 @@ docker build -t registry.cn-hangzhou.aliyuncs.com/ibbd/video:py3_cuda_opencv_dli
 
 
 
-## 5 pip3 list
+## 6 pip3 list（py3_cuda_opencv_dlib）
 ```
 Package           Version               
 ----------------- ----------------------

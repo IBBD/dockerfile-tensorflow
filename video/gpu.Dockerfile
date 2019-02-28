@@ -9,7 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
     add-apt-repository ppa:alex-p/tesseract-ocr && \
     apt-get update &&\
-    apt-get install -y python3 &&\
+    apt-get install -y python3 \
         python3-pip \
         ffmpeg \
         tesseract-ocr \

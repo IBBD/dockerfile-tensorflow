@@ -7,8 +7,10 @@ FROM python:3.6-slim
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# opencv依赖：libglib2.0-0, libsm6
 RUN apt-get update -y \
-    && apt-get -y install build-essential git
+    && apt-get -y install build-essential git \
+        libglib2.0-0 libsm6 libxrender1
 
 # 安装基础库
 RUN pip --no-cache-dir install \
@@ -21,6 +23,7 @@ RUN pip --no-cache-dir install \
         h5py \
         lmdb \
         lxml \
+        bs4 \
         tensorflow==1.8 \
         keras==2.1.5 \
         torch torchvision

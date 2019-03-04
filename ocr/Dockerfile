@@ -3,10 +3,12 @@
 #
 
 # Pull base image.
-# FROM tensorflow/tensorflow:1.8.0-py3
 FROM python:3.6-slim
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+
+RUN apt-get update -y \
+    && apt-get -y install build-essential git
 
 # 安装基础库
 RUN pip --no-cache-dir install \
@@ -19,7 +21,13 @@ RUN pip --no-cache-dir install \
         h5py \
         lmdb \
         tensorflow==1.8 \
-        keras==2.1.5
+        keras==2.1.5 \
+        torch torchvision
+
+RUN cd / \
+    && git clone https://github.com/zergmk2/darknet.git \
+    && cd darknet/ \
+    && make 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

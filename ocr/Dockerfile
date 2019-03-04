@@ -20,6 +20,7 @@ RUN pip --no-cache-dir install \
         opencv-contrib-python==3.4.2.16 \
         h5py \
         lmdb \
+        lxml \
         tensorflow==1.8 \
         keras==2.1.5 \
         torch torchvision
@@ -28,6 +29,10 @@ RUN cd / \
     && git clone https://github.com/zergmk2/darknet.git \
     && cd darknet/ \
     && make 
+
+# 安装server服务相关
+RUN pip --no-cache-dir install flask flask_restful jsonschema \
+    && pip install git+https://github.com/ibbd-dev/python-fire-rest.git
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

@@ -45,6 +45,15 @@ ENV NVIDIA_VISIBLE_DEVICES all
 ENV NVIDIA_DRIVER_CAPABILITIES compute,utility
 ENV NVIDIA_REQUIRE_CUDA "cuda>=9.2"
 
+# runtime
+ENV NCCL_VERSION 2.4.2
+RUN apt-get update && apt-get install -y --no-install-recommends \
+        cuda-libraries-$CUDA_PKG_VERSION \
+        cuda-nvtx-$CUDA_PKG_VERSION \
+        libnccl2=$NCCL_VERSION-1+cuda9.2 && \
+    apt-mark hold libnccl2 && \
+    rm -rf /var/lib/apt/lists/*
+
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
 ENV TERM xterm

@@ -9,6 +9,13 @@ FROM ubuntu:18.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        python3 python3-pip \
+        wget \
+        git
+    && pip3 install -U pip
+
 RUN wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1804-10-1-local-10.1.105-418.39_1.0-1_amd64.deb \
     && dpkg -i cuda-repo-ubuntu1804-10-1-local-10.1.105-418.39_1.0-1_amd64.deb \
     && apt-key add /var/cuda-repo-10-1/7fa2af80.pub \

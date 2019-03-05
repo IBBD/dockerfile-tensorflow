@@ -9,11 +9,12 @@ FROM ubuntu:18.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# install python 3.6
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         python3 python3-pip \
         wget \
-        git
+        git \
     && pip3 install -U pip
 
 RUN wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cuda-repo-ubuntu1804-10-1-local-10.1.105-418.39_1.0-1_amd64.deb \
@@ -22,10 +23,6 @@ RUN wget https://developer.nvidia.com/compute/cuda/10.1/Prod/local_installers/cu
     && apt-get update -y \
     && apt-get install -y cuda
 
-# install python 3.6
-RUN apt-get install -y --no-install-recommends python3 python3-pip \
-    && pip3 install -U pip
-    
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
 ENV TERM xterm

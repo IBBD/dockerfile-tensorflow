@@ -4,6 +4,7 @@
 
 # Pull base image.
 # FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+# FROM registry.cn-hangzhou.aliyuncs.com/ibbd/ocr:cuda10-cudnn7-py36-ubuntu1604
 FROM registry-internal.cn-hangzhou.aliyuncs.com/ibbd/ocr:cuda10-cudnn7-py36-ubuntu1604
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"

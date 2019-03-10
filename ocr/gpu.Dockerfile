@@ -3,25 +3,17 @@
 #
 
 # Pull base image.
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+# FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+FROM registry-internal.cn-hangzhou.aliyuncs.com/ibbd/ocr:cuda10-cudnn7-py36-ubuntu1604
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
-# 安装Python3.6, pip, git等
+# 安装git等
 # opencv依赖：libglib2.0-0, libsm6
 RUN apt-get update -y \
-    && apt-get install -y software-properties-common \
-    && add-apt-repository ppa:jonathonf/python-3.6 -y \
-    && apt-get update -y \
     && apt-get install -y build-essential git \
-        python3.6 python3-pip \
         libglib2.0-0 libsm6 libxrender1 \
-    && rm /usr/bin/python3 \
-    && ln -s /usr/bin/python3.6 /usr/bin/python3 \
-    && ln -s /usr/bin/python3.6 /usr/bin/python \
-    && pip3 install --upgrade pip \
-    && rm /usr/local/bin/pip3 \
-    && rm /usr/bin/pip3
+    && rm -rf /var/lib/apt/lists/*
 
 # 安装基础库
 RUN pip --no-cache-dir install \

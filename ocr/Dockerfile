@@ -10,7 +10,8 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # opencv依赖：libglib2.0-0, libsm6
 RUN apt-get update -y \
     && apt-get -y install build-essential git \
-        libglib2.0-0 libsm6 libxrender1
+        libglib2.0-0 libsm6 libxrender1 \
+    && rm -rf /var/lib/apt/lists/*
 
 # 安装基础库
 RUN pip --no-cache-dir install \

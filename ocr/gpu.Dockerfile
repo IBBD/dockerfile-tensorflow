@@ -5,6 +5,8 @@
 # Pull base image.
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
+MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+
 # 安装Python3.6, pip, git等
 # opencv依赖：libglib2.0-0, libsm6
 RUN apt-get update -y \

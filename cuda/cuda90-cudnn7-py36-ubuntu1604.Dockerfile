@@ -8,6 +8,7 @@ FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装Python3.6, pip, git等
+# apt-get install -y libcuda1-384
 RUN apt-get update -y \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:jonathonf/python-3.6 -y \

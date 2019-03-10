@@ -14,6 +14,7 @@ RUN apt-get update -y \
     && apt-get update -y \
     && apt-get install -y \
         python3.6 python3-pip \
+        python3.6-dev \
     && rm /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python \

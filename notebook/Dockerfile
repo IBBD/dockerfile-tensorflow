@@ -19,7 +19,12 @@ RUN conda install --quiet --yes jieba \
     && cd fastText \
     && pip install . \
     && cd .. \
-    && rm -rf fastText
+    && rm -rf fastText \
+    && cp .jupyter/jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py.bak
+
+# 配置文件
+# 原配置文件已经备份
+ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

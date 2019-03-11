@@ -22,6 +22,10 @@ RUN conda install --quiet --yes jieba \
     && rm -rf fastText \
     && cp .jupyter/jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py.bak
 
+# 附加工具
+# yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
+RUN conda install -c districtdatalabs yellowbrick
+
 # 配置文件
 # 原配置文件已经备份
 ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 

@@ -8,11 +8,13 @@ FROM ubuntu:16.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# install base
 RUN apt-get update -y \
     && apt-get install -y wget python python-pip gcc git
 
-# pip
-RUN pip install mxnet
+# pip install
+RUN pip install -U pip \
+    && pip install scipy scikit-learn mxnet
 
 # insightface
 RUN mkdir /face \

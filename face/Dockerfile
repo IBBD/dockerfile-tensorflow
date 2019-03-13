@@ -9,8 +9,19 @@ FROM ubuntu:16.04
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # install base
+# opencv依赖：
+# ImportError: libgthread-2.0.so.0
+# ImportError: libSM.so.6
+# ImportError: libXrender.so.1
 RUN apt-get update -y \
-    && apt-get install -y wget python python-pip gcc git
+    && apt-get install -y \
+        wget \
+        python python-pip \
+        gcc \
+        git \
+        libglib2.0-0 \
+        libsm6 \
+        libxrender1
 
 # pip install
 RUN pip install \

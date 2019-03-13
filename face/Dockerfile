@@ -22,7 +22,7 @@ RUN apt-get update -y \
         libglib2.0-0 \
         libsm6 \
         libxrender1 \
-    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    && wget https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \
     && rm get-pip.py
 

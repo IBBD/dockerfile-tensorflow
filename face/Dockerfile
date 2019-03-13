@@ -26,7 +26,9 @@ RUN apt-get update -y \
 # pip install
 RUN pip install \
         scipy \
+        easydict \
         scikit-learn \
+        scikit-image \
         opencv-python \
         mxnet
 

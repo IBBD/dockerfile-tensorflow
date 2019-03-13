@@ -16,12 +16,15 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y \
         wget \
-        python python-pip \
+        python \
         gcc \
         git \
         libglib2.0-0 \
         libsm6 \
-        libxrender1
+        libxrender1 \
+    && curl https://bootstrap.pypa.io/get-pip.py -o get-pip.py \
+    && python get-pip.py \
+    && rm get-pip.py
 
 # pip install
 RUN pip install \

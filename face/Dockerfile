@@ -16,7 +16,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y \
         wget \
-        python \
+        python python-dev \
         gcc \
         git \
         libglib2.0-0 \

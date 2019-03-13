@@ -13,7 +13,11 @@ RUN apt-get update -y \
     && apt-get install -y wget python python-pip gcc git
 
 # pip install
-RUN pip install scipy scikit-learn mxnet
+RUN pip install \
+        scipy \
+        scikit-learn \
+        opencv-python \
+        mxnet
 
 # insightface
 RUN mkdir /face \

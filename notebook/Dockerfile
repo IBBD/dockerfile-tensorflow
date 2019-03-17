@@ -24,7 +24,10 @@ RUN conda install --quiet --yes jieba \
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
-RUN conda install -c districtdatalabs yellowbrick
+# FeatureSelector是用于降低机器学习数据集的维数的工具
+RUN conda install -c \
+    districtdatalabs \
+    yellowbrick 
 
 # 配置文件
 # 原配置文件已经备份

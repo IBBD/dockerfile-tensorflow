@@ -27,13 +27,15 @@ RUN apt-get update -y \
     && rm get-pip.py
 
 # pip install
+# mxnet
 RUN pip install \
         scipy \
         easydict \
         scikit-learn \
         scikit-image \
         opencv-python \
-        mxnet
+        opencv-contrib-python \
+        mxnet-cu90
 
 # insightface
 RUN mkdir /face \

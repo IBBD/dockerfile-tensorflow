@@ -37,6 +37,10 @@ RUN pip install \
         opencv-contrib-python \
         mxnet-cu90
 
+# 安装server服务相关
+RUN pip --no-cache-dir install flask flask_restful jsonschema \
+    && pip install git+https://github.com/ibbd-dev/python-fire-rest.git
+
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
 ENV TERM xterm

@@ -27,7 +27,8 @@ RUN conda install --quiet --yes jieba \
 # FeatureSelector是用于降低机器学习数据集的维数的工具
 RUN conda install -c \
     districtdatalabs \
-    yellowbrick 
+    yellowbrick \
+    opencv
 
 # 配置文件
 # 原配置文件已经备份

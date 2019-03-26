@@ -23,12 +23,12 @@ RUN apt-get update -y \
         libsm6 \
         libxrender1 \
     && wget https://bootstrap.pypa.io/get-pip.py \
-    && python get-pip.py \
+    && python3 get-pip.py \
     && rm get-pip.py
 
 # pip install
 # mxnet
-RUN pip install \
+RUN pip3 install \
         scipy \
         easydict \
         scikit-learn \
@@ -38,8 +38,8 @@ RUN pip install \
         mxnet-cu90
 
 # 安装server服务相关
-RUN pip --no-cache-dir install flask flask_restful jsonschema \
-    && pip install git+https://github.com/ibbd-dev/python-fire-rest.git
+RUN pip3 --no-cache-dir install flask flask_restful jsonschema \
+    && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

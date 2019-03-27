@@ -35,7 +35,8 @@ RUN pip3 install \
         scikit-image \
         opencv-python \
         opencv-contrib-python \
-        mxnet-cu90
+        mxnet-cu90 \
+        imutils
 
 # 安装server服务相关
 RUN pip3 --no-cache-dir install flask flask_restful jsonschema \

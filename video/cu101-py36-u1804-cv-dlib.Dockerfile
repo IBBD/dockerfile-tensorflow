@@ -5,7 +5,12 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装基础库, opencv
-RUN python3 -m pip install -U setuptools \
+RUN apt-get update -y \
+    && apt-get install -y \
+        libglib2.0-0 \
+        libsm6 \
+        libxrender1 \
+    && python3 -m pip install -U setuptools \
     && python3 -m pip --no-cache-dir install \
         numpy \
         pandas \
@@ -23,4 +28,3 @@ RUN apt-get update -y \
     && python3 setup.py install \
     && cd .. \
     && rm -r dlib
-    

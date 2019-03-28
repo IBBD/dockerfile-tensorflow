@@ -16,7 +16,7 @@ RUN python3 -m pip install -U setuptools \
         
 # 安装 DLIB
 RUN apt-get update -y \
-    && apt-get install -y git \
+    && apt-get install -y git cmake \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \

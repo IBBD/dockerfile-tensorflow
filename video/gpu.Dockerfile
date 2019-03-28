@@ -19,6 +19,7 @@ RUN apt-get update -y \
         tesseract-ocr-chi-tra 
         
 # 安装服务常用包
+# moviepy依赖：imageio-ffmpeg
 RUN python3 -m pip --no-cache-dir install \
     pytesseract \
     moviepy \

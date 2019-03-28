@@ -1,5 +1,10 @@
 # Ubuntu 16.04
 
+## cuda101-cudnn7-py36-ubuntu1804
+
+- cu101-py36-u1804-cv-dlib: 增加opencv, dlib, numpy, pandas, scipy, scikit-learn
+- gpu: ocr, flask, moviepy...
+
 ## 10.0-cudnn7-devel  (requires nvidia-docker v2)
 
 #### REPOSITORY: 

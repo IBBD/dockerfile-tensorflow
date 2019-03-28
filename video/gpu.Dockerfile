@@ -45,7 +45,8 @@ RUN python3 -m pip --no-cache-dir install \
     fire \
     requests_toolbelt \
     pycrypto \
-    jsonschema
+    jsonschema \
+    flask_restful
 
 # 安装额外的package
 RUN python3 -m pip install git+https://github.com/cyy0523xc/face_lib.git \

@@ -6,7 +6,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # install base
 #tesseract-ocr-chi-sim-vert \
 #tesseract-ocr-chi-tra-vert
-RUN add-apt-repository ppa:jonathonf/ffmpeg-4 && \
+RUN add-apt-repository ppa:jonathonf/ffmpeg-4 -y && \
     add-apt-repository ppa:alex-p/tesseract-ocr && \
     apt-get update &&\
     apt-get install -y python3 \
@@ -49,8 +49,10 @@ RUN python3 -m pip --no-cache-dir install \
     flask_restful
 
 # 安装额外的package
+# install ffmpeg from imageio.
 RUN python3 -m pip install git+https://github.com/cyy0523xc/face_lib.git \
-    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git
+    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git \
+    && python3 -c "import imageio; imageio.plugins.ffmpeg.download()"
 
 # 删除 apt lists
 RUN rm -rf /var/lib/apt/lists/*

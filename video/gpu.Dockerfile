@@ -22,6 +22,7 @@ RUN apt-get update -y \
 RUN python3 -m pip --no-cache-dir install \
     pytesseract \
     moviepy \
+    imageio-ffmpeg \
     flask \
     flask_jsonrpc \
     fire \
@@ -31,10 +32,8 @@ RUN python3 -m pip --no-cache-dir install \
     flask_restful
 
 # 安装额外的package
-# install ffmpeg from imageio.
 RUN python3 -m pip install git+https://github.com/cyy0523xc/face_lib.git \
-    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git \
-    && python3 -c "import imageio; imageio.plugins.ffmpeg.download()"
+    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 
 
 # 删除 apt lists
 RUN rm -rf /var/lib/apt/lists/*

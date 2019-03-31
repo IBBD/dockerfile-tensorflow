@@ -16,7 +16,7 @@ RUN apt-get update -y \
         libglib2.0-0 \
         libsm6 \
         libxrender1 \
-    && pip3 install \
+    && pip install \
         numpy \
         scikit-learn \
         scikit-image \

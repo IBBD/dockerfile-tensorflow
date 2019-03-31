@@ -14,14 +14,13 @@ RUN apt-get update -y \
     && add-apt-repository ppa:jonathonf/python-3.6 -y \
     && apt-get update -y \
     && apt-get install -y \
-        python3.6 python3-pip \
+        python3.6 \
         python3.6-dev \
-    && rm /usr/bin/python3 \
+    && wget https://bootstrap.pypa.io/get-pip.py \
+    && python3 get-pip.py \
+    && rm get-pip.py \
     && ln -s /usr/bin/python3.6 /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python \
-    && pip3 install --upgrade pip \
-    && rm /usr/local/bin/pip3 \
-    && rm /usr/bin/pip3 \
     && rm -rf /var/lib/apt/lists/*
 
 # 终端设置

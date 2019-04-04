@@ -19,7 +19,6 @@ RUN apt-get update -y \
     && wget https://bootstrap.pypa.io/get-pip.py \
     && python3 get-pip.py \
     && rm get-pip.py \
-    && ln -s /usr/bin/python3.6 /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python \
     && rm -rf /var/lib/apt/lists/*
 

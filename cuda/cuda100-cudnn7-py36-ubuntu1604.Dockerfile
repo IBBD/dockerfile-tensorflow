@@ -9,7 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装Python3.6, pip, git等
 RUN apt-get update -y \
-    && apt-get remove python python3 \
+    && apt-get remove -y python python3 \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:jonathonf/python-3.6 -y \
     && apt-get update -y \

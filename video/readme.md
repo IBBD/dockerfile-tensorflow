@@ -5,6 +5,13 @@
 - cu101-py36-u1804-cv-dlib: 增加opencv, dlib, numpy, pandas, scipy, scikit-learn
 - gpu: ocr, flask, moviepy...
 
+## cuda100-cudnn7-py36-ubuntu1604
+
+- cu100-py36-u1604-cv-dlib: 增加opencv, dlib, numpy, pandas, scipy, scikit-learn
+- gpu-cu100: ocr, flask, moviepy...
+
+# FROM mettainnovations/ubuntu-base:16.04-cuda10
+
 ## 10.0-cudnn7-devel  (requires nvidia-docker v2)
 
 #### REPOSITORY: 

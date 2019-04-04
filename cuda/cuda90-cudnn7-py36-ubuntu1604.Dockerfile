@@ -10,7 +10,6 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # 安装Python3.6, pip, git等
 # apt-get install -y libcuda1-384
 RUN apt-get update -y \
-    && apt-get remove -y python3 \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:jonathonf/python-3.6 -y \
     && apt-get update -y \
@@ -21,7 +20,9 @@ RUN apt-get update -y \
     && wget https://bootstrap.pypa.io/get-pip.py \
     && python3 get-pip.py \
     && rm get-pip.py \
+    && rm -f /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python \
+    && ln -s /usr/bin/python3.6 /usr/bin/python3 \
     && rm -rf /var/lib/apt/lists/*
 
 # 终端设置

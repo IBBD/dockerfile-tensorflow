@@ -9,8 +9,8 @@ RUN apt-get update -y \
         libglib2.0-0 \
         libsm6 \
         libxrender1 \
-    && python3 -m pip install -U setuptools \
-    && python3 -m pip --no-cache-dir install \
+    && pip install -U setuptools \
+    && pip --no-cache-dir install \
         numpy \
         pandas \
         scipy \
@@ -19,11 +19,11 @@ RUN apt-get update -y \
         opencv-contrib-python==3.4.2.16 
         
 # 安装 DLIB
-# python3 setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA --set CMAKE_PREFIX_PATH=/usr/local/cuda --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ --clean
+# python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA --set CMAKE_PREFIX_PATH=/usr/local/cuda --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ --clean
 # https://github.com/ageitgey/face_recognition/issues/455
 # The --yes options to dlib's setup.py don't do anything since all these options
 # are on by default. So --yes has been removed. Do not give it to setup.py.
-    # && python3 setup.py install \
+    # && python setup.py install \
         # --yes USE_AVX_INSTRUCTIONS \
         # --yes DLIB_USE_CUDA \
         # --set CMAKE_PREFIX_PATH=/usr/local/cuda \
@@ -34,6 +34,6 @@ RUN apt-get update -y \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \
-    && python3 setup.py install \
+    && python setup.py install \
     && cd .. \
     && rm -r dlib

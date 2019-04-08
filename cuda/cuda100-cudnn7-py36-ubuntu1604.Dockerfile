@@ -17,12 +17,12 @@ RUN apt-get update -y \
         wget \
         python3.6 \
         python3.6-dev \
-    && wget https://bootstrap.pypa.io/get-pip.py \
-    && python3 get-pip.py \
-    && rm get-pip.py \
     && rm -f /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python \
     && ln -s /usr/bin/python3.6 /usr/bin/python3 \
+    && wget https://bootstrap.pypa.io/get-pip.py \
+    && python3 get-pip.py \
+    && rm get-pip.py \
     && rm -rf /var/lib/apt/lists/*
 
 # 终端设置

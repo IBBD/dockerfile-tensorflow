@@ -19,11 +19,19 @@ RUN apt-get update -y \
         opencv-contrib-python==3.4.2.16 
         
 # 安装 DLIB
+# python3 setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA --set CMAKE_PREFIX_PATH=/usr/local/cuda --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ --clean
+# https://github.com/ageitgey/face_recognition/issues/455
+# && python3 setup.py install \
 RUN apt-get update -y \
     && apt-get install -y git cmake libboost-all-dev libx11-dev \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \
     && python3 setup.py install \
+        --yes USE_AVX_INSTRUCTIONS \
+        --yes DLIB_USE_CUDA \
+        --set CMAKE_PREFIX_PATH=/usr/local/cuda \
+        --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ \
+        --clean \
     && cd .. \
     && rm -r dlib

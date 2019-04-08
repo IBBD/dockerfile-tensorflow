@@ -20,7 +20,7 @@ RUN apt-get update -y \
         
 # 安装 DLIB
 RUN apt-get update -y \
-    && apt-get install -y git cmake \
+    && apt-get install -y git cmake libboost-all-dev libx11-dev \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \

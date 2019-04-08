@@ -9,7 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y software-properties-common \
     && add-apt-repository ppa:jonathonf/ffmpeg-4 -y \
-    && add-apt-repository ppa:alex-p/tesseract-ocr \
+    && add-apt-repository ppa:alex-p/tesseract-ocr -y \
     && apt-get update \
     && apt-get install -y \
         ffmpeg \

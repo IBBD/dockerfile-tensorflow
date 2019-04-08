@@ -21,17 +21,19 @@ RUN apt-get update -y \
 # 安装 DLIB
 # python3 setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA --set CMAKE_PREFIX_PATH=/usr/local/cuda --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ --clean
 # https://github.com/ageitgey/face_recognition/issues/455
-# && python3 setup.py install \
+# The --yes options to dlib's setup.py don't do anything since all these options
+# are on by default. So --yes has been removed. Do not give it to setup.py.
+    # && python3 setup.py install \
+        # --yes USE_AVX_INSTRUCTIONS \
+        # --yes DLIB_USE_CUDA \
+        # --set CMAKE_PREFIX_PATH=/usr/local/cuda \
+        # --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ \
+        # --clean \
 RUN apt-get update -y \
     && apt-get install -y git cmake libboost-all-dev libx11-dev \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \
     && python3 setup.py install \
-        --yes USE_AVX_INSTRUCTIONS \
-        --yes DLIB_USE_CUDA \
-        --set CMAKE_PREFIX_PATH=/usr/local/cuda \
-        --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ \
-        --clean \
     && cd .. \
     && rm -r dlib

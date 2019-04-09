@@ -7,11 +7,11 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # tesseract-ocr-chi-sim-vert \
 # tesseract-ocr-chi-tra-vert
 RUN apt-get update -y \
-    && apt-get install -y software-properties-common \
+    && apt-get install -y --no-install-recommends software-properties-common \
     && add-apt-repository ppa:jonathonf/ffmpeg-4 -y \
     && add-apt-repository ppa:alex-p/tesseract-ocr -y \
-    && apt-get update \
-    && apt-get install -y \
+    && apt-get update -y \
+    && apt-get install -y --no-install-recommends \
         ffmpeg \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
@@ -22,16 +22,16 @@ RUN apt-get update -y \
 # 安装服务常用包
 # moviepy依赖：imageio-ffmpeg
 RUN python -m pip --no-cache-dir install \
-    pytesseract \
-    moviepy \
-    imageio-ffmpeg \
-    flask \
-    flask_jsonrpc \
-    fire \
-    requests_toolbelt \
-    pycrypto \
-    jsonschema \
-    flask_restful
+        pytesseract \
+        moviepy \
+        imageio-ffmpeg \
+        flask \
+        flask_jsonrpc \
+        fire \
+        requests_toolbelt \
+        pycrypto \
+        jsonschema \
+        flask_restful
 
 # 安装额外的package
 RUN python -m pip install git+https://github.com/cyy0523xc/face_lib.git \

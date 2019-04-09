@@ -35,6 +35,6 @@ RUN apt-get update -y \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \
-    && python setup.py install \
+    && python3 setup.py install \
     && cd .. \
     && rm -r dlib

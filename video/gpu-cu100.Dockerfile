@@ -1,5 +1,5 @@
 # Pull base image.
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:cu100-py36-u1604-cv-dlib
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/video:cu100-py35-u1604-cv-dlib
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -21,7 +21,7 @@ RUN apt-get update -y \
         
 # 安装服务常用包
 # moviepy依赖：imageio-ffmpeg
-RUN python -m pip --no-cache-dir install \
+RUN python3 -m pip --no-cache-dir install \
         pytesseract \
         moviepy \
         imageio-ffmpeg \
@@ -34,5 +34,5 @@ RUN python -m pip --no-cache-dir install \
         flask_restful
 
 # 安装额外的package
-RUN python -m pip install git+https://github.com/cyy0523xc/face_lib.git \
-    && python -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 
+RUN python3 -m pip install git+https://github.com/cyy0523xc/face_lib.git \
+    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 

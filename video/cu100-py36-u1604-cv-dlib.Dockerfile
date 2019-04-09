@@ -31,7 +31,7 @@ RUN apt-get update -y \
         # --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ \
         # --clean \
 RUN apt-get update -y \
-    && apt-get install -y git cmake \
+    && apt-get install -y --no-install-recommends git cmake \
     && cd /root/ \
     && git clone https://github.com/davisking/dlib.git \
     && cd /root/dlib \

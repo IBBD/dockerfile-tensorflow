@@ -10,7 +10,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # 安装Python3.6, pip, git等
 RUN apt-get update -y \
     && apt-get remove -y python python3 \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         python3 \
         python3-dev \
         wget \

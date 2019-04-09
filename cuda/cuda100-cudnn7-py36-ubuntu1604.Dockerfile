@@ -13,10 +13,10 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # ModuleNotFoundError: No module named 'apt_pkg'
 RUN apt-get update -y \
     && apt-get remove -y python python3 \
-    && apt-get install -y software-properties-common \
+    && apt-get install -y --no-install-recommends software-properties-common \
     && add-apt-repository ppa:jonathonf/python-3.6 -y \
     && apt-get update -y \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         wget \
         python3.6 \
         python3.6-dev \

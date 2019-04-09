@@ -22,6 +22,7 @@ RUN apt-get update -y \
         python3.6-dev \
     && rm -f /usr/bin/python3 \
     && ln -s /usr/bin/python3.6 /usr/bin/python \
+    && ln -s /usr/bin/python3.6 /usr/bin/python3 \
     && wget https://bootstrap.pypa.io/get-pip.py \
     && python get-pip.py \
     && rm get-pip.py \

@@ -1,5 +1,5 @@
 # Pull base image.
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda100-cudnn7-py36-ubuntu1604
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda100-cudnn7-py35-ubuntu1604
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

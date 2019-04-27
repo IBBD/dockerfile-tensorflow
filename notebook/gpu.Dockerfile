@@ -3,6 +3,7 @@ FROM tensorflow/tensorflow:latest-py3-jupyter
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装pytorch
+# https://pytorch.org/get-started/locally/
 RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-cp35m-linux_x86_64.whl \
     && pip3 install torchvision
 
@@ -22,7 +23,6 @@ RUN apt-get update -y \
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
 # FeatureSelector是用于降低机器学习数据集的维数的工具
 RUN pip3 install \
-    districtdatalabs \
     yellowbrick \
     opencv-python \
     opencv-contrib-python 

@@ -14,7 +14,6 @@ RUN conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch
 # nlp工具
 # install jieba, fasttext
 RUN conda install --quiet --yes jieba \
-    && cd /home/jovyan \
     && git clone https://github.com/facebookresearch/fastText.git \
     && cd fastText \
     && pip install . \

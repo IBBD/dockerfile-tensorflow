@@ -8,7 +8,7 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-c
 
 # nlp工具
 # install jieba, fasttext
-RUN pip3 install --quiet --yes jieba \
+RUN pip3 install jieba \
     && cd /home/jovyan/ \
     && git clone https://github.com/facebookresearch/fastText.git \
     && cd fastText \

@@ -9,13 +9,11 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-c
 # nlp工具
 # install jieba, fasttext
 RUN pip3 install jieba \
-    && cd /home/jovyan/ \
     && git clone https://github.com/facebookresearch/fastText.git \
     && cd fastText \
     && pip install . \
     && cd .. \
-    && rm -rf fastText \
-    && cp .jupyter/jupyter_notebook_config.py .jupyter/jupyter_notebook_config.py.bak
+    && rm -rf fastText
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
@@ -28,7 +26,7 @@ RUN pip3 install \
 
 # 配置文件
 # 原配置文件已经备份
-ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 
+# ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

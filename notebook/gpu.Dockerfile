@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-py3-jupyter
+FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -26,6 +26,9 @@ RUN pip3 install \
     yellowbrick \
     opencv-python \
     opencv-contrib-python 
+
+# 基础进行里面的tensorflow
+# RUN pip3 install --upgrade tensorflow-gpu
 
 # 配置文件
 # 原配置文件已经备份

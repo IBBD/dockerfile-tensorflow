@@ -25,10 +25,8 @@ RUN apt-get update -y \
 RUN pip3 install \
     yellowbrick \
     opencv-python \
-    opencv-contrib-python 
-
-# 基础进行里面的tensorflow
-# RUN pip3 install --upgrade tensorflow-gpu
+    opencv-contrib-python \
+    keras
 
 # 配置文件
 # 原配置文件已经备份

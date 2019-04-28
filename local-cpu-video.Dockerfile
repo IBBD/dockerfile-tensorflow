@@ -7,9 +7,11 @@ RUN pip --no-cache-dir install \
     jsonschema \
     dlib \
     opencv-python \
+    opencv-contrib-python \
     face_recognition \
     moviepy \
-    flask_restful
+    flask_restful \
+    fire
 
 RUN pip --no-cache-dir install git+https://github.com/ibbd-dev/python-fire-rest.git
 

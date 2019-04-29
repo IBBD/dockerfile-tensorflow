@@ -16,7 +16,7 @@ RUN apt-get update -y \
         scipy \
         scikit-learn \
         opencv-python \
-        opencv-contrib-python==3.4.2.16 
+        opencv-contrib-python
         
 # 安装 DLIB
 # python setup.py install --yes USE_AVX_INSTRUCTIONS --yes DLIB_USE_CUDA --set CMAKE_PREFIX_PATH=/usr/local/cuda --set CUDA_TOOLKIT_ROOT_DIR=/usr/local/cuda/bin/ --clean

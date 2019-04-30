@@ -23,7 +23,9 @@ RUN apt-get update -y \
         opencv-contrib-python \
         tensorflow-gpu \
         keras \
-        pillow
+        pillow \
+        cython \
+        tqdm
 
 # 安装pytorch
 # https://pytorch.org/get-started/locally/

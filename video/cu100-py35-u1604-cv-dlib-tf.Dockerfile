@@ -10,6 +10,7 @@ RUN apt-get update -y \
         libsm6 \
         libxrender1 \
         libxext-dev \
+        pkg-config \
     && pip install -U setuptools \
     && pip --no-cache-dir install \
         numpy \

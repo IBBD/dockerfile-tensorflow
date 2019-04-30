@@ -11,6 +11,7 @@ RUN apt-get update -y \
         libxrender1 \
         libxext-dev \
         pkg-config \
+        git \
     && pip install -U setuptools \
     && pip --no-cache-dir install \
         numpy \

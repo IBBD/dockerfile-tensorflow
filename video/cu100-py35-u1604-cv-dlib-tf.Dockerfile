@@ -9,6 +9,7 @@ RUN apt-get update -y \
         libglib2.0-0 \
         libsm6 \
         libxrender1 \
+        libxext-dev \
     && pip install -U setuptools \
     && pip --no-cache-dir install \
         numpy \
@@ -19,7 +20,8 @@ RUN apt-get update -y \
         opencv-python \
         opencv-contrib-python \
         tensorflow-gpu \
-        keras
+        keras \
+        pillow
 
 # install dlib
 RUN apt-get update -y \

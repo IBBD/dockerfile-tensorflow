@@ -2,9 +2,24 @@ FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# 基础包
+RUN pip3 install \
+    numpy \
+    pandas \
+    scipy \
+    scikit-learn \
+    scikit-image \
+    numba \
+    facets \
+    numexpr \
+    matplotlib \
+    cython \
+    sqlalchemy \
+    hdf5
+
 # 安装pytorch
 # https://pytorch.org/get-started/locally/
-RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-cp35m-linux_x86_64.whl \
+RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-linux_x86_64.whl \
     && pip3 install torchvision
 
 # nlp工具

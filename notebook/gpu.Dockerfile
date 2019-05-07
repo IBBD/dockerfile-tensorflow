@@ -3,6 +3,7 @@ FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 基础包
+# PrettyTable模块可以将输出内容如表格方式整齐地输出
 RUN pip3 install \
     numpy \
     pandas \
@@ -15,7 +16,8 @@ RUN pip3 install \
     matplotlib \
     cython \
     sqlalchemy \
-    hdf5
+    hdf5 \
+    prettytable
 
 # 安装pytorch
 # https://pytorch.org/get-started/locally/

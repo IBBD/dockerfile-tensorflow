@@ -8,10 +8,10 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-c
     && pip3 install torchvision
 
 # nlp工具
-# install jieba, fasttext
+# install jieba, fasttext, gensim
 RUN apt-get update -y \
     && apt-get install -y git \
-    && pip3 install jieba \
+    && pip3 install jieba gensim \
     && git clone https://github.com/facebookresearch/fastText.git \
     && cd fastText \
     && pip install . \

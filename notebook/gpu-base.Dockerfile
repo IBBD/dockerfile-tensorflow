@@ -3,6 +3,7 @@ FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # From: https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
+# No matching distribution found for hdf5: h5py
 RUN pip3 install \
         'ipywidgets' \
         'pandas' \
@@ -22,7 +23,6 @@ RUN pip3 install \
         'numba' \
         'bokeh' \
         'sqlalchemy' \
-        'hdf5' \
         'h5py' \
         'vincent' \
         'beautifulsoup4' \

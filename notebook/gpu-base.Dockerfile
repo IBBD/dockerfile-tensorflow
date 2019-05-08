@@ -4,29 +4,29 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # From: https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 RUN pip3 install \
-        'ipywidgets=7.4*' \
-        'pandas=0.24*' \
-        'numexpr=2.6*' \
-        'matplotlib=3.0*' \
-        'scipy=1.2*' \
-        'seaborn=0.9*' \
-        'scikit-learn=0.20*' \
-        'scikit-image=0.14*' \
-        'sympy=1.3*' \
-        'cython=0.29*' \
-        'patsy=0.5*' \
-        'statsmodels=0.9*' \
-        'cloudpickle=0.8*' \
-        'dill=0.2*' \
-        'dask=1.1.*' \
-        'numba=0.42*' \
-        'bokeh=1.0*' \
-        'sqlalchemy=1.3*' \
-        'hdf5=1.10*' \
-        'h5py=2.9*' \
-        'vincent=0.4.*' \
-        'beautifulsoup4=4.7.*' \
-        'protobuf=3.7.*' \
+        'ipywidgets' \
+        'pandas' \
+        'numexpr' \
+        'matplotlib' \
+        'scipy' \
+        'seaborn' \
+        'scikit-learn' \
+        'scikit-image' \
+        'sympy' \
+        'cython' \
+        'patsy' \
+        'statsmodels' \
+        'cloudpickle' \
+        'dill' \
+        'dask' \
+        'numba' \
+        'bokeh' \
+        'sqlalchemy' \
+        'hdf5' \
+        'h5py' \
+        'vincent' \
+        'beautifulsoup4' \
+        'protobuf' \
         'xlrd'  \
     # Activate ipywidgets extension in the environment that runs the notebook server
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \

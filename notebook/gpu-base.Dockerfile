@@ -1,3 +1,4 @@
+# Dockerfile: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/dockerfiles/gpu-jupyter.Dockerfile
 FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"

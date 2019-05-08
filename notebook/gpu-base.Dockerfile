@@ -29,12 +29,7 @@ RUN pip3 install \
         'protobuf' \
         'xlrd'  \
     # Activate ipywidgets extension in the environment that runs the notebook server
-    && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
-    # Also activate ipywidgets extension for JupyterLab
-    # Check this URL for most recent compatibilities
-    # https://github.com/jupyter-widgets/ipywidgets/tree/master/packages/jupyterlab-manager
-    && jupyter labextension install @jupyter-widgets/jupyterlab-manager@^0.38.1 \
-    && jupyter labextension install jupyterlab_bokeh@0.6.3
+    && jupyter nbextension enable --py widgetsnbextension --sys-prefix 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

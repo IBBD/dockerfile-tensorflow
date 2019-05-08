@@ -4,6 +4,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 基础包
 # PrettyTable模块可以将输出内容如表格方式整齐地输出
+# No matching distribution found for hdf5: h5py
 RUN pip3 install \
     numpy \
     pandas \
@@ -16,7 +17,7 @@ RUN pip3 install \
     matplotlib \
     cython \
     sqlalchemy \
-    hdf5 \
+    h5py \
     prettytable
 
 # 安装pytorch

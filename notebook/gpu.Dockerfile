@@ -1,4 +1,4 @@
-FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu-base
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -6,18 +6,6 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # PrettyTable模块可以将输出内容如表格方式整齐地输出
 # No matching distribution found for hdf5: h5py
 RUN pip3 install \
-    numpy \
-    pandas \
-    scipy \
-    scikit-learn \
-    scikit-image \
-    numba \
-    facets \
-    numexpr \
-    matplotlib \
-    cython \
-    sqlalchemy \
-    h5py \
     prettytable
 
 # 安装pytorch

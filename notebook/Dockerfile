@@ -24,9 +24,9 @@ RUN conda install --quiet --yes jieba gensim prettytable \
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
 # FeatureSelector是用于降低机器学习数据集的维数的工具
+# yellowbrick \
 RUN conda install -c \
     districtdatalabs \
-    yellowbrick \
     opencv
 
 # 配置文件

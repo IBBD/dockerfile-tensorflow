@@ -29,7 +29,7 @@ RUN conda install -c \
     districtdatalabs \
     opencv \
     pydotplus \
-    graphviz
+    python-graphviz
 
 # 配置文件
 # 原配置文件已经备份

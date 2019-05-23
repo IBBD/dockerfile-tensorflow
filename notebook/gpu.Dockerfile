@@ -26,6 +26,7 @@ RUN apt-get update -y \
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
 # FeatureSelector是用于降低机器学习数据集的维数的工具
+# pydotplus: 可视化决策树时需要用到
 RUN apt-get update -y \
     && apt-get install -y \
         libglib2.0-0 \
@@ -36,6 +37,7 @@ RUN apt-get update -y \
         opencv-python \
         opencv-contrib-python \
         keras \
+        pydotplus \
     && rm -rf /var/lib/apt/lists/*
 
 # 配置文件

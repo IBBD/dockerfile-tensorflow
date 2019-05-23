@@ -28,7 +28,8 @@ RUN conda install --quiet --yes jieba gensim prettytable \
 RUN conda install -c \
     districtdatalabs \
     opencv \
-    pydotplus
+    pydotplus \
+    graphviz
 
 # 配置文件
 # 原配置文件已经备份

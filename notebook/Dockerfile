@@ -35,6 +35,15 @@ RUN conda install -c \
 # 原配置文件已经备份
 ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 
 
+# 配置matplotlib
+#ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
+ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
+ADD ./SimHei.ttf "$mpl_path"
+RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
+    && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
+    && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc" 
+
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
 ENV TERM xterm

@@ -2,11 +2,9 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
-# 可视化决策树时需要用到
-RUN pip3 install pydotplus graphviz
-
-        #graphviz ruby-graphviz \
-RUN apt-get -qq update \
-    && apt-get install -qqy \
-        python3-pydot python3-pygraphviz \
-    && rm -rf /var/lib/apt/lists/*
+# 配置matplotlib
+#ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
+ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path $(echo $matplotlibrc|sed 's/matplotlibrc//')
+COPY ./SimHei.ttf "$mpl_path"fonts/ttf/Vera.ttf
+RUN sed -i 's/#font.serif/font.serif/' "$matplotlibrc"

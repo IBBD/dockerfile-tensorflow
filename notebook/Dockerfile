@@ -41,8 +41,11 @@ ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.p
 
 # 配置matplotlib
 #ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
-ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
-ENV mpl_path /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
+# /opt/conda/lib/python3.7/site-packages
+# ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
+# ENV mpl_path /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
+ENV matplotlibrc /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/
 ADD ./SimHei.ttf "$mpl_path"
 RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \

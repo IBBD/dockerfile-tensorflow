@@ -42,7 +42,8 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 时间序列
-RUN pip3 install fbprophet
+# fbprophet依赖与pystan
+RUN pip3 install pystan fbprophet
 
 # 配置文件
 # 原配置文件已经备份

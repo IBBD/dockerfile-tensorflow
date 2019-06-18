@@ -1,4 +1,4 @@
-#
+# Python 3.7
 # base image: tensorflow-notebook
 # add pytorch, jieba, fasttext, nltk
 #

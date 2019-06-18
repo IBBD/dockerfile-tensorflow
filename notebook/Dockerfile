@@ -26,10 +26,12 @@ RUN conda install --quiet --yes jieba gensim prettytable \
 # FeatureSelector是用于降低机器学习数据集的维数的工具
 # yellowbrick \
 RUN conda install -c \
-    districtdatalabs \
-    opencv \
-    pydotplus \
-    python-graphviz
+        districtdatalabs \
+        opencv \
+        pydotplus \
+        python-graphviz \
+    && conda install pyarrow -c conda-forge \
+    && conda install fastparquet -c conda-forge
 
 # 时间序列
 # fbprophet还不支持Python3.7

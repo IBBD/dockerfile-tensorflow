@@ -24,6 +24,7 @@ RUN apt-get update -y \
 # FeatureSelector是用于降低机器学习数据集的维数的工具
 # pydotplus, graphviz: 可视化决策树时需要用到
 # PrettyTable模块可以将输出内容如表格方式整齐地输出
+# pyarrow fastparquet: pandas的parquet需要依赖于这两个包
 RUN apt-get update -y \
     && apt-get install -y \
         libglib2.0-0 \
@@ -39,6 +40,7 @@ RUN apt-get update -y \
         pydotplus \
         graphviz \
         prettytable \
+        pyarrow fastparquet \
     && rm -rf /var/lib/apt/lists/*
 
 # 时间序列

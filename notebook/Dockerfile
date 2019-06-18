@@ -32,8 +32,9 @@ RUN conda install -c \
     python-graphviz
 
 # 时间序列
-RUN conda install gcc \
-    && conda install -c conda-forge fbprophet
+# fbprophet还不支持Python3.7
+# RUN conda install gcc \
+    # && conda install -c conda-forge fbprophet
 
 # 配置文件
 # 原配置文件已经备份

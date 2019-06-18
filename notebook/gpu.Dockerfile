@@ -41,6 +41,9 @@ RUN apt-get update -y \
         prettytable \
     && rm -rf /var/lib/apt/lists/*
 
+# 时间序列
+RUN pip3 install fbprophet
+
 # 配置文件
 # 原配置文件已经备份
 # ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 

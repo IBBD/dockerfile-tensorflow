@@ -31,6 +31,9 @@ RUN conda install -c \
     pydotplus \
     python-graphviz
 
+# 时间序列
+RUN conda install fbprophet
+
 # 配置文件
 # 原配置文件已经备份
 ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 

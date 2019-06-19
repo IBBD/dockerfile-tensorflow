@@ -34,9 +34,7 @@ RUN conda install -c \
     && conda install fastparquet -c conda-forge
 
 # 时间序列
-# fbprophet还不支持Python3.7
-# RUN conda install gcc \
-    # && conda install -c conda-forge fbprophet
+RUN conda install -c conda-forge fbprophet
 
 # 配置文件
 # 原配置文件已经备份

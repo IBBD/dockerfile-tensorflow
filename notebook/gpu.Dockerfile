@@ -4,8 +4,10 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装pytorch
 # https://pytorch.org/get-started/locally/
-RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-linux_x86_64.whl \
-    && pip3 install torchvision
+#RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-linux_x86_64.whl \
+    #&& pip3 install torchvision
+RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl \
+    && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
 
 # nlp工具
 # install jieba, fasttext, gensim

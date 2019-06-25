@@ -55,8 +55,8 @@ RUN pip3 install pystan fbprophet
 
 # 配置matplotlib
 #ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
-ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
-ENV mpl_path /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
+ENV matplotlibrc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf/
 ADD ./SimHei.ttf "$mpl_path"
 RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \

@@ -30,6 +30,8 @@ RUN pip3 install \
         'protobuf' \
         'xlrd'  \
         'facets'  \
+        'tqdm'  \
+        'scikit-multilearn'  \
     # Activate ipywidgets extension in the environment that runs the notebook server
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix 
 

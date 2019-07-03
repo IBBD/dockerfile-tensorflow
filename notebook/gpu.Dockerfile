@@ -34,6 +34,7 @@ RUN apt-get update -y \
         libxrender1 \
         python3-pydot \
         python3-pygraphviz \
+        imagemagick \
     && pip3 install \
         yellowbrick \
         opencv-python \

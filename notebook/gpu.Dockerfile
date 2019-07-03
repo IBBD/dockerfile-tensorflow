@@ -54,7 +54,10 @@ RUN apt-get update -y \
 # pdpbox: 展示一个或者两个特征对于模型的边际效应
 # shap: 细分预测以显示每个特征的影响
 RUN pip3 install pystan fbprophet \
-    && pip3 install eli5 PDPbox shap
+    && pip3 install eli5 PDPbox shap \
+    && pip3 install xgboost \
+        lightgbm \
+        sklearn-contrib-lightning
 
 # 配置文件
 # 原配置文件已经备份

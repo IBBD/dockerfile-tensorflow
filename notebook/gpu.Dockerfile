@@ -1,3 +1,10 @@
+# 在Notebook常用的包的基础上加装：
+# 1. nlp类：jieba, gensim, fastText
+# 2. 时间序列：prophet
+# 3. 模型可解释性：eli5, pdpbox, shap
+# 4. xgboost, lightgbm, catboost, lightnig
+# 5. pytorch, keras
+# 6. opencv
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu-base
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"

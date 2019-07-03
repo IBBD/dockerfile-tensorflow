@@ -57,6 +57,7 @@ RUN pip3 install pystan fbprophet \
     && pip3 install eli5 PDPbox shap \
     && pip3 install xgboost \
         lightgbm \
+        catboost \
         sklearn-contrib-lightning
 
 # 配置文件

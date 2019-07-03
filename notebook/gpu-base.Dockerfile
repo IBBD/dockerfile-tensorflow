@@ -5,6 +5,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # From: https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 # No matching distribution found for hdf5: h5py
+# auto-sklearn：暂时不安装，该包依赖于旧版本的scikit-lean
 RUN pip3 install \
         'pandas' \
         'numexpr' \

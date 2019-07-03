@@ -46,9 +46,15 @@ RUN apt-get update -y \
         pyarrow fastparquet \
     && rm -rf /var/lib/apt/lists/*
 
+# 扩展算法包
 # 时间序列
 # fbprophet依赖与pystan
-RUN pip3 install pystan fbprophet
+# 机器学习的可解释性
+# eli5: 对各类机器学习模型进行可视化，特征重要度计算等
+# pdpbox: 展示一个或者两个特征对于模型的边际效应
+# shap: 细分预测以显示每个特征的影响
+RUN pip3 install pystan fbprophet \
+    && pip3 install eli5 PDPbox shap
 
 # 配置文件
 # 原配置文件已经备份

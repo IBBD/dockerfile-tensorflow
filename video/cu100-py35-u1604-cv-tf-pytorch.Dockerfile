@@ -40,4 +40,5 @@ RUN python3 -m pip --no-cache-dir install \
         fire \
         jsonschema \
         flask_restful \
+        flask_cors \
     && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 

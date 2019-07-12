@@ -29,8 +29,12 @@ RUN apt-get update -y \
 
 # 安装pytorch
 # https://pytorch.org/get-started/locally/
-RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-cp35m-linux_x86_64.whl \
-    && pip3 install torchvision
+#RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.0.1.post2-cp35-cp35m-linux_x86_64.whl \
+    #&& pip3 install torchvision
+
+# 安装pytorch
+RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-linux_x86_64.whl \
+    && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp35-cp35m-linux_x86_64.whl 
 
 # 安装服务常用包
 RUN python3 -m pip --no-cache-dir install \

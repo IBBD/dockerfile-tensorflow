@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu18.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

@@ -18,15 +18,16 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-l
 
 # nlp工具
 # install jieba, fasttext, gensim
-RUN apt-get update -y \
-    && apt-get install -y git \
-    && pip3 install jieba gensim \
-    && git clone https://github.com/facebookresearch/fastText.git \
-    && cd fastText \
-    && pip install . \
-    && cd .. \
-    && rm -rf fastText \
-    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install jieba gensim fasttext
+#RUN apt-get update -y \
+    #&& apt-get install -y git \
+    #&& pip3 install jieba gensim \
+    #&& git clone https://github.com/facebookresearch/fastText.git \
+    #&& cd fastText \
+    #&& pip install . \
+    #&& cd .. \
+    #&& rm -rf fastText \
+    #&& rm -rf /var/lib/apt/lists/*
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析

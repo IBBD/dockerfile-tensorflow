@@ -1,6 +1,5 @@
 # Pull base image.
-#FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda100-cudnn7-py36-ubuntu1804
-FROM registry-internal.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda100-cudnn7-py36-ubuntu1804
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda100-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -35,8 +34,6 @@ RUN apt-get update -y \
     #&& pip3 install torchvision
 RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl \
     && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
-#RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-linux_x86_64.whl \
-    #&& pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp35-cp35m-linux_x86_64.whl 
 
 # 安装服务常用包
 RUN python3 -m pip --no-cache-dir install \

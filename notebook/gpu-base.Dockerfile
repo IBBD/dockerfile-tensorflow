@@ -1,3 +1,12 @@
+# 版本
+# latest	TensorFlow CPU 二进制映像的最新版本。默认。
+# nightly	TensorFlow 映像的每夜版。（不稳定）
+# version	指定 TensorFlow 二进制映像的版本，例如：1.12.0
+# devel	TensorFlow master 开发环境的每夜版。包含 TensorFlow 源代码。
+# 变体
+# tag-gpu	支持 GPU 的指定标记版本。
+# tag-py3	支持 Python 3 的指定标记版本。
+# tag-jupyter	带有 Jupyter 的指定标记版本（包含 TensorFlow 教程笔记本）
 # Dockerfile: https://github.com/tensorflow/tensorflow/blob/master/tensorflow/tools/dockerfiles/dockerfiles/gpu-jupyter.Dockerfile
 FROM tensorflow/tensorflow:latest-gpu-py3-jupyter
 
@@ -34,11 +43,15 @@ RUN pip3 install \
         'scikit-multilearn'
 
 # install jupyter plugin
+# TODO 这里有问题
 RUN pip3 install \
         ipywidgets \
+        witwidget-gpu \
         jupyter_contrib_nbextensions \
         jupyter_nbextensions_configurator \
     # Activate ipywidgets extension in the environment that runs the notebook server
+    && jupyter nbextension install --py --symlink --sys-prefix witwidget \
+    && jupyter nbextension enable --py --sys-prefix witwidget \
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
     && jupyter contrib nbextension install --user \
     && jupyter nbextensions_configurator enable --user

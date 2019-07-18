@@ -49,12 +49,14 @@ RUN pip3 install \
         witwidget-gpu \
         jupyter_contrib_nbextensions \
         jupyter_nbextensions_configurator \
+        jupyterlab \
     # Activate ipywidgets extension in the environment that runs the notebook server
     && jupyter nbextension install --py --symlink --sys-prefix witwidget \
     && jupyter nbextension enable --py --sys-prefix witwidget \
     && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
     && jupyter contrib nbextension install --user \
-    && jupyter nbextensions_configurator enable --user
+    && jupyter nbextensions_configurator enable --user \
+    && jupyter serverextension enable --py jupyterlab --sys-prefix
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

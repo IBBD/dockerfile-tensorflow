@@ -2,6 +2,7 @@
 
 ## 支持特性
 
+- [ ] 支持Jupyterlab
 - [x] 支持Anaconda Notebook的基础包，从Anaconda迁移过来应该能无缝迁移。
 - [x] 支持GPU
 - [x] 支持Tensorflow, TensorBoard和Keras

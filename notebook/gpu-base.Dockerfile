@@ -43,13 +43,15 @@ RUN pip3 install \
         'scikit-multilearn'
 
 # install jupyter plugin
-# TODO 这里有问题
 RUN pip3 install \
         ipywidgets \
         witwidget-gpu \
         jupyter_contrib_nbextensions \
         jupyter_nbextensions_configurator \
         jupyterlab \
+    # 需要先更新six，否则install witwidget时会报错
+    # ImportError: cannot import name 'ensure_str'
+    && pip3 install -U six \
     # Activate ipywidgets extension in the environment that runs the notebook server
     && jupyter nbextension install --py --symlink --sys-prefix witwidget \
     && jupyter nbextension enable --py --sys-prefix witwidget \

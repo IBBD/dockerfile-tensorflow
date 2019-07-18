@@ -2,7 +2,7 @@
 
 ## 支持特性
 
-- [ ] 支持Jupyterlab
+- [x] 支持Jupyterlab
 - [x] 支持Anaconda Notebook的基础包，从Anaconda迁移过来应该能无缝迁移。
 - [x] 支持GPU
 - [x] 支持Tensorflow, TensorBoard和Keras
@@ -14,5 +14,5 @@
 - [ ] 支持数学公式
 - [x] 解决matplotlib的中文显示问题
 - [x] 支持可解释模型的相关包
-- [ ] 支持时间序列建模。
+- [x] 支持时间序列建模。
 

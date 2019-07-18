@@ -63,7 +63,7 @@ RUN pip3 install \
     && jupyter nbextensions_configurator enable --user \
     && jupyter serverextension enable --py jupyterlab --sys-prefix \
     # 一些插件依赖与nodejs和npm
-    && apt-get install nodejs npm \
+    && apt-get install -y nodejs npm \
     && jupyter labextension install @jupyterlab/toc \
     && jupyter labextension install @jupyterlab/latex \
     && jupyter labextension install @ryantam626/jupyterlab_code_formatter \

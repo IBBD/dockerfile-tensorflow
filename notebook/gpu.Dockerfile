@@ -19,15 +19,6 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-l
 # nlp工具
 # install jieba, fasttext, gensim
 RUN pip3 install jieba gensim fasttext
-#RUN apt-get update -y \
-    #&& apt-get install -y git \
-    #&& pip3 install jieba gensim \
-    #&& git clone https://github.com/facebookresearch/fastText.git \
-    #&& cd fastText \
-    #&& pip install . \
-    #&& cd .. \
-    #&& rm -rf fastText \
-    #&& rm -rf /var/lib/apt/lists/*
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
@@ -80,3 +71,5 @@ ADD ./SimHei.ttf "$mpl_path"
 RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
     && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc" 
+
+CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]

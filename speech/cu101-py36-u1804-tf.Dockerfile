@@ -16,6 +16,7 @@ RUN python3 -m pip install -U setuptools \
         pandas \
         scipy \
         scikit-learn \
+        python_speech_features \
         tensorflow-gpu \
         keras 
 
@@ -28,4 +29,5 @@ RUN python3 -m pip --no-cache-dir install \
         pycrypto \
         jsonschema \
         flask_restful \
+        tqdm \
     && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 

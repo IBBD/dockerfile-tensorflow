@@ -3,7 +3,8 @@
 #
 
 # Pull base image.
-FROM tensorflow/tensorflow:latest-gpu-py3
+#FROM tensorflow/tensorflow:latest-gpu-py3
+FROM tensorflow/tensorflow:1.13.2-gpu-py3 
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

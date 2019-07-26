@@ -17,8 +17,9 @@ RUN python3 -m pip install -U setuptools \
         scipy \
         scikit-learn \
         python_speech_features \
-        tensorflow-gpu \
-        keras 
+        tensorflow-gpu==1.12.0 
+
+RUN python3 -m pip install keras
 
 # 安装服务常用包
 RUN python3 -m pip --no-cache-dir install \

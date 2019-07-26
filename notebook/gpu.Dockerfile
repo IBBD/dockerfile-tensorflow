@@ -1,5 +1,5 @@
 # 在Notebook常用的包的基础上加装：
-# 1. nlp类：jieba, gensim, fastText
+# 1. nlp类：jieba, gensim, fastText, pytext
 # 2. 时间序列：prophet
 # 3. 模型可解释性：eli5, pdpbox, shap
 # 4. xgboost, lightgbm, catboost, lightnig
@@ -17,8 +17,8 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-l
     && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
 
 # nlp工具
-# install jieba, fasttext, gensim
-RUN pip3 install jieba gensim fasttext
+# install jieba, fasttext, gensim, pytext
+RUN pip3 install jieba gensim fasttext pytext-nlp
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析

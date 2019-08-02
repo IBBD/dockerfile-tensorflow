@@ -44,6 +44,7 @@ RUN pip3 install \
 
 # install jupyter plugin
 # https://github.com/ryantam626/jupyterlab_code_formatter
+# TODO 
 # Jupyter扩展bamboolib：pandas dataframes图形化操作界面
 RUN pip3 install \
         ipywidgets \
@@ -53,7 +54,6 @@ RUN pip3 install \
         jupyterlab \
         jupyterlab_latex \
         jupyterlab_code_formatter \
-        bamboo-lib \
     # 需要先更新six，否则install witwidget时会报错
     # ImportError: cannot import name 'ensure_str'
     && pip3 install -U six \

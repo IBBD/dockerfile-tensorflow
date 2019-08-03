@@ -46,6 +46,7 @@ RUN pip3 install \
 # https://github.com/ryantam626/jupyterlab_code_formatter
 # TODO 
 # Jupyter扩展bamboolib：pandas dataframes图形化操作界面
+# jupyterlab_voyager: 对csv等文件数据进行可视化 http://vega.github.io/voyager/
 RUN pip3 install \
         ipywidgets \
         witwidget-gpu \
@@ -69,7 +70,11 @@ RUN pip3 install \
     && jupyter labextension install @jupyterlab/toc \
     && jupyter labextension install @jupyterlab/latex \
     && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    && jupyter serverextension enable --py jupyterlab_code_formatter
+    && jupyter serverextension enable --py jupyterlab_code_formatter \
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
+    && jupyter labextension install jupyterlab-spreadsheet \
+    && jupyter labextension install jupyterlab_voyager \
+    && jupyter labextension install jupyterlab_vim
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

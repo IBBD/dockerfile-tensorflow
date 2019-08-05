@@ -1,8 +1,4 @@
-#!/bin/bash
-# 
-# 
-# Author: alex
-# Created Time: 2019年05月20日 星期一 14时22分00秒
+echo $(id -u):$(id -g)
 sudo docker rm -f ibbd-notebook
 sudo docker run -u $(id -u):$(id -g) -d --restart always \
     --name ibbd-notebook \
@@ -10,5 +6,10 @@ sudo docker run -u $(id -u):$(id -g) -d --restart always \
     -p 8888:8888 \
     -e JUPYTER_ENABLE_LAB=yes \
     -v `pwd`/work:/tf \
-    -v `pwd`/jupyter_notebook_config.py:/.jupyter/jupyter_notebook_config.py \
-    registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu
+    -v `pwd`/config:/.jupyter \
+    registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu \
+    jupyter lab --ip 0.0.0.0 \
+        --config /.jupyter/jupyter_notebook_config.py \
+        --notebook-dir /tf 
+
+

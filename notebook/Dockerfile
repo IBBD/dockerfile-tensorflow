@@ -33,7 +33,7 @@ RUN conda install -c conda-forge fbprophet
 
 # 配置文件
 # 原配置文件已经备份
-ADD ./jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 
+ADD ./config/jupyter_notebook_config.py /home/jovyan/.jupyter/jupyter_notebook_config.py 
 
 # 配置matplotlib
 #ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`

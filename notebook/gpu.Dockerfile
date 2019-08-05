@@ -18,7 +18,7 @@ RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-l
 
 # nlp工具
 # install jieba, fasttext, gensim, pytext
-RUN pip3 install jieba gensim fasttext pytext-nlp
+RUN pip3 install jieba jieba-fast gensim fasttext pytext-nlp
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析

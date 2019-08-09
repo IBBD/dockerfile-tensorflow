@@ -11,7 +11,8 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # update conda
 # https://anaconda.org/anaconda/conda
 # RUN conda update -n base -qy conda
-RUN conda update -c anaconda -qy conda
+# RUN conda update -c anaconda -qy conda
+RUN conda update --all -y
 
 # 安装pytorch
 RUN conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch
@@ -24,6 +25,7 @@ RUN conda install --quiet --yes jieba gensim prettytable fasttext nltk
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
 # FeatureSelector是用于降低机器学习数据集的维数的工具
 # yellowbrick \
+# Initial quick solve with frozen env failed. Unfreezing env and trying again.
 RUN conda install -c conda-forge -y \
         opencv \
         pydotplus \

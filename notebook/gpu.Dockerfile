@@ -5,6 +5,7 @@
 # 4. xgboost, lightgbm, catboost, lightnig
 # 5. pytorch, keras
 # 6. opencv
+# 7. 图关系：networkx, igraph
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu-base
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
@@ -13,8 +14,10 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # https://pytorch.org/get-started/locally/
 #RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp35-cp35m-linux_x86_64.whl \
     #&& pip3 install torchvision
-RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl \
-    && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
+# RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl \
+    # && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
+# install pytorch 1.2
+RUN pip3 install torch torchvision
 
 # nlp工具
 # install jieba, fasttext, gensim, pytext
@@ -43,6 +46,8 @@ RUN apt-get update -y \
         graphviz \
         prettytable \
         pyarrow fastparquet \
+        networkx \
+        python-igraph \
     && rm -rf /var/lib/apt/lists/*
 
 # 扩展算法包

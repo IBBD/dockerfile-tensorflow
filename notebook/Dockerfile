@@ -30,6 +30,8 @@ RUN conda install -c conda-forge -y \
         opencv \
         pydotplus \
         python-graphviz \
+        networkx \
+        python-igraph \
     && conda install -c conda-forge -y pyarrow fastparquet
 
 # install 时间序列&关系网络

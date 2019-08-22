@@ -29,8 +29,13 @@ RUN pip3 install jieba jieba-fast gensim fasttext pytext-nlp
 # pydotplus, graphviz: 可视化决策树时需要用到
 # PrettyTable模块可以将输出内容如表格方式整齐地输出
 # pyarrow fastparquet: pandas的parquet需要依赖于这两个包
+# igraph依赖：build-essential libxml2 libxml2-dev zlib1g-dev
 RUN apt-get update -y \
     && apt-get install -y \
+        build-essential \
+        libxml2 \
+        libxml2-dev \
+        zlib1g-dev \
         libglib2.0-0 \
         libsm6 \
         libxrender1 \

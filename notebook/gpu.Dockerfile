@@ -30,6 +30,7 @@ RUN pip3 install jieba jieba-fast gensim fasttext pytext-nlp
 # PrettyTable模块可以将输出内容如表格方式整齐地输出
 # pyarrow fastparquet: pandas的parquet需要依赖于这两个包
 # igraph依赖：build-essential libxml2 libxml2-dev zlib1g-dev
+# https://github.com/igraph/python-igraph
 RUN apt-get update -y \
     && apt-get install -y \
         build-essential \

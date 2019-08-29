@@ -8,6 +8,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
+    && pip3 install --upgrade pip \
     && rm -rf /var/lib/apt/lists/*
 
 # install pytorch: https://pytorch.org/

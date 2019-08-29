@@ -4,28 +4,45 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# system dependencies
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        git \
+    && rm -rf /var/lib/apt/lists/*
+
 # install pytorch: https://pytorch.org/
 RUN pip3 install torch torchvision
 
-# 定义目录
-ENV HRNET hrnet
-
 # install dependencies
+ENV HRNET hrnet
 RUN cd / \
     && git clone https://github.com/leoxiaobin/deep-high-resolution-net.pytorch "$HRNET" \
     && cd "$HRNET" \
-    && pip3 install -r requirements.txt 
+    && pip3 install -r requirements.txt \
+    && rm -rf .* \
+    && rm -f *.md
 
 # make libs
 RUN cd "$HRNET"/lib \
-    && make
+    && make \
+    && make clean
 
 # Install COCOAPI
 ENV COCOAPI /cocoapi \
-    && git clone https://github.com/cocodataset/cocoapi.git $COCOAPI \
+RUN git clone https://github.com/cocodataset/cocoapi.git $COCOAPI \
     && cd $COCOAPI/PythonAPI \
     && make install \
-    && python3 setup.py install --user
+    && python3 setup.py install --user \
+    && rm -rf .* \
+    && rm -f *.md
+
+# Install server
+RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
+    && cd /fire-rest \
+    && pip3 install -r requirements.txt \
+    && python3 setup.py install --user \
+    && rm -rf .* \
+    && rm -f *.md
 
 # dowonloads models
 # MPII

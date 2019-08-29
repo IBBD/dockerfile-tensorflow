@@ -20,7 +20,7 @@ RUN cd / \
     && git clone https://github.com/leoxiaobin/deep-high-resolution-net.pytorch "$HRNET" \
     && cd "$HRNET" \
     && pip3 install -r requirements.txt \
-    && rm -rf .* \
+    && rm -rf .git \
     && rm -f *.md
 
 # make libs
@@ -34,7 +34,7 @@ RUN git clone https://github.com/cocodataset/cocoapi.git $COCOAPI \
     && cd $COCOAPI/PythonAPI \
     && make install \
     && python3 setup.py install --user \
-    && rm -rf .* \
+    && rm -rf .git \
     && rm -f *.md
 
 # Install server
@@ -42,7 +42,7 @@ RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
     && cd /fire-rest \
     && pip3 install -r requirements.txt \
     && python3 setup.py install --user \
-    && rm -rf .* \
+    && rm -rf .git \
     && rm -f *.md
 
 # dowonloads models

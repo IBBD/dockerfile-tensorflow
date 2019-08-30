@@ -8,6 +8,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
+        ffmpeg \
     && pip3 install --upgrade pip \
     && rm -rf /var/lib/apt/lists/* \
     && cp /usr/bin/python3 /usr/bin/python
@@ -39,3 +40,11 @@ RUN cd /AlphaPose/ \
 RUN cd /AlphaPose/ \
     && chmod +x fetch_models.sh \
     && sh fetch_models.sh
+
+# Install server
+RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
+    && cd /fire-rest \
+    && pip3 install -r requirements.txt \
+    && python3 setup.py install --user \
+    && rm -rf .git \
+    && rm -f *.md

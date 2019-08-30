@@ -24,7 +24,6 @@ RUN echo "Installing dependencies..." \
         libgoogle-glog-dev \
         liblmdb-dev \
         pciutils \
-        python3-setuptools \
         opencl-headers \
         ocl-icd-opencl-dev \
         libviennacl-dev \
@@ -33,6 +32,7 @@ RUN echo "Installing dependencies..." \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install --upgrade pip \
 	&& pip3 install \
+        setuptools \
 	    numpy \
 	    protobuf \
 	    opencv-python 

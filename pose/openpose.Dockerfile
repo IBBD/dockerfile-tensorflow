@@ -20,3 +20,11 @@ RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
     && rm -f *.md
 
 WORKDIR /opt/openpose/python/openpose
+
+# 终端设置
+# 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
+ENV LANG C.UTF-8
+ENV TERM xterm
+ENV PYTHONIOENCODING utf-8
+# 解决时区问题
+ENV TZ "Asia/Shanghai"

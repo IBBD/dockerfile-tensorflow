@@ -1,40 +1,48 @@
 # Pull base image.
-# FROM mettainnovations/ubuntu-base:16.04-cuda10
+# 参考：https://github.com/ExSidius/openpose-docker/blob/master/Dockerfile
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
-# system dependencies
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends \
+FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
+
+RUN echo "Installing dependencies..." \
+	&& apt-get -y --no-install-recommends update \
+	&& apt-get -y --no-install-recommends upgrade \
+	&& apt-get install -y --no-install-recommends \
+        build-essential \
         cmake \
         git \
-        libopencv-dev \
         libatlas-base-dev \
         libprotobuf-dev \
         libleveldb-dev \
         libsnappy-dev \
         libhdf5-serial-dev \
         protobuf-compiler \
+        libboost-all-dev \
         libgflags-dev \
         libgoogle-glog-dev \
         liblmdb-dev \
-    && apt-get install -y --no-install-recommends libboost-all-dev \
+        pciutils \
+        python3-setuptools \
+        opencl-headers \
+        ocl-icd-opencl-dev \
+        libviennacl-dev \
+        libcanberra-gtk-module \
+        libopencv-dev \
+    && rm -rf /var/lib/apt/lists/* \
     && pip3 install --upgrade pip \
-    && rm -rf /var/lib/apt/lists/*
+	&& pip3 install \
+	    numpy \
+	    protobuf \
+	    opencv-python 
 
-RUN pip install --upgrade numpy protobuf
-
-# Install openpose
-RUN git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose /openpose \
-    && cd /openpose \
-    && rm -rf .git \
-    && rm -f *.md \
-    && mkdir build \
-    && cd build \
-    && cmake .. \
-    && cd /openpose/build \
-    && make -j`nproc`
+RUN echo "Downloading and building OpenPose..." \
+	&& git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose.git \
+	&& mkdir -p /openpose/build \
+	&& cd /openpose/build \
+	&& cmake .. \
+	&& make -j`nproc`
 
 # Install server
 RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \

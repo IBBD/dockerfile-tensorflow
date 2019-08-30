@@ -24,7 +24,7 @@ RUN cd / \
     && git clone https://github.com/MVIG-SJTU/AlphaPose.git /AlphaPose \
     && cd /AlphaPose/ \
     && rm -rf .git \
-    && rm -f *.md
+    && rm -f *.md \
     && cd human-detection/lib/ \
     && make clean \
     && make \

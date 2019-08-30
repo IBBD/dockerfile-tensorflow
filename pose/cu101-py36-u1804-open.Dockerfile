@@ -25,11 +25,11 @@ RUN apt-get update -y \
 
 RUN pip install --upgrade numpy protobuf
 
-# install dependencies
+# Install openpose
 RUN git clone https://github.com/CMU-Perceptual-Computing-Lab/openpose /openpose \
     && cd /openpose \
     && rm -rf .git \
-    && rm -f *.md
+    && rm -f *.md \
     && mkdir build \
     && cd build \
     && cmake .. \

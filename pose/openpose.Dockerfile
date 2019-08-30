@@ -3,7 +3,8 @@ FROM cagdasbas/openpose-gpu:1.4-10.0-cudnn7-runtime
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
-ADD scripts/openpose-image.py /opt/openpose/python/openpose/
+ADD scripts/openpose_image.py /opt/openpose/python/openpose/
+ADD scripts/openpose_video.py /opt/openpose/python/openpose/
 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \

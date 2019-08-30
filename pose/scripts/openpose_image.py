@@ -14,6 +14,7 @@ if platform == "win32":
     os.environ['PATH'] = dir_path + "/../../x64/Debug;" + os.environ['PATH']
     os.environ['PATH'] = dir_path + "/../../x64/Release;" + os.environ['PATH']
 
+
 class OpenPose(object):
     """
     Ctypes linkage
@@ -27,8 +28,10 @@ class OpenPose(object):
             _libop= np.ctypeslib.load_library('_openpose', dir_path+'/Release/_openpose.dll')
         except OSError as e:
             _libop= np.ctypeslib.load_library('_openpose', dir_path+'/Debug/_openpose.dll')
+
     _libop.newOP.argtypes = [
-        ct.c_int, ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_float, ct.c_float, ct.c_int, ct.c_float, ct.c_int, ct.c_bool, ct.c_char_p]
+        ct.c_int, ct.c_char_p, ct.c_char_p, ct.c_char_p, ct.c_float,
+        ct.c_float, ct.c_int, ct.c_float, ct.c_int, ct.c_bool, ct.c_char_p]
     _libop.newOP.restype = ct.c_void_p
     _libop.delOP.argtypes = [ct.c_void_p]
     _libop.delOP.restype = None
@@ -36,7 +39,8 @@ class OpenPose(object):
     _libop.forward.argtypes = [
         ct.c_void_p, np.ctypeslib.ndpointer(dtype=np.uint8),
         ct.c_size_t, ct.c_size_t,
-        np.ctypeslib.ndpointer(dtype=np.int32), np.ctypeslib.ndpointer(dtype=np.uint8), ct.c_bool]
+        np.ctypeslib.ndpointer(dtype=np.int32),
+        np.ctypeslib.ndpointer(dtype=np.uint8), ct.c_bool]
     _libop.forward.restype = None
 
     _libop.getOutputs.argtypes = [
@@ -47,7 +51,9 @@ class OpenPose(object):
         ct.c_void_p, np.ctypeslib.ndpointer(dtype=np.uint8),
         ct.c_size_t, ct.c_size_t,
         np.ctypeslib.ndpointer(dtype=np.uint8),
-        np.ctypeslib.ndpointer(dtype=np.float32), np.ctypeslib.ndpointer(dtype=np.int32), np.ctypeslib.ndpointer(dtype=np.float32)]
+        np.ctypeslib.ndpointer(dtype=np.float32),
+        np.ctypeslib.ndpointer(dtype=np.int32),
+        np.ctypeslib.ndpointer(dtype=np.float32)]
     _libop.poseFromHeatmap.restype = None
 
     def encode(self, string):
@@ -66,7 +72,7 @@ class OpenPose(object):
         outs: OpenPose object
         """
         self.op = self._libop.newOP(params["logging_level"],
-		                            self.encode(params["output_resolution"]),
+                                    self.encode(params["output_resolution"]),
                                     self.encode(params["net_resolution"]),
                                     self.encode(params["model_pose"]),
                                     params["alpha_pose"],
@@ -83,7 +89,7 @@ class OpenPose(object):
         """
         self._libop.delOP(self.op)
 
-    def forward(self, image, display = False):
+    def forward(self, image, display=False):
         """
         Forward: Takes in an image and returns the human 2D poses, along with drawn image if required
 
@@ -98,14 +104,15 @@ class OpenPose(object):
         displayImage : image for visualization
         """
         shape = image.shape
-        displayImage = np.zeros(shape=(image.shape),dtype=np.uint8)
-        size = np.zeros(shape=(3),dtype=np.int32)
-        self._libop.forward(self.op, image, shape[0], shape[1], size, displayImage, display)
-        array = np.zeros(shape=(size),dtype=np.float32)
+        displayImage = np.zeros(shape=(image.shape), dtype=np.uint8)
+        size = np.zeros(shape=(3), dtype=np.int32)
+        self._libop.forward(self.op, image, shape[0], shape[1], size,
+                            displayImage, display)
+        array = np.zeros(shape=(size), dtype=np.float32)
         self._libop.getOutputs(self.op, array)
         if display:
             return array, displayImage
-        return array
+        return array, None
 
     def poseFromHM(self, image, hm, ratios=[1]):
         """
@@ -126,30 +133,32 @@ class OpenPose(object):
             raise Exception("Ratio shape mismatch")
 
         # Find largest
-        hm_combine = np.zeros(shape=(len(hm), hm[0].shape[1], hm[0].shape[2], hm[0].shape[3]),dtype=np.float32)
-        i=0
+        hm_combine = np.zeros(shape=(len(hm), hm[0].shape[1], hm[0].shape[2],
+                                     hm[0].shape[3]), dtype=np.float32)
+        i = 0
         for h in hm:
-           hm_combine[i,:,0:h.shape[2],0:h.shape[3]] = h
+           hm_combine[i, :, 0:h.shape[2], 0:h.shape[3]] = h
            i+=1
         hm = hm_combine
 
-        ratios = np.array(ratios,dtype=np.float32)
+        ratios = np.array(ratios, dtype=np.float32)
 
         shape = image.shape
-        displayImage = np.zeros(shape=(image.shape),dtype=np.uint8)
-        size = np.zeros(shape=(4),dtype=np.int32)
+        displayImage = np.zeros(shape=(image.shape), dtype=np.uint8)
+        size = np.zeros(shape=(4), dtype=np.int32)
         size[0] = hm.shape[0]
         size[1] = hm.shape[1]
         size[2] = hm.shape[2]
         size[3] = hm.shape[3]
 
-        self._libop.poseFromHeatmap(self.op, image, shape[0], shape[1], displayImage, hm, size, ratios)
-        array = np.zeros(shape=(size[0],size[1],size[2]),dtype=np.float32)
+        self._libop.poseFromHeatmap(self.op, image, shape[0], shape[1],
+                                    displayImage, hm, size, ratios)
+        array = np.zeros(shape=(size[0], size[1], size[2]), dtype=np.float32)
         self._libop.getOutputs(self.op, array)
         return array, displayImage
 
     @staticmethod
-    def process_frames(frame, boxsize = 368, scales = [1]):
+    def process_frames(frame, boxsize=368, scales=[1]):
         base_net_res = None
         imagesForNet = []
         imagesOrig = []
@@ -183,42 +192,49 @@ class OpenPose(object):
     @staticmethod
     def draw_all(imageForNet, heatmaps, currIndex, div=4., norm=False):
         netDecreaseFactor = float(imageForNet.shape[0]) / float(heatmaps.shape[2]) # 8
-        resized_heatmaps = np.zeros(shape=(heatmaps.shape[0], heatmaps.shape[1], imageForNet.shape[0], imageForNet.shape[1]))
+        resized_heatmaps = np.zeros(shape=(heatmaps.shape[0],
+                                           heatmaps.shape[1],
+                                           imageForNet.shape[0],
+                                           imageForNet.shape[1]))
         num_maps = heatmaps.shape[1]
         combined = None
         for i in range(0, num_maps):
-            heatmap = heatmaps[0,i,:,:]
-            resizedHeatmap = cv2.resize(heatmap, (0,0), fx=netDecreaseFactor, fy=netDecreaseFactor)
+            heatmap = heatmaps[0, i, :, :]
+            resizedHeatmap = cv2.resize(heatmap, (0, 0), fx=netDecreaseFactor,
+                                        fy=netDecreaseFactor)
 
             minVal, maxVal, minLoc, maxLoc = cv2.minMaxLoc(resizedHeatmap)
 
-            if i==currIndex and currIndex >=0:
+            if i == currIndex and currIndex >= 0:
                 resizedHeatmap = np.abs(resizedHeatmap)
                 resizedHeatmap = (resizedHeatmap*255.).astype(dtype='uint8')
                 im_color = cv2.applyColorMap(resizedHeatmap, cv2.COLORMAP_JET)
-                resizedHeatmap = cv2.addWeighted(imageForNet, 1, im_color, 0.3, 0)
-                cv2.circle(resizedHeatmap, (int(maxLoc[0]),int(maxLoc[1])), 5, (255,0,0), -1)
+                resizedHeatmap = cv2.addWeighted(imageForNet, 1, im_color,
+                                                 0.3, 0)
+                cv2.circle(resizedHeatmap, (int(maxLoc[0]), int(maxLoc[1])),
+                           5, (255, 0, 0), -1)
                 return resizedHeatmap
             else:
                 resizedHeatmap = np.abs(resizedHeatmap)
                 if combined is None:
-                    combined = np.copy(resizedHeatmap);
+                    combined = np.copy(resizedHeatmap)
                 else:
                     if i <= num_maps-2:
-                        combined += resizedHeatmap;
+                        combined += resizedHeatmap
                         if norm:
-                            combined = np.maximum(0, np.minimum(1, combined));
+                            combined = np.maximum(0, np.minimum(1, combined))
 
         if currIndex < 0:
             combined /= div
             combined = (combined*255.).astype(dtype='uint8')
             im_color = cv2.applyColorMap(combined, cv2.COLORMAP_JET)
             combined = cv2.addWeighted(imageForNet, 0.5, im_color, 0.5, 0)
-            cv2.circle(combined, (int(maxLoc[0]),int(maxLoc[1])), 5, (255,0,0), -1)
+            cv2.circle(combined, (int(maxLoc[0]), int(maxLoc[1])),
+                       5, (255, 0, 0), -1)
             return combined
 
 
-if __name__ == "__main__":
+def get_openpose():
     params = dict()
     params["logging_level"] = 3
     params["output_resolution"] = "-1x-1"
@@ -231,13 +247,17 @@ if __name__ == "__main__":
     params["num_gpu_start"] = 0
     params["disable_blending"] = False
     params["default_model_folder"] = "../../models/"
-    openpose = OpenPose(params)
+    return OpenPose(params)
+
+
+if __name__ == "__main__":
 
     import sys
     image_file = "../../examples/media/COCO_val2014_000000000192.jpg"
     if len(sys.argv) > 1:
         image_file = sys.argv[1]
 
+    openpose = get_openpose()
     img = cv2.imread(image_file)
     arr, output_image = openpose.forward(img, True)
     # print(arr)
@@ -245,8 +265,3 @@ if __name__ == "__main__":
     filename = os.path.join('/data', filename)
     cv2.imwrite(filename, output_image)
     print('Output filename: ', filename)
-
-    # while 1:
-        # cv2.imshow("output", output_image)
-        # cv2.waitKey(15)
-

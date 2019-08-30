@@ -1,5 +1,5 @@
+# !! 该镜像编译不成功，依赖与Python2
 # Pull base image.
-# FROM mettainnovations/ubuntu-base:16.04-cuda10
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"

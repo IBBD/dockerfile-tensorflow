@@ -20,6 +20,7 @@ RUN pip3 install torch torchvision \
     && pip3 install tensorflow-gpu
 
 # Get the code and build related modules.
+# make: python2: Command not found
 RUN cd / \
     && git clone https://github.com/MVIG-SJTU/AlphaPose.git /AlphaPose \
     && cd /AlphaPose/ \

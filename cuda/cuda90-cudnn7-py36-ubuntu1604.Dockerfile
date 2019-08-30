@@ -6,6 +6,7 @@
 FROM nvidia/cuda:9.0-cudnn7-devel-ubuntu16.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.6, pip, git等
 # apt-get install -y libcuda1-384

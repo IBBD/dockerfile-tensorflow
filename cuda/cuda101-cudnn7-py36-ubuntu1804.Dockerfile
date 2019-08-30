@@ -6,6 +6,7 @@
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.6, pip, git等
 RUN apt-get update -y \

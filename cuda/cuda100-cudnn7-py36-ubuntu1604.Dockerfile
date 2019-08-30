@@ -6,6 +6,7 @@
 FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.6, pip, git等
 # && ln -s /usr/bin/python3.6 /usr/bin/python3 \

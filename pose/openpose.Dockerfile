@@ -5,7 +5,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 ADD scripts/openpose-image.py /opt/openpose/python/openpose/
 
-RUN RUN apt-get update -y \
+RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
     && apt-get clean \

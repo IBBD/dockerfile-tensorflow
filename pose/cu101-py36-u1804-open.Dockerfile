@@ -9,7 +9,6 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         cmake \
         git \
-        python-pip \
         libopencv-dev \
         libatlas-base-dev \
         libprotobuf-dev \

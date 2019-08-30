@@ -5,9 +5,14 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # system dependencies
+# opencv依赖：libglib2.0-0, libxrender1, libsm6, libxext-dev
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
+        libglib2.0-0 \
+        libsm6 \
+        libxrender1 \
+        libxext-dev \
     && pip3 install --upgrade pip \
     && rm -rf /var/lib/apt/lists/*
 

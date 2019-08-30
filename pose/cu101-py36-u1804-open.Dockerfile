@@ -4,8 +4,6 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
-FROM nvidia/cuda:10.0-cudnn7-devel-ubuntu16.04
-
 RUN echo "Installing dependencies..." \
 	&& apt-get -y --no-install-recommends update \
 	&& apt-get -y --no-install-recommends upgrade \

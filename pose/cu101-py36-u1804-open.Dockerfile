@@ -43,6 +43,10 @@ RUN echo "Downloading and building OpenPose..." \
 	&& cmake .. \
 	&& make -j`nproc`
 
+RUN echo "Downloading models..." \
+    && mkdir -p /openpose/models \
+    && sh getModels.sh
+
 # Install server
 RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
     && cd /fire-rest \

@@ -106,6 +106,7 @@ class OpenPose(object):
         shape = image.shape
         displayImage = np.zeros(shape=(image.shape), dtype=np.uint8)
         size = np.zeros(shape=(3), dtype=np.int32)
+        # void forward(c_OP op, unsigned char* img, size_t rows, size_t cols, int* size, unsigned char* displayImg, bool display)
         self._libop.forward(self.op, image, shape[0], shape[1], size,
                             displayImage, display)
         array = np.zeros(shape=(size), dtype=np.float32)
@@ -137,8 +138,8 @@ class OpenPose(object):
                                      hm[0].shape[3]), dtype=np.float32)
         i = 0
         for h in hm:
-           hm_combine[i, :, 0:h.shape[2], 0:h.shape[3]] = h
-           i+=1
+            hm_combine[i, :, 0:h.shape[2], 0:h.shape[3]] = h
+            i += 1
         hm = hm_combine
 
         ratios = np.array(ratios, dtype=np.float32)
@@ -165,24 +166,31 @@ class OpenPose(object):
         for idx, scale in enumerate(scales):
             # Calculate net resolution (width, height)
             if idx == 0:
-                net_res = (16 * int((boxsize * frame.shape[1] / float(frame.shape[0]) / 16) + 0.5), boxsize)
+                net_res = (16 * int((boxsize * frame.shape[1] / float(frame.shape[0]) / 16) + 0.5),
+                           boxsize)
                 base_net_res = net_res
             else:
-                net_res = ((min(base_net_res[0], max(1, int((base_net_res[0] * scale)+0.5)/16*16))),
-                          (min(base_net_res[1], max(1, int((base_net_res[1] * scale)+0.5)/16*16))))
+                net_res = ((min(base_net_res[0],
+                                max(1, int((base_net_res[0] * scale)+0.5)/16*16))),
+                           (min(base_net_res[1],
+                                max(1, int((base_net_res[1] * scale)+0.5)/16*16))))
             input_res = [frame.shape[1], frame.shape[0]]
-            scale_factor = min((net_res[0] - 1) / float(input_res[0] - 1), (net_res[1] - 1) / float(input_res[1] - 1))
-            warp_matrix = np.array([[scale_factor,0,0],
-                                    [0,scale_factor,0]])
+            scale_factor = min((net_res[0] - 1) / float(input_res[0] - 1),
+                               (net_res[1] - 1) / float(input_res[1] - 1))
+            warp_matrix = np.array([[scale_factor, 0, 0],
+                                    [0, scale_factor, 0]])
             if scale_factor != 1:
-                imageForNet = cv2.warpAffine(frame, warp_matrix, net_res, flags=(cv2.INTER_AREA if scale_factor < 1. else cv2.INTER_CUBIC), borderMode=cv2.BORDER_CONSTANT, borderValue=(0,0,0))
+                imageForNet = cv2.warpAffine(frame, warp_matrix, net_res,
+                                             flags=(cv2.INTER_AREA if scale_factor < 1. else cv2.INTER_CUBIC),
+                                             borderMode=cv2.BORDER_CONSTANT,
+                                             borderValue=(0, 0, 0))
             else:
                 imageForNet = frame.copy()
 
             imageOrig = imageForNet.copy()
             imageForNet = imageForNet.astype(float)
             imageForNet = imageForNet/256. - 0.5
-            imageForNet = np.transpose(imageForNet, (2,0,1))
+            imageForNet = np.transpose(imageForNet, (2, 0, 1))
 
             imagesForNet.append(imageForNet)
             imagesOrig.append(imageOrig)

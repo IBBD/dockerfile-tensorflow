@@ -14,7 +14,7 @@ RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
     && pip3 install -r requirements.txt \
     && pip3 install fire \
     && python3 setup.py install --user \
-    && rm -f /fire-rest
+    && rm -rf /fire-rest
 
 WORKDIR /opt/openpose/
 

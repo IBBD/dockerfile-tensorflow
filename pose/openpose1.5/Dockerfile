@@ -1,3 +1,4 @@
+# 参考：https://github.com/cagdasbas/openpose-gpu/blob/master/openpose-1.4_10.1-cudnn7-runtime/Dockerfile
 from nvidia/cuda:10.1-cudnn7-devel as build
 
 # Get the dependencies
@@ -43,8 +44,10 @@ RUN /cmake/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE -D CUDA_TOOLKIT_ROOT_DIR=/usr/l
 RUN apt-get update && \
     apt-get install -y --no-install-recommends python3-pip python3-setuptools vim && \
     apt-get clean && \
-    rm -rf /var/lib/apt/lists/* && \
-    PATH=/cmake/bin/:$PATH pip3 install dlib
+    pip3 install -U pip && \
+    pip3 install -U setuptools && \
+    rm -rf /var/lib/apt/lists/*
+    # PATH=/cmake/bin/:$PATH pip3 install dlib
 
 # Rebase image to a more slim image
 FROM nvidia/cuda:10.1-cudnn7-runtime
@@ -57,8 +60,8 @@ COPY --from=build /openpose/examples/media /opt/openpose/examples/media
 COPY --from=build /openpose/build/caffe /opt/openpose/caffe
 
 # Copy gpu capable dlib
-COPY --from=build /usr/local/lib/python3.6/dist-packages/dlib-19.17.0.egg-info /usr/local/lib/python3.6/dist-packages/dlib-19.17.0.egg-info
-COPY --from=build /usr/local/lib/python3.6/dist-packages/dlib.cpython-36m-x86_64-linux-gnu.so /usr/local/lib/python3.6/dist-packages/dlib.cpython-36m-x86_64-linux-gnu.so
+# COPY --from=build /usr/local/lib/python3.6/dist-packages/dlib-19.17.0.egg-info /usr/local/lib/python3.6/dist-packages/dlib-19.17.0.egg-info
+# COPY --from=build /usr/local/lib/python3.6/dist-packages/dlib.cpython-36m-x86_64-linux-gnu.so /usr/local/lib/python3.6/dist-packages/dlib.cpython-36m-x86_64-linux-gnu.so
 
 # Install the runtime libraries. We don't need the dev packages.
 RUN apt-get update && \

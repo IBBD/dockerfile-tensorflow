@@ -41,12 +41,11 @@ RUN /cmake/bin/cmake -D CMAKE_BUILD_TYPE=RELEASE -D CUDA_TOOLKIT_ROOT_DIR=/usr/l
     make -j8 && \
     make install
 
-RUN apt-get update && \
-    apt-get install -y --no-install-recommends python3-pip python3-setuptools vim && \
-    apt-get clean && \
-    pip3 install -U pip && \
-    pip3 install -U setuptools && \
-    rm -rf /var/lib/apt/lists/*
+# install pip
+# RUN wget https://bootstrap.pypa.io/get-pip.py \
+    # && python3 get-pip.py \
+    # && rm get-pip.py \
+    # && pip3 install setuptools
     # PATH=/cmake/bin/:$PATH pip3 install dlib
 
 # Rebase image to a more slim image
@@ -71,7 +70,7 @@ RUN apt-get update && \
     libopencv-core3.2 libopencv-video3.2 libopencv-calib3d3.2 libopencv-objdetect3.2 \
     libopencv-highgui3.2 libopencv-videoio3.2 libopencv-imgcodecs3.2 libopencv-imgproc3.2 \
     libboost-system1.65.1 libboost-thread1.65.1 libboost-filesystem1.65.1 \
-    vim && \
+    && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
     pip3 install opencv-python && \

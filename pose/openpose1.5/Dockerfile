@@ -9,12 +9,12 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 	apt-get clean && \
 	rm -rf /var/lib/apt/lists/*
 
-# For some reason Ubuntu 18.04 cmake 10.2 cannot compile OpenPose, we need cmake 3.12.4
+# For some reason Ubuntu 18.04 cmake 10.2 cannot compile OpenPose, we need cmake 3.15.2
 WORKDIR /
-RUN wget https://github.com/Kitware/CMake/releases/download/v3.12.4/cmake-3.12.4-Linux-x86_64.tar.gz && \
-	tar xf cmake-3.12.4-Linux-x86_64.tar.gz && \
-	mv /cmake-3.12.4-Linux-x86_64 /cmake && \
-	rm -f cmake-3.12.4-Linux-x86_64.tar.gz && \
+RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.2/cmake-3.15.2-Linux-x86_64.tar.gz && \
+	tar xf cmake-3.15.2-Linux-x86_64.tar.gz && \
+	mv /cmake-3.15.2-Linux-x86_64 /cmake && \
+	rm -f cmake-3.15.2-Linux-x86_64.tar.gz && \
 	wget https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v1.5.0.tar.gz && \
 	tar xf v1.5.0.tar.gz && \
 	mv /openpose-1.5.0 /openpose && \

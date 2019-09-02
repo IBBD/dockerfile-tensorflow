@@ -20,8 +20,10 @@ RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.2/cmake-3.15.2
     mv /openpose-1.5.0 /openpose && \
     rm -f v1.5.0.tar.gz
 
+# 第三方包
 RUN rm -rf /openpose/3rdparty/caffe && \
     git clone https://github.com/CMU-Perceptual-Computing-Lab/caffe.git /openpose/3rdparty/caffe && \
+    git clone https://github.com/pybind/pybind11.git /openpose/3rdparty/pybind11 && \
     mkdir /openpose/build
 
 COPY Makefile.config Makefile /openpose/3rdparty/caffe/

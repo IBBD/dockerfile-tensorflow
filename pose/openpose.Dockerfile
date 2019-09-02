@@ -1,4 +1,4 @@
-# Pull base image.
+# 
 # FROM cagdasbas/openpose-gpu:1.4-10.0-cudnn7-runtime
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/pose:openpose-v1.5
 

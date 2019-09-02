@@ -1,3 +1,6 @@
+# 
+# OpenPose v1.5
+# 
 # 参考：https://github.com/cagdasbas/openpose-gpu/blob/master/openpose-1.4_10.1-cudnn7-runtime/Dockerfile
 from nvidia/cuda:10.1-cudnn7-devel as build
 

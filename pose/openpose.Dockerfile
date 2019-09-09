@@ -13,7 +13,6 @@ RUN git clone https://github.com/ibbd-dev/python-fire-rest /fire-rest \
     && cd /fire-rest \
     && pip3 install -r requirements.txt \
     && pip3 install fire \
-    && pip3 install Pillow \
     && python3 setup.py install --user \
     && rm -rf /fire-rest
 

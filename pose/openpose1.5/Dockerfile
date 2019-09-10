@@ -1,5 +1,6 @@
 # 
 # OpenPose v1.5
+# OpenPose v1.5.1: 20190910, 只是修改版本号
 # 
 # 参考：https://github.com/cagdasbas/openpose-gpu/blob/master/openpose-1.4_10.1-cudnn7-runtime/Dockerfile
 from nvidia/cuda:10.1-cudnn7-devel as build
@@ -17,14 +18,15 @@ RUN apt-get update && DEBIAN_FRONTEND=noninteractive apt-get install -y --no-ins
 
 # For some reason Ubuntu 18.04 cmake 10.2 cannot compile OpenPose, we need cmake 3.15.2
 WORKDIR /
+ENV OP_VER 1.5.1
 RUN wget https://github.com/Kitware/CMake/releases/download/v3.15.2/cmake-3.15.2-Linux-x86_64.tar.gz && \
     tar xf cmake-3.15.2-Linux-x86_64.tar.gz && \
     mv /cmake-3.15.2-Linux-x86_64 /cmake && \
     rm -f cmake-3.15.2-Linux-x86_64.tar.gz && \
-    wget https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v1.5.0.tar.gz && \
-    tar xf v1.5.0.tar.gz && \
-    mv /openpose-1.5.0 /openpose && \
-    rm -f v1.5.0.tar.gz
+    wget https://github.com/CMU-Perceptual-Computing-Lab/openpose/archive/v"$OP_VER".tar.gz && \
+    tar xf v"$OP_VER".tar.gz && \
+    mv /openpose-"$OP_VER" /openpose && \
+    rm -f v"$OP_VER".tar.gz
 
 # 第三方包
 RUN rm -rf /openpose/3rdparty/caffe && \

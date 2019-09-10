@@ -5,11 +5,10 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y wget
 
-RUN mkdir -p /models/ \
-    && cd /models 
+ADD gdown.pl /gdown.pl
+RUN chmod +x /gdown.pl 
+RUN mkdir -p /models/ 
 
-ADD gdown.pl /models/gdown.pl
-RUN chmod +x /models/gdown.pl 
 RUN ./gdown.pl "https://drive.google.com/open?id=1cNyDmyorOduMRsgXoUnuyUiF6tZNFxaG" \
     /models/ctdet_coco_hg.pth
 RUN ./gdown.pl "https://drive.google.com/open?id=1pl_-ael8wERdUREEnaIfqOV_VF2bEVRT"  \

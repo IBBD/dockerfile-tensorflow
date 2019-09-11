@@ -12,6 +12,9 @@ RUN apt-get update && \
         zlib1g-dev \
         patch \
         ffmpeg \
+        bzip2 \
+        unzip \
+        ca-certificates \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

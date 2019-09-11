@@ -8,3 +8,9 @@ RUN apt-get update -y \
 RUN mkdir /models/ \
     && cd /models \
     && wget https://pjreddie.com/media/files/yolov3.weights 
+
+RUN cd /models \
+    && wget https://pjreddie.com/media/files/yolov3-tiny.weights
+
+RUN cd /models \
+    && wget https://pjreddie.com/media/files/yolov3-spp.weights

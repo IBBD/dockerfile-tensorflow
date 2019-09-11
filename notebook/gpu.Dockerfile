@@ -1,4 +1,4 @@
-# 在Notebook常用的包的基础上加装：
+# 在Tensorflow Notebook常用的包的基础上加装：
 # 1. nlp类：jieba, gensim, fastText, pytext
 # 2. 时间序列：prophet
 # 3. 模型可解释性：eli5, pdpbox, shap
@@ -6,6 +6,8 @@
 # 5. pytorch, keras
 # 6. opencv
 # 7. 图关系：networkx, igraph
+# 8. 其他：sk-disk
+# 9. pytorch, paddlepaddle
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu-base
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
@@ -54,6 +56,7 @@ RUN apt-get update -y \
         pyarrow fastparquet \
         networkx \
         python-igraph \
+        sk-dist \
     && rm -rf /var/lib/apt/lists/*
 
 # 扩展算法包
@@ -68,7 +71,11 @@ RUN pip3 install pystan fbprophet \
     && pip3 install xgboost \
         lightgbm \
         catboost \
-        sklearn-contrib-lightning
+        sklearn-contrib-lightning 
+
+# install PaddlePaddle
+# https://www.paddlepaddle.org.cn/
+RUN pip3 install paddlepaddle-gpu
 
 # 配置文件
 # 原配置文件已经备份

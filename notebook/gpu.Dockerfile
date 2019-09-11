@@ -21,9 +21,9 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # install pytorch 1.2
 RUN pip3 install torch torchvision
 
-# nlp工具
-# install jieba, fasttext, gensim, pytext
-RUN pip3 install jieba jieba-fast gensim fasttext pytext-nlp
+# install PaddlePaddle
+# https://www.paddlepaddle.org.cn/
+RUN pip3 install paddlepaddle-gpu
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
@@ -45,6 +45,7 @@ RUN apt-get update -y \
         python3-pydot \
         python3-pygraphviz \
         imagemagick \
+        git \
     && pip3 install \
         yellowbrick \
         opencv-python \
@@ -57,7 +58,17 @@ RUN apt-get update -y \
         networkx \
         python-igraph \
         sk-dist \
+    && apt-get autoremove -y \
+    && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# nlp工具
+# install jieba, fasttext, gensim, pytext
+# https://fasttext.cc/docs/en/support.html
+RUN pip3 install jieba jieba-fast gensim pytext-nlp \
+    && git clone https://github.com/facebookresearch/fastText.git /fastText \
+    && cd /fastText \
+    && python3 setup.py install 
 
 # 扩展算法包
 # 时间序列
@@ -72,10 +83,6 @@ RUN pip3 install pystan fbprophet \
         lightgbm \
         catboost \
         sklearn-contrib-lightning 
-
-# install PaddlePaddle
-# https://www.paddlepaddle.org.cn/
-RUN pip3 install paddlepaddle-gpu
 
 # 配置文件
 # 原配置文件已经备份

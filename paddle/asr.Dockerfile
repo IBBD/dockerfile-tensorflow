@@ -39,5 +39,5 @@ RUN git clone https://github.com/kaldi-asr/kaldi.git /opt/kaldi \
 
 # 解码器的安装
 ENV KALDI_ROOT /opt/kaldi
-RUN cd /models/fluid/DeepASR/decoder \
+RUN cd /models/PaddleSpeech/DeepASR/decoder \
     && sh setup.sh

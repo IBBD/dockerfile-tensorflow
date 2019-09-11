@@ -4,3 +4,12 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 RUN pip3 install paddlepaddle-gpu \
     paddlehub
 
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        git \
+        wget \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN git clone https://github.com/PaddlePaddle/models /models 

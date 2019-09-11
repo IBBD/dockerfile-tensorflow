@@ -19,7 +19,14 @@ RUN apt-get update && \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
-RUN ln -s /usr/bin/python3 /usr/bin/python 
+RUN apt-get update && \
+    apt-get install -y --no-install-recommends \
+        subversion \
+        python2.7 \
+    && apt-get autoremove -y \
+    && apt-get clean \
+    && rm -rf /var/lib/apt/lists/*
+
 RUN git clone https://github.com/kaldi-asr/kaldi.git /opt/kaldi \
     && cd /opt/kaldi \
     && cd /opt/kaldi/tools \

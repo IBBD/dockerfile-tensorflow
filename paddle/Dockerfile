@@ -8,8 +8,10 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
         wget \
+    && ln -s /usr/bin/python3 /usr/bin/python \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
 
 RUN git clone https://github.com/PaddlePaddle/models /models 

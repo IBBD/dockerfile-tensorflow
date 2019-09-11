@@ -18,6 +18,7 @@ RUN apt-get update -y \
 
 # install cocoapi
 # 安装至全局site-packages
+RUN ln -s /usr/bin/python3 /usr/bin/python 
 RUN git clone https://github.com/cocodataset/cocoapi.git /cocoapi \
     && cd /cocoapi/PythonAPI \
     && make install 

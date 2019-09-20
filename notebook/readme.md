@@ -8,8 +8,8 @@
 - [x] 支持Tensorflow, TensorBoard和Keras
 - [x] 支持Pytorch
 - [x] 支持图像处理，如Opencv
-- [x] 支持常用的机器学习库，如XGBoost，LightGBM，Catboost等
-- [x] 支持常见的NLP工具，如jieba, gensim, fasttext等
+- [x] 支持常用的机器学习库，如XGBoost, LightGBM, Catboost等
+- [x] 支持常见的NLP工具，如jieba, gensim, fasttext, pytext, flair等
 - [ ] 支持LaTeX导出PDF
 - [ ] 支持数学公式
 - [x] 解决matplotlib的中文显示问题

@@ -47,10 +47,14 @@ RUN pip3 install mxnet-cu101 gluoncv gluonnlp gluonts
 # nlp工具
 # install jieba, fasttext, gensim, pytext
 # https://fasttext.cc/docs/en/support.html
-RUN pip3 install jieba jieba-fast gensim \
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        git \
+    && pip3 install jieba jieba-fast gensim \
     && git clone https://github.com/facebookresearch/fastText.git /fastText \
     && cd /fastText \
-    && python3 setup.py install 
+    && python3 setup.py install \
+    && rm -rf /var/lib/apt/lists/*
 
 # install jupyter plugin
 # https://github.com/ryantam626/jupyterlab_code_formatter

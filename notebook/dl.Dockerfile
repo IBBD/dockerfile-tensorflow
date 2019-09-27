@@ -18,8 +18,12 @@ RUN pip3 install \
         numba \
         sqlalchemy \
         h5py \
-        tqdm \
-    && apt-get install -y \
+        tqdm 
+
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        opencv-python \
+    && rm -rf /var/lib/apt/lists/*
 
 # install tensorflow
 RUN pip3 install tensorflow-gpu keras 

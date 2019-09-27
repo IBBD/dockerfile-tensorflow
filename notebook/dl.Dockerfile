@@ -20,10 +20,11 @@ RUN pip3 install \
         h5py \
         tqdm 
 
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends \
-        opencv-python \
-    && rm -rf /var/lib/apt/lists/*
+RUN pip3 install opencv-python
+##RUN apt-get update -y \
+    #&& apt-get install -y --no-install-recommends \
+        #opencv-python \
+    #&& rm -rf /var/lib/apt/lists/*
 
 # install tensorflow
 RUN pip3 install tensorflow-gpu keras 

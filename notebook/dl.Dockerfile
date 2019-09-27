@@ -60,10 +60,16 @@ RUN apt-get update -y \
 # install jupyter 
 RUN pip3 install jupyterlab
 
-# 终端设置
-# 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
-ENV TERM xterm
-ENV PYTHONIOENCODING utf-8
+# 扩展算法包
+RUN pip3 install xgboost lightgbm catboost 
 
-# 解决时区问题
-ENV TZ "Asia/Shanghai"
+# 配置matplotlib
+#ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
+ENV matplotlibrc /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path /usr/local/lib/python3.6/dist-packages/matplotlib/mpl-data/fonts/ttf/
+ADD ./SimHei.ttf "$mpl_path"
+RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
+    && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
+    && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc" 
+
+CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]

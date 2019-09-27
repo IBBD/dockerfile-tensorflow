@@ -42,6 +42,7 @@ RUN pip3 install torch torchvision pytext-nlp flair
 RUN pip3 install paddlepaddle-gpu
 
 # mxnet
+# gluonts 0.3.3 has requirement numpy==1.14.*, but you'll have numpy 1.17.2 which is incompatible.
 RUN pip3 install mxnet-cu101 gluoncv gluonnlp gluonts
         
 # nlp工具
@@ -56,38 +57,8 @@ RUN apt-get update -y \
     && python3 setup.py install \
     && rm -rf /var/lib/apt/lists/*
 
-# install jupyter plugin
-# https://github.com/ryantam626/jupyterlab_code_formatter
-# TODO 
-# Jupyter扩展bamboolib：pandas dataframes图形化操作界面
-# jupyterlab_voyager: 对csv等文件数据进行可视化 http://vega.github.io/voyager/
-RUN pip3 install \
-        ipywidgets \
-        witwidget-gpu \
-        jupyter_contrib_nbextensions \
-        jupyter_nbextensions_configurator \
-        jupyterlab \
-        jupyterlab_latex \
-        jupyterlab_code_formatter \
-    # 需要先更新six，否则install witwidget时会报错
-    # ImportError: cannot import name 'ensure_str'
-    && pip3 install -U six \
-    # Activate ipywidgets extension in the environment that runs the notebook server
-    && jupyter nbextension install --py --symlink --sys-prefix witwidget \
-    && jupyter nbextension enable --py --sys-prefix witwidget \
-    && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
-    && jupyter contrib nbextension install --user \
-    && jupyter nbextensions_configurator enable --user \
-    && jupyter serverextension enable --py jupyterlab --sys-prefix \
-    # 一些插件依赖与nodejs和npm
-    && apt-get install -y nodejs npm \
-    && jupyter labextension install @jupyterlab/toc \
-    && jupyter labextension install @jupyterlab/latex \
-    && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    && jupyter serverextension enable --py jupyterlab_code_formatter \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
-    && jupyter labextension install jupyterlab-spreadsheet \
-    && jupyter labextension install jupyterlab_voyager 
+# install jupyter 
+RUN pip3 install jupyterlab
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

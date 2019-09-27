@@ -20,7 +20,8 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 终端设置
-# 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional
+# 默认值是dumb，这时在终端操作时可能会出现：
+# terminal is not fully functional
 ENV LANG C.UTF-8
 ENV TERM xterm
 ENV PYTHONIOENCODING utf-8

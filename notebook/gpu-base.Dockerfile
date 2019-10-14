@@ -71,10 +71,7 @@ RUN pip3 install \
     && jupyter labextension install @jupyterlab/latex \
     && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
     && jupyter serverextension enable --py jupyterlab_code_formatter \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition \
-    && jupyter labextension install jupyterlab-spreadsheet \
-    && jupyter labextension install jupyterlab_voyager \
-    && jupyter labextension install jupyterlab_vim
+    && jupyter labextension install @krassowski/jupyterlab_go_to_definition 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

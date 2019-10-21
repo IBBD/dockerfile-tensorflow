@@ -14,3 +14,9 @@ RUN cd /models \
 
 RUN cd /models \
     && wget https://pjreddie.com/media/files/yolov3-spp.weights
+
+ADD gdown.pl /gdown.pl
+RUN chmod +x /gdown.pl 
+
+RUN ./gdown.pl "https://drive.google.com/open?id=1FlHeQjWEQVJt0ay1PVsiuuMzmtNyv36m" \
+    /models/enetb0-coco_final.weights 

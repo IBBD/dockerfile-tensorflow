@@ -19,11 +19,13 @@ RUN apt-get update -y \
         opencv-python \
         opencv-contrib-python==3.4.2.16 
         
-# 安装cocoapi等
+# 安装cocoapi及其依赖
 RUN ln -s /usr/bin/python3 /usr/bin/python 
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
+    && python3 -m pip --no-cache-dir install \
+        Cython \
     && pip3 install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI" \
     && rm -rf /var/lib/apt/lists/*
 

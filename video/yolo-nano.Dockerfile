@@ -25,9 +25,6 @@ RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
     && pip3 install "git+https://github.com/philferriere/cocoapi.git#egg=pycocotools&subdirectory=PythonAPI" \
-    && cd /cocoapi/PythonAPI \
-    && make install 
-    && rm get-pip.py \
     && rm -rf /var/lib/apt/lists/*
 
 # install pytorch

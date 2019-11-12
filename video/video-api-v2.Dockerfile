@@ -34,7 +34,8 @@ RUN apt-get update -y \
         gnupg \
         software-properties-common \
     && add-apt-repository ppa:jonathonf/ffmpeg-4 -y \
-    #&& apt-get update -y \
+    # && apt-get update -y \
+    # update会导致错误：E: The repository 'http://ppa.launchpad.net/jonathonf/ffmpeg-4/ubuntu focal Release' does not have a Release file.
     && apt-get install -y --no-install-recommends \
         ffmpeg \
     && apt autoremove -y \
@@ -44,15 +45,10 @@ RUN apt-get update -y \
 # 安装服务常用包
 # moviepy依赖：imageio-ffmpeg
 RUN python3 -m pip --no-cache-dir install \
-        pytesseract \
         moviepy \
-        imageio-ffmpeg \
-        flask \
-        flask_jsonrpc \
-        fire \
-        requests_toolbelt \
-        jsonschema \
-        flask_restful
+        imageio-ffmpeg 
 
-# 安装额外的package
-RUN python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 
+# install http api and cmd api
+RUN python3 -m pip install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
+    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git \
+    && python3 -m pip install fire

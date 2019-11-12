@@ -44,9 +44,11 @@ RUN apt-get update -y \
         
 # 安装服务常用包
 # moviepy依赖：imageio-ffmpeg
+# pydub: https://github.com/jiaaro/pydub
 RUN python3 -m pip --no-cache-dir install \
         moviepy \
-        imageio-ffmpeg 
+        imageio-ffmpeg \
+        pydub
 
 # install http api and cmd api
 RUN python3 -m pip install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \

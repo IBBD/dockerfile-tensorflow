@@ -34,7 +34,7 @@ RUN apt-get update -y \
         gnupg \
         software-properties-common \
     && add-apt-repository ppa:jonathonf/ffmpeg-4 -y \
-    && apt-get update -y \
+    #&& apt-get update -y \
     && apt-get install -y --no-install-recommends \
         ffmpeg \
     && apt autoremove -y \

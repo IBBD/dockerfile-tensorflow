@@ -27,8 +27,12 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # install ffmpeg
+# add-apt-repository: FileNotFoundError: [Errno 2] No such file or directory: 'gpg': 'gpg'
+# apt-get install gnupg
 RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends software-properties-common \
+    && apt-get install -y --no-install-recommends \
+        gnupg \
+        software-properties-common \
     && add-apt-repository ppa:jonathonf/ffmpeg-4 -y \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends \

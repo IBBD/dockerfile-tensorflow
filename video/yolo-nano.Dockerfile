@@ -16,8 +16,9 @@ RUN apt-get update -y \
         numpy==1.16.3 \
         visdom==0.1.8.8 \
         Pillow==6.2.1 \
+        terminaltables \
         opencv-python \
-        opencv-contrib-python==3.4.2.16 
+        opencv-contrib-python 
         
 # 安装cocoapi及其依赖
 RUN ln -s /usr/bin/python3 /usr/bin/python 
@@ -30,4 +31,5 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # install pytorch
-RUN pip3 install torch torchvision
+# RUN pip3 install torch torchvision
+RUN pip3 install torch==1.1.0 torchvision==0.3.0

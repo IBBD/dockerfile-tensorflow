@@ -14,8 +14,11 @@ ENV DEBIAN_FRONTEND noninteractive
 # /bin/sh: 1: spark-shell: not found
 # RUN spark-shell --packages graphframes:graphframes:0.6.0-spark2.3-s_2.11
 # RUN pyspark --packages graphframes:graphframes:0.6.0-spark2.3-s_2.11
+USER root
 RUN $SPARK_HOME/bin/spark-shell --packages graphframes:graphframes:0.7.0-spark2.4-s_2.11
 RUN wget http://dl.bintray.com/spark-packages/maven/graphframes/graphframes/0.7.0-spark2.4-s_2.11/graphframes-0.7.0-spark2.4-s_2.11.jar -qO $SPARK_HOME/jars/graphframes.jar
+
+USER $NB_UID
 RUN python -m pip install graphframes
 
 

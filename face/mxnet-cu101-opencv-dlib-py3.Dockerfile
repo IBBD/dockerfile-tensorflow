@@ -21,8 +21,7 @@ RUN apt-get update -y \
         scikit-learn \
         scikit-image \
         opencv-python \
-        opencv-contrib-python \
-        mxnet-cu90 \
+        mxnet-cu101 \
         imutils
         
 # 安装 DLIB

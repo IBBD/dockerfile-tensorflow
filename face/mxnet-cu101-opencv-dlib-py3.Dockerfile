@@ -11,6 +11,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1604
 # ImportError: libgthread-2.0.so.0
 # ImportError: libSM.so.6
 # ImportError: libXrender.so.1
+# https://mxnet.apache.org/get_started
 RUN apt-get update -y \
     && apt-get install -y \
         libglib2.0-0 \

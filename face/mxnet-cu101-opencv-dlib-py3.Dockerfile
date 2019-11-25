@@ -4,7 +4,7 @@
 
 # Pull base image.
 # FROM ubuntu:16.04
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1604
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
 
 # install opencv, mxnet
 # opencv依赖：

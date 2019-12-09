@@ -52,26 +52,26 @@ RUN pip3 install \
         witwidget-gpu \
         jupyter_contrib_nbextensions \
         jupyter_nbextensions_configurator \
-        jupyterlab \
-        jupyterlab_latex \
-        jupyterlab_code_formatter \
+        jupyterlab 
+        #jupyterlab_latex \
+        #jupyterlab_code_formatter \
     # 需要先更新six，否则install witwidget时会报错
     # ImportError: cannot import name 'ensure_str'
-    && pip3 install -U six \
+    #&& pip3 install -U six \
     # Activate ipywidgets extension in the environment that runs the notebook server
-    && jupyter nbextension install --py --symlink --sys-prefix witwidget \
-    && jupyter nbextension enable --py --sys-prefix witwidget \
-    && jupyter nbextension enable --py widgetsnbextension --sys-prefix \
-    && jupyter contrib nbextension install --user \
-    && jupyter nbextensions_configurator enable --user \
-    && jupyter serverextension enable --py jupyterlab --sys-prefix \
+    #&& jupyter nbextension install --py --symlink --sys-prefix witwidget \
+    #&& jupyter nbextension enable --py --sys-prefix witwidget \
+    #&& jupyter nbextension enable --py widgetsnbextension --sys-prefix \
+    #&& jupyter contrib nbextension install --user \
+    #&& jupyter nbextensions_configurator enable --user \
+    #&& jupyter serverextension enable --py jupyterlab --sys-prefix 
     # 一些插件依赖与nodejs和npm
-    && apt-get install -y nodejs npm \
-    && jupyter labextension install @jupyterlab/toc \
-    && jupyter labextension install @jupyterlab/latex \
-    && jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    && jupyter serverextension enable --py jupyterlab_code_formatter \
-    && jupyter labextension install @krassowski/jupyterlab_go_to_definition 
+    #&& apt-get install -y nodejs npm \
+    #&& jupyter labextension install @jupyterlab/toc \
+    #&& jupyter labextension install @jupyterlab/latex \
+    #&& jupyter labextension install @ryantam626/jupyterlab_code_formatter \
+    #&& jupyter serverextension enable --py jupyterlab_code_formatter \
+    #&& jupyter labextension install @krassowski/jupyterlab_go_to_definition 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

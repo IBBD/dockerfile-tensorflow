@@ -79,12 +79,14 @@ RUN pip3 install jieba jieba-fast gensim pytext-nlp flair \
 # eli5: 对各类机器学习模型进行可视化，特征重要度计算等
 # pdpbox: 展示一个或者两个特征对于模型的边际效应
 # shap: 细分预测以显示每个特征的影响
+# hdbscan: https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html
 RUN pip3 install pystan fbprophet \
     && pip3 install eli5 PDPbox shap \
     && pip3 install xgboost \
         lightgbm \
         catboost \
-        sklearn-contrib-lightning 
+        sklearn-contrib-lightning \
+        hdbscan
 
 # 配置文件
 # 原配置文件已经备份

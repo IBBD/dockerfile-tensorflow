@@ -46,6 +46,9 @@ RUN apt-get update -y \
         python3-pygraphviz \
         imagemagick \
         git \
+        wget \
+        curl \
+        htop \
     && pip3 install \
         yellowbrick \
         opencv-python \

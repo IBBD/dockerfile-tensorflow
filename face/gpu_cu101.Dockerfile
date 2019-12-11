@@ -5,5 +5,6 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/face:mxnet-cu101-opencv-dlib-py3
 RUN pip install \
         pandas \
         joblib \
+        cython \
     && pip install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
     && pip install git+https://github.com/ibbd-dev/python-fire-rest.git

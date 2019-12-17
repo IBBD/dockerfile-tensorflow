@@ -21,7 +21,7 @@ RUN apt-get update -y \
         matplotlib \
         opencv-python \
         opencv-contrib-python \
-        tensorflow-gpu=1.14 \
+        tensorflow-gpu==1.14 \
         keras \
         pillow \
         cython \

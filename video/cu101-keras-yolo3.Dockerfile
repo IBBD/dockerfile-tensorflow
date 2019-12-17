@@ -31,5 +31,5 @@ RUN apt-get update -y \
 RUN python3 -m pip --no-cache-dir install \
         imageio-ffmpeg \
         fire \
-    && python3 -m pip install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt
+    && python3 -m pip install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
     && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 

@@ -45,5 +45,8 @@ RUN cd / \
     && make 
 
 # 安装server服务相关
+# Pillow版本过高会导致：
+# ImportError: cannot import name 'PILLOW_VERSION'
 RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git
+    && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git \
+    && pip3 install Pillow==6.2.2

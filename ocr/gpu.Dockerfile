@@ -35,17 +35,18 @@ RUN pip --no-cache-dir install \
         bs4 \
         pytesseract
 
+# install darknet
+RUN cd / \
+    && git clone https://github.com/zergmk2/darknet.git \
+    && cd darknet/ \
+    && make 
+
 # install tf and pytorch
 RUN pip3 --no-cache-dir install \
         tensorflow==1.14 \
         tensorflow-gpu==1.14 \
         keras \
         torch torchvision 
-
-RUN cd / \
-    && git clone https://github.com/zergmk2/darknet.git \
-    && cd darknet/ \
-    && make 
 
 # 安装server服务相关
 # Pillow版本过高会导致：

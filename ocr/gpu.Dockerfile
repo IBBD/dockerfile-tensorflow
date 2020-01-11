@@ -33,11 +33,14 @@ RUN pip --no-cache-dir install \
         lmdb \
         lxml \
         bs4 \
+        pytesseract
+
+# install tf and pytorch
+RUN pip3 --no-cache-dir install \
         tensorflow==1.14 \
         tensorflow-gpu==1.14 \
         keras \
-        torch torchvision \
-        pytesseract
+        torch torchvision 
 
 RUN cd / \
     && git clone https://github.com/zergmk2/darknet.git \

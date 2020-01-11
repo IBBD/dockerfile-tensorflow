@@ -33,9 +33,9 @@ RUN pip --no-cache-dir install \
         lmdb \
         lxml \
         bs4 \
-        tensorflow==1.8 \
-        tensorflow-gpu==1.8 \
-        keras==2.1.5 \
+        tensorflow==1.14 \
+        tensorflow-gpu==1.14 \
+        keras \
         torch torchvision \
         pytesseract
 

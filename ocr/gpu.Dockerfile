@@ -53,4 +53,5 @@ RUN pip3 --no-cache-dir install \
 # ImportError: cannot import name 'PILLOW_VERSION'
 RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git \
-    && pip3 install Pillow==6.2.2
+    && pip3 install Pillow==6.2.2 \
+    && pip3 install requests

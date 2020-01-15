@@ -33,6 +33,7 @@ RUN pip --no-cache-dir install \
         lmdb \
         lxml \
         bs4 \
+        scikit-image \
         pytesseract
 
 # install darknet

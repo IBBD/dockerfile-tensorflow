@@ -55,3 +55,6 @@ RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requ
     && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git \
     && pip3 install Pillow==6.2.2 \
     && pip3 install requests
+
+# add ocr file
+COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata

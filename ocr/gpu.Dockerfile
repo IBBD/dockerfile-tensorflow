@@ -22,11 +22,11 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 安装基础库
-        # opencv-contrib-python==3.4.2.16 \
-        # requests
-        # tensorflow==1.14 \
-        # tensorflow-gpu==1.14 \
-        # keras \
+# opencv-contrib-python==3.4.2.16 \
+# requests
+# tensorflow==1.14 \
+# tensorflow-gpu==1.14 \
+# keras \
 RUN pip --no-cache-dir install \
         numpy \
         pandas \

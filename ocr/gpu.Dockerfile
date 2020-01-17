@@ -23,6 +23,10 @@ RUN apt-get update -y \
 
 # 安装基础库
         # opencv-contrib-python==3.4.2.16 \
+        # requests
+        # tensorflow==1.14 \
+        # tensorflow-gpu==1.14 \
+        # keras \
 RUN pip --no-cache-dir install \
         numpy \
         pandas \
@@ -34,28 +38,21 @@ RUN pip --no-cache-dir install \
         lxml \
         bs4 \
         scikit-image \
+        torch torchvision \
         pytesseract
 
 # install darknet
-RUN cd / \
-    && git clone https://github.com/zergmk2/darknet.git \
-    && cd darknet/ \
-    && make 
-
-# install tf and pytorch
-RUN pip3 --no-cache-dir install \
-        tensorflow==1.14 \
-        tensorflow-gpu==1.14 \
-        keras \
-        torch torchvision 
+# RUN cd / \
+    # && git clone https://github.com/zergmk2/darknet.git \
+    # && cd darknet/ \
+    # && make 
 
 # 安装server服务相关
 # Pillow版本过高会导致：
 # ImportError: cannot import name 'PILLOW_VERSION'
 RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git \
-    && pip3 install Pillow==6.2.2 \
-    && pip3 install requests
+    && pip3 install Pillow==6.2.2 
 
 # add ocr file
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata

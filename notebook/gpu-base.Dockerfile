@@ -15,7 +15,10 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # From: https://github.com/jupyter/docker-stacks/blob/master/scipy-notebook/Dockerfile
 # No matching distribution found for hdf5: h5py
 # auto-sklearn：暂时不安装，该包依赖于旧版本的scikit-lean
-RUN pip3 install \
+# 从python 3.6开始，enum34库不再与标准库兼容。
+# attributeerror: module 'enum' has no attribute 'intflag'  
+RUN pip3 uninstall -y enum34 \
+    && pip3 install \
         'pandas' \
         'numexpr' \
         'matplotlib' \
@@ -53,25 +56,6 @@ RUN pip3 install \
         jupyter_contrib_nbextensions \
         jupyter_nbextensions_configurator \
         jupyterlab 
-        #jupyterlab_latex \
-        #jupyterlab_code_formatter \
-    # 需要先更新six，否则install witwidget时会报错
-    # ImportError: cannot import name 'ensure_str'
-    #&& pip3 install -U six \
-    # Activate ipywidgets extension in the environment that runs the notebook server
-    #&& jupyter nbextension install --py --symlink --sys-prefix witwidget \
-    #&& jupyter nbextension enable --py --sys-prefix witwidget \
-    #&& jupyter nbextension enable --py widgetsnbextension --sys-prefix \
-    #&& jupyter contrib nbextension install --user \
-    #&& jupyter nbextensions_configurator enable --user \
-    #&& jupyter serverextension enable --py jupyterlab --sys-prefix 
-    # 一些插件依赖与nodejs和npm
-    #&& apt-get install -y nodejs npm \
-    #&& jupyter labextension install @jupyterlab/toc \
-    #&& jupyter labextension install @jupyterlab/latex \
-    #&& jupyter labextension install @ryantam626/jupyterlab_code_formatter \
-    #&& jupyter serverextension enable --py jupyterlab_code_formatter \
-    #&& jupyter labextension install @krassowski/jupyterlab_go_to_definition 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

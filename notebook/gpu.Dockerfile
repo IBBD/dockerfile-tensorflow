@@ -33,6 +33,14 @@ RUN pip3 install paddlepaddle-gpu
 # pyarrow fastparquet: pandas的parquet需要依赖于这两个包
 # igraph依赖：build-essential libxml2 libxml2-dev zlib1g-dev
 # https://github.com/igraph/python-igraph
+# datasketch这个模块有非常多的功能，主要是：
+# HyperLogLog
+# HyperLogLog++
+# MinHash LSH
+# MinHash LSH Ensemble
+# MinHash LSH Forest
+# MinHash
+# Weighted MinHash
 RUN apt-get update -y \
     && apt-get install -y \
         build-essential \
@@ -61,6 +69,7 @@ RUN apt-get update -y \
         networkx \
         python-igraph \
         sk-dist \
+        datasketch \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

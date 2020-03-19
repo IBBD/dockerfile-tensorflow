@@ -33,6 +33,14 @@ RUN pip3 install paddlepaddle-gpu
 # pyarrow fastparquet: pandas的parquet需要依赖于这两个包
 # igraph依赖：build-essential libxml2 libxml2-dev zlib1g-dev
 # https://github.com/igraph/python-igraph
+# datasketch这个模块有非常多的功能，主要是：
+# HyperLogLog
+# HyperLogLog++
+# MinHash LSH
+# MinHash LSH Ensemble
+# MinHash LSH Forest
+# MinHash
+# Weighted MinHash
 RUN apt-get update -y \
     && apt-get install -y \
         build-essential \
@@ -61,6 +69,7 @@ RUN apt-get update -y \
         networkx \
         python-igraph \
         sk-dist \
+        datasketch \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -83,17 +92,16 @@ RUN pip3 install jieba jieba-fast gensim pytext-nlp flair \
 # pdpbox: 展示一个或者两个特征对于模型的边际效应
 # shap: 细分预测以显示每个特征的影响
 # hdbscan: https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html
-# 从python 3.6开始，enum34库不再与标准库兼容。
-# AttributeError: module 'enum' has no attribute 'IntFlag'  
 RUN pip3 install pystan fbprophet \
     && pip3 install eli5 PDPbox shap \
-    && pip3 uninstall -y enum34 \
     && pip3 install xgboost \
         lightgbm \
         catboost \
         sklearn-contrib-lightning \
         hdbscan \
         joblib
+
+# 安装ocr工具
 
 # 配置文件
 # 原配置文件已经备份

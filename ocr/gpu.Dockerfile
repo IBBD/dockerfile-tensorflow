@@ -37,6 +37,7 @@ RUN pip --no-cache-dir install \
         lmdb \
         lxml \
         bs4 \
+        scikit-learn \
         scikit-image \
         torch torchvision \
         pytesseract

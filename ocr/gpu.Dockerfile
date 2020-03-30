@@ -56,7 +56,7 @@ RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requ
     && pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
     && pip3 install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git \
+    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git  \
     && pip3 install Pillow==6.2.2 
 
 # add ocr file

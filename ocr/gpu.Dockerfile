@@ -48,11 +48,15 @@ RUN pip --no-cache-dir install \
     # && cd darknet/ \
     # && make 
 
-# 安装server服务相关
+# 安装ibbd相关的基础模块
 # Pillow版本过高会导致：
 # ImportError: cannot import name 'PILLOW_VERSION'
 RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git \
+    && pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+    && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
+    && pip3 install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
+    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git \
     && pip3 install Pillow==6.2.2 
 
 # add ocr file

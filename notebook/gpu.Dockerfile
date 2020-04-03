@@ -41,6 +41,7 @@ RUN pip3 install paddlepaddle-gpu
 # MinHash LSH Forest
 # MinHash
 # Weighted MinHash
+# pdf2image依赖与poppler-utils
 RUN apt-get update -y \
     && apt-get install -y \
         build-essential \
@@ -70,6 +71,7 @@ RUN apt-get update -y \
         python-igraph \
         sk-dist \
         datasketch \
+        poppler-utils \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
@@ -99,7 +101,8 @@ RUN pip3 install pystan fbprophet \
         catboost \
         sklearn-contrib-lightning \
         hdbscan \
-        joblib
+        joblib \
+        pdf2image
 
 # 安装ocr工具
 

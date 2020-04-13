@@ -94,7 +94,7 @@ RUN pip3 install jieba jieba-fast gensim pytext-nlp flair \
 # pdpbox: 展示一个或者两个特征对于模型的边际效应
 # shap: 细分预测以显示每个特征的影响
 # hdbscan: https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html
-RUN pip3 install pystan fbprophet \
+RUN pip3 install convertdate pystan fbprophet \
     && pip3 install eli5 PDPbox shap \
     && pip3 install xgboost \
         lightgbm \

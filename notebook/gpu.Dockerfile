@@ -136,4 +136,8 @@ RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
     && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc" 
 
+# fix
+# ModuleNotFoundError: No module named 'keyring.util.escape'
+RUN pip3 install --upgrade keyrings.alt
+
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]

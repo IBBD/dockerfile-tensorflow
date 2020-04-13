@@ -105,6 +105,21 @@ RUN pip3 install pystan fbprophet \
         pdf2image
 
 # 安装ocr工具
+RUN apt-get update -y \
+    && apt-get install -y \
+        tesseract-ocr \
+        tesseract-ocr-chi-sim \
+        tesseract-ocr-chi-tra \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip3 install pytesseract
+
+# 安装自有工具
+RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+    && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
+    && pip3 install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
+    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git \
+    && pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
+    && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git
 
 # 配置文件
 # 原配置文件已经备份

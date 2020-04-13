@@ -113,6 +113,8 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/* \
     && pip3 install pytesseract
 
+COPY ../ocr/chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+
 # 安装自有工具
 RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \

@@ -138,7 +138,7 @@ RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
 
 # fix
 # ModuleNotFoundError: No module named 'keyring.util.escape'
-RUN pip3 install --upgrade keyrings.alt \
-    && pip3 install --upgrade pip 
+RUN pip3 install --upgrade pip \
+    && pip3 install --upgrade keyrings.alt 
 
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]

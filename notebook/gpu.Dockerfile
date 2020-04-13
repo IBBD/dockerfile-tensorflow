@@ -58,6 +58,7 @@ RUN apt-get update -y \
         wget \
         curl \
         htop \
+        poppler-utils \
     && pip3 install \
         yellowbrick \
         opencv-python \
@@ -71,7 +72,6 @@ RUN apt-get update -y \
         python-igraph \
         sk-dist \
         datasketch \
-        poppler-utils \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

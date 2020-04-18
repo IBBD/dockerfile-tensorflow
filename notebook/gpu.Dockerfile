@@ -104,7 +104,8 @@ RUN pip3 install convertdate pystan fbprophet \
         hdbscan \
         joblib \
         pdf2image \
-        pycaret
+        pycaret \
+        mlflow
 
 # 安装ocr工具
 RUN apt-get update -y \

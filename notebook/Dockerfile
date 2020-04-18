@@ -32,6 +32,7 @@ RUN conda install -c conda-forge -y \
         python-graphviz \
         networkx \
         python-igraph \
+        mlflow \
     && conda install -c conda-forge -y pyarrow fastparquet
 
 # install 时间序列&关系网络

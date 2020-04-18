@@ -94,6 +94,7 @@ RUN pip3 install jieba jieba-fast gensim pytext-nlp flair \
 # pdpbox: 展示一个或者两个特征对于模型的边际效应
 # shap: 细分预测以显示每个特征的影响
 # hdbscan: https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html
+# PyCaret 库支持数据科学家快速高效地执行端到端实验，PyCaret 库只需几行代码即可执行复杂的机器学习任务
 RUN pip3 install convertdate pystan fbprophet \
     && pip3 install eli5 PDPbox shap \
     && pip3 install xgboost \
@@ -102,7 +103,8 @@ RUN pip3 install convertdate pystan fbprophet \
         sklearn-contrib-lightning \
         hdbscan \
         joblib \
-        pdf2image
+        pdf2image \
+        pycaret
 
 # 安装ocr工具
 RUN apt-get update -y \

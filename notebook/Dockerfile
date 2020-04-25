@@ -64,10 +64,10 @@ RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
 
 # install nbgrader
 # https://nbgrader.readthedocs.io/en/stable/user_guide/installation.html
-RUN conda install -c conda-forge -y nbgrader \
-    && jupyter nbextension install --sys-prefix --py nbgrader --overwrite \
-    && jupyter nbextension enable --sys-prefix --py nbgrader \
-    && jupyter serverextension enable --sys-prefix --py nbgrader
+# RUN conda install -c conda-forge -y nbgrader \
+    # && jupyter nbextension install --sys-prefix --py nbgrader --overwrite \
+    # && jupyter nbextension enable --sys-prefix --py nbgrader \
+    # && jupyter serverextension enable --sys-prefix --py nbgrader
 
 # 配置文件
 # 原配置文件已经备份

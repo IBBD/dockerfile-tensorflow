@@ -54,6 +54,9 @@ RUN apt-get update -y \
 
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
+# 原来的用户
+USER jovyan
+
 # 配置matplotlib
 # ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
 # /opt/conda/lib/python3.7/site-packages
@@ -68,10 +71,6 @@ RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
 
 # install nbgrader
 # https://nbgrader.readthedocs.io/en/stable/user_guide/installation.html
-# RUN conda install -c conda-forge -y nbgrader \
-    # && jupyter nbextension install --sys-prefix --py nbgrader --overwrite \
-    # && jupyter nbextension enable --sys-prefix --py nbgrader \
-    # && jupyter serverextension enable --sys-prefix --py nbgrader
 
 # 配置文件
 # 原配置文件已经备份

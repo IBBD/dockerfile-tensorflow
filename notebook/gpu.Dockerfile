@@ -105,7 +105,9 @@ RUN pip3 install convertdate pystan fbprophet \
         joblib \
         pdf2image \
         pycaret \
-        mlflow
+        mlflow \
+        pdf4py \
+        notebook-as-pdf
 
 # 安装ocr工具
 RUN apt-get update -y \

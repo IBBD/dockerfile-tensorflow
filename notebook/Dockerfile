@@ -32,11 +32,23 @@ RUN conda install -c conda-forge -y \
         python-graphviz \
         networkx \
         python-igraph \
+        pdf2image \
         mlflow \
     && conda install -c conda-forge -y pyarrow fastparquet
 
 # install 时间序列&关系网络
 RUN conda install -c conda-forge -y fbprophet networkx
+
+# 安装ocr工具
+RUN apt-get update -y \
+    && apt-get install -y \
+        tesseract-ocr \
+        tesseract-ocr-chi-sim \
+        tesseract-ocr-chi-tra \
+    && rm -rf /var/lib/apt/lists/* \
+    && conda install -c conda-forge -y tesseract
+
+COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 配置matplotlib
 # ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`

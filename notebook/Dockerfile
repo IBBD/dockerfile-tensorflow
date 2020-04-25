@@ -34,10 +34,15 @@ RUN conda install -c conda-forge -y \
         python-igraph \
         pdf2image \
         mlflow \
+        pypdf4 \
     && conda install -c conda-forge -y pyarrow fastparquet
 
 # install 时间序列&关系网络
 RUN conda install -c conda-forge -y fbprophet networkx
+
+# 安装ocr时报错:
+# List directory /var/lib/apt/lists/partial is missing. - Acquire (13: Permission denied)
+USER root
 
 # 安装ocr工具
 RUN apt-get update -y \

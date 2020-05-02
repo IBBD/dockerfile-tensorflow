@@ -58,7 +58,7 @@ RUN pip3 install \
         jupyterlab 
 
 RUN apt-get update -y \
-    && apt-get install -y nodejs npm 
+    && apt-get install -y nodejs-legacy
 
 # https://github.com/krassowski/jupyterlab-lsp
 RUN pip3 install jupyter-lsp \

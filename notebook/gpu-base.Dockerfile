@@ -62,8 +62,8 @@ RUN pip3 install jupyter-lsp \
     && apt-get update -y \
     && apt-get install -y nodejs \
     && jupyter labextension install @krassowski/jupyterlab-lsp \
-    && pip install python-language-server[all] \
-    && pip install --upgrade jupyterlab-git
+    && pip3 install python-language-server[all] \
+    && pip3 install --upgrade jupyterlab-git
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

@@ -109,6 +109,8 @@ RUN pip3 install convertdate pystan fbprophet \
         mlflow \
         pdf4py \
         notebook-as-pdf \
+        fuzzywuzzy \
+        python-Levenshtein \
     && pyppeteer-install
 
 # 安装ocr工具

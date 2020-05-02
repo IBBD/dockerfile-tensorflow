@@ -34,6 +34,8 @@ RUN conda install -c conda-forge -y \
         python-igraph \
         pdf2image \
         mlflow \
+        fuzzywuzzy \
+        python-Levenshtein \
     && conda install -c conda-forge -y pyarrow fastparquet
 
 # install 时间序列&关系网络

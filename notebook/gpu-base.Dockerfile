@@ -58,12 +58,13 @@ RUN pip3 install \
         jupyterlab 
 
 RUN apt-get update -y \
-    && apt-get install -y nodejs-legacy
+    && apt-get install -y nodejs
 
 # https://github.com/krassowski/jupyterlab-lsp
 RUN pip3 install jupyter-lsp \
-    && jupyter labextension install @krassowski/jupyterlab-lsp \
-    && pip3 install python-language-server[all] \
+    && jupyter labextension install @krassowski/jupyterlab-lsp 
+
+RUN pip3 install python-language-server[all] \
     && pip3 install --upgrade jupyterlab-git
 
 # 终端设置

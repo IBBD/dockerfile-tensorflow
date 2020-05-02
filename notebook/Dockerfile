@@ -26,6 +26,7 @@ RUN conda install --quiet --yes jieba gensim prettytable fasttext nltk
 # FeatureSelector是用于降低机器学习数据集的维数的工具
 # yellowbrick \
 # Initial quick solve with frozen env failed. Unfreezing env and trying again.
+# 保存成excel文件时需要：openpyxl
 RUN conda install -c conda-forge -y \
         opencv \
         pydotplus \
@@ -34,6 +35,7 @@ RUN conda install -c conda-forge -y \
         python-igraph \
         pdf2image \
         mlflow \
+        openpyxl \
         fuzzywuzzy \
         python-Levenshtein \
     && conda install -c conda-forge -y pyarrow fastparquet

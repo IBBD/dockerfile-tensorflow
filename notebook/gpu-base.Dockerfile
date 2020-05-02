@@ -61,7 +61,8 @@ RUN apt-get update -y \
     && apt-get install -y git curl wget \
     && wget https://deb.nodesource.com/setup_12.x \
     && bash setup_12.x \
-    && rm setup_12.x
+    && rm -f setup_12.x \
+    && apt-get install -y nodejs
 
 # https://github.com/krassowski/jupyterlab-lsp
 RUN pip3 install jupyter-lsp \

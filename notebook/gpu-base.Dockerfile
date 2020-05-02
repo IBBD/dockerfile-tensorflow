@@ -57,10 +57,11 @@ RUN pip3 install \
         jupyter_nbextensions_configurator \
         jupyterlab 
 
+RUN apt-get update -y \
+    && apt-get install -y nodejs npm 
+
 # https://github.com/krassowski/jupyterlab-lsp
 RUN pip3 install jupyter-lsp \
-    && apt-get update -y \
-    && apt-get install -y nodejs npm \
     && jupyter labextension install @krassowski/jupyterlab-lsp \
     && pip3 install python-language-server[all] \
     && pip3 install --upgrade jupyterlab-git

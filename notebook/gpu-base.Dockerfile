@@ -62,7 +62,7 @@ RUN apt-get update -y \
 
 # https://github.com/krassowski/jupyterlab-lsp
 RUN pip3 install jupyter-lsp \
-    && jupyter labextension install @krassowski/jupyterlab-lsp 
+    && jupyter labextension install -y @krassowski/jupyterlab-lsp 
 
 RUN pip3 install python-language-server[all] \
     && pip3 install --upgrade jupyterlab-git

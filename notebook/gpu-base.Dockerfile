@@ -59,7 +59,7 @@ RUN pip3 install \
 
 # https://github.com/krassowski/jupyterlab-lsp
 RUN pip3 install jupyter-lsp \
-    && apt-get upudate -y \
+    && apt-get update -y \
     && apt-get install -y nodejs \
     && jupyter labextension install @krassowski/jupyterlab-lsp \
     && pip install python-language-server[all] \

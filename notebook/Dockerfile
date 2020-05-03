@@ -68,13 +68,13 @@ RUN apt-get update -y \
 
 # https://github.com/krassowski/jupyterlab-lsp
 # debugger依赖于：ptvsd,  xeus-python
-RUN pip3 install jupyter-lsp \
+RUN conda install -y jupyter-lsp \
     && jupyter labextension install -y @krassowski/jupyterlab-lsp \
-    && pip3 install python-language-server[all] \
-    && pip3 install --upgrade jupyterlab-git \
+    && conda install -y python-language-server[all] \
+    && conda install -y jupyterlab-git \
     && jupyter labextension install @jupyterlab/debugger \
-    && pip3 install ptvsd \
-    && pip3 install xeus-python
+    && conda install -y ptvsd \
+    && conda install -y xeus-python
 
 # 原来的用户
 USER jovyan

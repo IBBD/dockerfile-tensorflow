@@ -57,6 +57,7 @@ RUN pip3 install \
         jupyter_nbextensions_configurator \
         jupyterlab 
 
+# install nodejs
 RUN apt-get update -y \
     && apt-get install -y git curl wget \
     && wget https://deb.nodesource.com/setup_12.x \
@@ -65,10 +66,14 @@ RUN apt-get update -y \
     && apt-get install -y nodejs
 
 # https://github.com/krassowski/jupyterlab-lsp
+# debugger依赖于：ptvsd,  xeus-python
 RUN pip3 install jupyter-lsp \
     && jupyter labextension install -y @krassowski/jupyterlab-lsp \
     && pip3 install python-language-server[all] \
-    && pip3 install --upgrade jupyterlab-git
+    && pip3 install --upgrade jupyterlab-git \
+    && jupyter labextension install @jupyterlab/debugger \
+    && pip3 install ptvsd \
+    && pip3 install xeus-python
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

@@ -58,6 +58,24 @@ RUN apt-get update -y \
 
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
+# install nodejs
+RUN apt-get update -y \
+    && apt-get install -y git curl wget \
+    && wget https://deb.nodesource.com/setup_12.x \
+    && bash setup_12.x \
+    && rm -f setup_12.x \
+    && apt-get install -y nodejs
+
+# https://github.com/krassowski/jupyterlab-lsp
+# debugger依赖于：ptvsd,  xeus-python
+RUN pip3 install jupyter-lsp \
+    && jupyter labextension install -y @krassowski/jupyterlab-lsp \
+    && pip3 install python-language-server[all] \
+    && pip3 install --upgrade jupyterlab-git \
+    && jupyter labextension install @jupyterlab/debugger \
+    && pip3 install ptvsd \
+    && pip3 install xeus-python
+
 # 原来的用户
 USER jovyan
 

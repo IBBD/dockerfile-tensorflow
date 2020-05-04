@@ -1,6 +1,6 @@
 #
-# cuda10.1 cudnn7 python3.6 ubuntu18.04 Dockerfile
-#
+# cuda10.2 cudnn7 python3.6 ubuntu18.04 Dockerfile
+# 安装基础包及工具
 
 # Pull base image.
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
@@ -11,6 +11,7 @@ ENV DEBIAN_FRONTEND noninteractive
 # 安装Python3.6, pip, git等
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
+        git \
         wget \
         python3 \
         python3-dev \
@@ -18,6 +19,22 @@ RUN apt-get update -y \
     && python3 get-pip.py \
     && rm get-pip.py \
     && rm -rf /var/lib/apt/lists/*
+
+# 安装基础库
+RUN pip install -U setuptools \
+    && pip --no-cache-dir install \
+        numpy \
+        scipy \
+        scikit-learn \
+        matplotlib \
+        fastapi \
+        uvicorn
+
+# 安装自有工具
+RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+    && pip install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
+    && pip install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
+    && pip install git+https://github.com/ibbd-dev/python-image-utils.git
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：

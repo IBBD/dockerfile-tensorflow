@@ -11,17 +11,14 @@ RUN apt-get update -y \
         libxrender1 \
         libxext-dev \
         pkg-config \
-        git \
+    && rm -rf /var/lib/apt/lists/* \
     && pip install -U setuptools \
     && pip --no-cache-dir install \
-        numpy \
         pandas \
-        scipy \
-        scikit-learn \
-        matplotlib \
         opencv-python \
         opencv-contrib-python \
         tensorflow-gpu==1.15 \
+        imageio-ffmpeg \
         keras \
         pillow \
         cython \
@@ -29,19 +26,4 @@ RUN apt-get update -y \
 
 # 安装pytorch
 # https://pytorch.org/get-started/locally/
-# https://pytorch.org/get-started/locally/
-# RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl \
-    # && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
 RUN pip install torch torchvision
-
-# 安装服务常用包  
-RUN python3 -m pip --no-cache-dir install \
-        imageio-ffmpeg \
-        fastapi \
-        uvicorn
-
-# 安装自有工具
-RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
-    && pip install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
-    && pip install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && pip install git+https://github.com/ibbd-dev/python-image-utils.git

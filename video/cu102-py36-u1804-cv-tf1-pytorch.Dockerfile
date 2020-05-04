@@ -24,6 +24,12 @@ RUN apt-get update -y \
         cython \
         tqdm
 
+# 安装自有工具
+RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+    && pip install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
+    && pip install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
+    && pip install git+https://github.com/ibbd-dev/python-image-utils.git
+
 # 安装pytorch
 # https://pytorch.org/get-started/locally/
 RUN pip install torch torchvision

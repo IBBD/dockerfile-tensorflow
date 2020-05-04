@@ -30,12 +30,6 @@ RUN pip install -U setuptools \
         fastapi \
         uvicorn
 
-# 安装自有工具
-RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
-    && pip install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
-    && pip install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && pip install git+https://github.com/ibbd-dev/python-image-utils.git
-
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：
 # terminal is not fully functional

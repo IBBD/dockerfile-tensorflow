@@ -11,25 +11,20 @@ RUN apt-get update -y \
         libxrender1 \
         libxext-dev \
         pkg-config \
-        git \
     && pip install -U setuptools \
     && pip --no-cache-dir install \
-        numpy \
         pandas \
-        scipy \
-        scikit-learn \
-        matplotlib \
         opencv-python \
         opencv-contrib-python \
+        imageio-ffmpeg \
         tensorflow-gpu==1.15 \
         keras \
         pillow \
         cython \
         tqdm
 
-# 安装服务常用包
-RUN python3 -m pip --no-cache-dir install \
-        imageio-ffmpeg \
-        fire \
-    && python3 -m pip install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
-    && python3 -m pip install git+https://github.com/ibbd-dev/python-fire-rest.git 
+# 安装自有工具
+RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+    && pip install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
+    && pip install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
+    && pip install git+https://github.com/ibbd-dev/python-image-utils.git

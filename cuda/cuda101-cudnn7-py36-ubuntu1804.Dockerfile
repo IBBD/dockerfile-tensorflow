@@ -1,6 +1,7 @@
 #
-# cuda10.2 cudnn7 python3.6 ubuntu18.04 Dockerfile
 # 安装基础包及工具
+# cuda10.1 cudnn7 python3.6 ubuntu18.04 fastapi Dockerfile
+# 
 
 # Pull base image.
 FROM nvidia/cuda:10.1-cudnn7-devel-ubuntu18.04
@@ -29,12 +30,6 @@ RUN pip install -U setuptools \
         matplotlib \
         fastapi \
         uvicorn
-
-# 安装自有工具
-RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
-    && pip install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
-    && pip install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && pip install git+https://github.com/ibbd-dev/python-image-utils.git
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：

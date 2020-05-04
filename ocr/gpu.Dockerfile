@@ -21,6 +21,9 @@ RUN apt-get update -y \
         tesseract-ocr-chi-tra \
     && rm -rf /var/lib/apt/lists/*
 
+# add ocr file
+COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+
 # 安装基础库
 # opencv-contrib-python==3.4.2.16 \
 # requests
@@ -28,7 +31,6 @@ RUN apt-get update -y \
 # tensorflow-gpu==1.14 \
 # keras \
 RUN pip --no-cache-dir install \
-        numpy \
         pandas \
         easydict \
         Cython \
@@ -37,7 +39,6 @@ RUN pip --no-cache-dir install \
         lmdb \
         lxml \
         bs4 \
-        scikit-learn \
         scikit-image \
         torch torchvision \
         pytesseract
@@ -51,13 +52,8 @@ RUN pip --no-cache-dir install \
 # 安装ibbd相关的基础模块
 # Pillow版本过高会导致：
 # ImportError: cannot import name 'PILLOW_VERSION'
-RUN pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git \
-    && pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+# && pip3 install Pillow==6.2.2 
+RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
     && pip3 install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git  \
-    && pip3 install Pillow==6.2.2 
-
-# add ocr file
-COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git

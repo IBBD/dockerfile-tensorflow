@@ -3,8 +3,7 @@
 #
 
 # Pull base image.
-# FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda90-cudnn7-py36-ubuntu1604
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda101-cudnn7-py36-ubuntu1804
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -14,7 +13,6 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 RUN apt-get update -y \
     && apt-get install -y build-essential \
         libglib2.0-0 libsm6 libxrender1 \
-        git \
         curl \
         tesseract-ocr \
         tesseract-ocr-chi-sim \

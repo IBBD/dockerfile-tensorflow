@@ -29,7 +29,8 @@ RUN pip install -U setuptools \
         scikit-learn \
         matplotlib \
         fastapi \
-        uvicorn
+        uvicorn \
+        python-multipart
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：

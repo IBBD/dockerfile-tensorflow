@@ -113,6 +113,8 @@ RUN pip3 install convertdate pystan fbprophet \
         openpyxl \
         fuzzywuzzy \
         python-Levenshtein \
+        diff-match-patch \
+        pypdf4 \
     && pyppeteer-install
 
 # 安装ocr工具

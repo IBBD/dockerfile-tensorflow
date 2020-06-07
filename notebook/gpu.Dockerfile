@@ -82,7 +82,7 @@ RUN apt-get update -y \
 # https://fasttext.cc/docs/en/support.html
 # flair: https://github.com/zalandoresearch/flair
 # Flair是一个基于PyTorch构建的NLP开发包，它在解决命名实体识别（NER）、部分语音标注（PoS）、语义消歧和文本分类等NLP问题达到了当前的最高水准。
-RUN pip3 install jieba jieba-fast gensim pytext-nlp flair \
+RUN pip3 install jieba jieba-fast gensim flair \
     && git clone https://github.com/facebookresearch/fastText.git /fastText \
     && cd /fastText \
     && python3 setup.py install 

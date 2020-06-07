@@ -19,7 +19,8 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # RUN pip3 install https://download.pytorch.org/whl/cu100/torch-1.1.0-cp36-cp36m-linux_x86_64.whl \
     # && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
 # install pytorch 1.2
-RUN pip3 install torch torchvision
+# RUN pip3 install torch torchvision
+RUN pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
 
 # install PaddlePaddle
 # https://www.paddlepaddle.org.cn/

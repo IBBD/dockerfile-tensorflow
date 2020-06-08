@@ -20,11 +20,15 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
     # && pip3 install https://download.pytorch.org/whl/cu100/torchvision-0.3.0-cp36-cp36m-linux_x86_64.whl
 # install pytorch 1.2
 # RUN pip3 install torch torchvision
-RUN pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html
+# visdom: 可视化
+# thop: 模型参数及计算量统计
+RUN pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
+    pip install visdom thop
 
+# Paddle独立成一个单独的Notebook
 # install PaddlePaddle
 # https://www.paddlepaddle.org.cn/
-RUN pip3 install paddlepaddle-gpu
+# RUN pip3 install paddlepaddle-gpu
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
@@ -43,6 +47,8 @@ RUN pip3 install paddlepaddle-gpu
 # MinHash
 # Weighted MinHash
 # pdf2image依赖与poppler-utils
+# keras已经内置在tf中
+# 网络关系挖掘包：networkx python-igraph 
 RUN apt-get update -y \
     && apt-get install -y \
         build-essential \
@@ -55,22 +61,16 @@ RUN apt-get update -y \
         python3-pydot \
         python3-pygraphviz \
         imagemagick \
-        git \
-        wget \
-        curl \
         htop \
         poppler-utils \
     && pip3 install \
         yellowbrick \
         opencv-python \
         opencv-contrib-python \
-        keras \
         pydotplus \
         graphviz \
         prettytable \
         pyarrow fastparquet \
-        networkx \
-        python-igraph \
         sk-dist \
         datasketch \
     && apt-get autoremove -y \

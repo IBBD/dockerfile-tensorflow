@@ -22,8 +22,8 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # RUN pip3 install torch torchvision
 # visdom: 可视化
 # thop: 模型参数及计算量统计
-RUN pip install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
-    pip install visdom thop
+RUN pip3 install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
+    && pip3 install visdom thop
 
 # Paddle独立成一个单独的Notebook
 # install PaddlePaddle

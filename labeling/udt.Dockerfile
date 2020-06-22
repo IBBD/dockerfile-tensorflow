@@ -11,7 +11,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 ENV VERSION 0.10.23
 RUN apt-get update -y \
-    && apt-get install -y wget unzip \
+    && apt-get install -y wget \
     && mkdir /udt \
     && cd /udt \
     && wget https://github.com/UniversalDataTool/universal-data-tool/archive/v"$VERSION".tar.gz \
@@ -19,7 +19,7 @@ RUN apt-get update -y \
     && cd universal-data-tool* \
     && npm install \
     && cd .. \
-    && rm -f -zxf v"$VERSION".tar.gz \
+    && rm -f v"$VERSION".tar.gz \
     && rm -rf /var/lib/apt/lists/*
 
 # 生产阶段

@@ -24,8 +24,8 @@ RUN apt-get update -y \
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装基础库
+# 约864M
 # opencv-contrib-python==3.4.2.16 \
-# requests
 # tensorflow==1.14 \
 # tensorflow-gpu==1.14 \
 # keras \
@@ -42,14 +42,8 @@ RUN pip3 --no-cache-dir install \
         torch torchvision \
         pytesseract
 
-# install darknet
-# RUN cd / \
-    # && git clone https://github.com/zergmk2/darknet.git \
-    # && cd darknet/ \
-    # && make 
-
 # install paddle
-# 约630M
+# 约350M
 RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107 \
     && mkdir /paddle \
     && cd /paddle \
@@ -58,9 +52,6 @@ RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107 \
     && pip3 install -r requirments.txt 
 
 # 安装ibbd相关的基础模块
-# Pillow版本过高会导致：
-# ImportError: cannot import name 'PILLOW_VERSION'
-# && pip3 install Pillow==6.2.2 
 RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
     && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
     && pip3 install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \

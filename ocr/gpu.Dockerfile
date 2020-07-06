@@ -41,11 +41,11 @@ RUN apt-get update -y \
 #        lxml \
 #        bs4 \
 #        pytesseract \
+#        scikit-image \
 RUN pip3 --no-cache-dir install \
         pandas \
         easydict \
         opencv-python \
-        scikit-image \
         torch torchvision 
 
 # install paddle

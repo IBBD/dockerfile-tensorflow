@@ -45,6 +45,7 @@ RUN apt-get update -y \
 RUN pip3 --no-cache-dir install \
         pandas \
         easydict \
+        pillow \
         opencv-python \
         torch torchvision 
 

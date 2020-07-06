@@ -7,40 +7,46 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
-# 安装git等
+# 安装依赖软件
 # install tesseract
 # opencv依赖：libglib2.0-0, libsm6
-# curl \
-# build-essential 
+#        curl \
+#        build-essential \
+#        tesseract-ocr \
+#        tesseract-ocr-chi-sim \
+#        tesseract-ocr-chi-tra \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         libglib2.0-0 libsm6 libxrender1 \
-        tesseract-ocr \
-        tesseract-ocr-chi-sim \
-        tesseract-ocr-chi-tra \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
-COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+# COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装基础库
 # 约864M
-# opencv-contrib-python==3.4.2.16 \
-# tensorflow==1.14 \
-# tensorflow-gpu==1.14 \
-# keras \
+# EasyDict可以让你像访问属性一样访问dict里的变量
+# LMDB文件可以同时由多个进程打开，具有极高的数据存取速度，访问简单，不需要运行单独的数据库管理进程，只要在访问数据的代码里引用LMDB库，访问时给文件路径即可。
+# h5py: 操作HDF5
+# HDF5 拥有一系列的优异特性，使其特别适合进行大量科学数据的存储和操作，如它支持非常多的数据类型，灵活，通用，跨平台，可扩展，高效的 I/O 性能，支持几乎无限量（高达 EB）的单文件存储等
+# lxml是处理XML和HTML的python语言
+# bs4: Beautiful Soup是python的一个HTML或XML的解析库，我们可以用它来方便的从网页中提取数据
+#        opencv-contrib-python==3.4.2.16 \
+#        tensorflow==1.14 \
+#        tensorflow-gpu==1.14 \
+#        keras \
 #        Cython \
+#        h5py \
+#        lmdb \
+#        lxml \
+#        bs4 \
+#        pytesseract \
 RUN pip3 --no-cache-dir install \
         pandas \
         easydict \
         opencv-python \
-        h5py \
-        lmdb \
-        lxml \
-        bs4 \
         scikit-image \
-        torch torchvision \
-        pytesseract
+        torch torchvision 
 
 # install paddle
 # 约350M

@@ -10,10 +10,11 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # 安装git等
 # install tesseract
 # opencv依赖：libglib2.0-0, libsm6
+# curl \
+# build-essential 
 RUN apt-get update -y \
-    && apt-get install -y build-essential \
+    && apt-get install -y \
         libglib2.0-0 libsm6 libxrender1 \
-        curl \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
         tesseract-ocr-chi-tra \
@@ -28,10 +29,10 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 # tensorflow==1.14 \
 # tensorflow-gpu==1.14 \
 # keras \
-RUN pip --no-cache-dir install \
+#        Cython \
+RUN pip3 --no-cache-dir install \
         pandas \
         easydict \
-        Cython \
         opencv-python \
         h5py \
         lmdb \
@@ -46,6 +47,14 @@ RUN pip --no-cache-dir install \
     # && git clone https://github.com/zergmk2/darknet.git \
     # && cd darknet/ \
     # && make 
+
+# install paddle
+RUN pip3 install paddlepaddle-gpu==1.7.2.post107 \
+    && mkdir /paddle \
+    && cd /paddle \
+    && git clone https://github.com/PaddlePaddle/PaddleOCR \
+    && cd PaddleOCR \
+    && pip3 install -r requirments.txt 
 
 # 安装ibbd相关的基础模块
 # Pillow版本过高会导致：

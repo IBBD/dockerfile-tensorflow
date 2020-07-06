@@ -9,7 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装依赖软件
 # install tesseract
-# opencv依赖：libglib2.0-0, libsm6
+# opencv依赖：libglib2.0-0, libsm6, libxext-dev
 #        curl \
 #        build-essential \
 #        tesseract-ocr \
@@ -17,7 +17,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 #        tesseract-ocr-chi-tra \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
-        libglib2.0-0 libsm6 libxrender1 \
+        libglib2.0-0 libsm6 libxext-dev libxrender1 \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file

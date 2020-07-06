@@ -24,7 +24,7 @@ RUN apt-get update -y \
 # COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装基础库
-# 约864M
+# 约830M
 # EasyDict可以让你像访问属性一样访问dict里的变量
 # LMDB文件可以同时由多个进程打开，具有极高的数据存取速度，访问简单，不需要运行单独的数据库管理进程，只要在访问数据的代码里引用LMDB库，访问时给文件路径即可。
 # h5py: 操作HDF5
@@ -50,7 +50,7 @@ RUN pip3 --no-cache-dir install \
         torch torchvision 
 
 # install paddle
-# 约350M
+# 约400M
 RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107 \
     && mkdir /paddle \
     && cd /paddle \

@@ -17,19 +17,9 @@ RUN apt-get update -y \
         python3-dev \
     && wget https://bootstrap.pypa.io/get-pip.py \
     && python3 get-pip.py \
+    && pip3 install -U setuptools \
     && rm get-pip.py \
     && rm -rf /var/lib/apt/lists/*
-
-# 安装基础库
-RUN pip install -U setuptools \
-    && pip --no-cache-dir install \
-        numpy \
-        scipy \
-        scikit-learn \
-        matplotlib \
-        fastapi \
-        uvicorn \
-        python-multipart
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：

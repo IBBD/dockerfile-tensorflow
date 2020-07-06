@@ -43,11 +43,16 @@ RUN apt-get update -y \
 #        pytesseract \
 #        scikit-image \
 RUN pip3 --no-cache-dir install \
+        numpy \
         pandas \
         easydict \
         pillow \
+        scikit-learn \
         opencv-python \
-        torch torchvision 
+        torch torchvision \
+        fastapi \
+        uvicorn \
+        python-multipart
 
 # install paddle
 # 约400M

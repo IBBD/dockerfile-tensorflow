@@ -13,7 +13,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # curl \
 # build-essential 
 RUN apt-get update -y \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         libglib2.0-0 libsm6 libxrender1 \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
@@ -49,7 +49,8 @@ RUN pip3 --no-cache-dir install \
     # && make 
 
 # install paddle
-RUN pip3 install paddlepaddle-gpu==1.7.2.post107 \
+# 约630M
+RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107 \
     && mkdir /paddle \
     && cd /paddle \
     && git clone https://github.com/PaddlePaddle/PaddleOCR \

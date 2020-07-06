@@ -3,7 +3,7 @@
 #
 
 # Pull base image.
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py36-ubuntu1804
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-runtime-py36-ubuntu1804
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

@@ -9,6 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.6, pip, git等
+#    && pip3 install -U setuptools \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
@@ -17,7 +18,6 @@ RUN apt-get update -y \
         python3-dev \
     && wget https://bootstrap.pypa.io/get-pip.py \
     && python3 get-pip.py \
-    && pip3 install -U setuptools \
     && rm get-pip.py \
     && rm -rf /var/lib/apt/lists/*
 

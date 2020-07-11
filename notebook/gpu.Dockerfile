@@ -106,6 +106,7 @@ RUN pip3 --no-cache-dir install jieba jieba-fast gensim \
 # https://github.com/betatim/notebook-as-pdf and pyppeteer-install
 # 保存成excel文件时需要：openpyxl
 #        notebook-as-pdf \
+#    && pyppeteer-install
 RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
     && pip3 --no-cache-dir install eli5 PDPbox shap \
     && pip3 --no-cache-dir install xgboost \
@@ -121,8 +122,7 @@ RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
         fuzzywuzzy \
         python-Levenshtein \
         diff-match-patch \
-        pypdf4 \
-    && pyppeteer-install
+        pypdf4
 
 # 安装ocr工具
 RUN apt-get update -y \

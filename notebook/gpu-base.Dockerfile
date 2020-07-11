@@ -18,7 +18,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # 从python 3.6开始，enum34库不再与标准库兼容。
 # attributeerror: module 'enum' has no attribute 'intflag'  
 RUN pip3 uninstall -y enum34 \
-    && pip3 install \
+    && pip3 --no-cache-dir install \
         'pandas' \
         'numexpr' \
         'matplotlib' \
@@ -50,30 +50,30 @@ RUN pip3 uninstall -y enum34 \
 # TODO 
 # Jupyter扩展bamboolib：pandas dataframes图形化操作界面
 # jupyterlab_voyager: 对csv等文件数据进行可视化 http://vega.github.io/voyager/
-RUN pip3 install \
-        ipywidgets \
-        witwidget-gpu \
-        jupyter_contrib_nbextensions \
-        jupyter_nbextensions_configurator \
+#        ipywidgets \
+#        witwidget-gpu \
+#        jupyter_contrib_nbextensions \
+#        jupyter_nbextensions_configurator \
+RUN pip3 --no-cache-dir install \
         jupyterlab 
 
 # install nodejs
-RUN apt-get update -y \
-    && apt-get install -y git curl wget \
-    && wget https://deb.nodesource.com/setup_12.x \
-    && bash setup_12.x \
-    && rm -f setup_12.x \
-    && apt-get install -y nodejs
+# RUN apt-get update -y \
+#     && apt-get install -y git curl wget \
+#     && wget https://deb.nodesource.com/setup_12.x \
+#     && bash setup_12.x \
+#     && rm -f setup_12.x \
+#     && apt-get install -y nodejs
 
 # https://github.com/krassowski/jupyterlab-lsp
 # debugger依赖于：ptvsd,  xeus-python
-RUN pip3 install jupyter-lsp \
-    && jupyter labextension install -y @krassowski/jupyterlab-lsp \
-    && pip3 install python-language-server[all] \
-    && pip3 install --upgrade jupyterlab-git \
-    && jupyter labextension install @jupyterlab/debugger \
-    && pip3 install ptvsd \
-    && pip3 install xeus-python
+# RUN pip3 install jupyter-lsp \
+#     && jupyter labextension install -y @krassowski/jupyterlab-lsp \
+#     && pip3 install python-language-server[all] \
+#     && pip3 install --upgrade jupyterlab-git \
+#     && jupyter labextension install @jupyterlab/debugger \
+#     && pip3 install ptvsd \
+#     && pip3 install xeus-python
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：terminal is not fully functional

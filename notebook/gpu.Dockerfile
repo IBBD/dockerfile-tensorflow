@@ -22,8 +22,9 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # RUN pip3 install torch torchvision
 # visdom: 可视化
 # thop: 模型参数及计算量统计
-RUN pip3 install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
-    && pip3 install visdom thop
+# RUN pip3 install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
+RUN pip3 --no-cache-dir install torch==1.5.1+cu101 torchvision==0.6.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
+    && pip3 --no-cache-dir install visdom thop
 
 # Paddle独立成一个单独的Notebook
 # install PaddlePaddle
@@ -49,8 +50,9 @@ RUN pip3 install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download
 # pdf2image依赖与poppler-utils
 # keras已经内置在tf中
 # 网络关系挖掘包：networkx python-igraph 
+# graphviz实际上是一个绘图工具，可以根据dot脚本画出树形图等
 RUN apt-get update -y \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         build-essential \
         libxml2 \
         libxml2-dev \
@@ -63,7 +65,8 @@ RUN apt-get update -y \
         imagemagick \
         htop \
         poppler-utils \
-    && pip3 install \
+        ffmpeg dvipng \
+    && pip3 --no-cache-dir install \
         yellowbrick \
         opencv-python \
         opencv-contrib-python \
@@ -82,10 +85,12 @@ RUN apt-get update -y \
 # https://fasttext.cc/docs/en/support.html
 # flair: https://github.com/zalandoresearch/flair
 # Flair是一个基于PyTorch构建的NLP开发包，它在解决命名实体识别（NER）、部分语音标注（PoS）、语义消歧和文本分类等NLP问题达到了当前的最高水准。
-RUN pip3 install jieba jieba-fast gensim \
+RUN pip3 --no-cache-dir install jieba jieba-fast gensim \
     && git clone https://github.com/facebookresearch/fastText.git /fastText \
     && cd /fastText \
-    && python3 setup.py install 
+    && python3 setup.py install \
+    && cd / \
+    && rm -rf /fastText
 
 # 扩展算法包
 # 时间序列
@@ -98,9 +103,10 @@ RUN pip3 install jieba jieba-fast gensim \
 # PyCaret 库支持数据科学家快速高效地执行端到端实验，PyCaret 库只需几行代码即可执行复杂的机器学习任务
 # https://github.com/betatim/notebook-as-pdf and pyppeteer-install
 # 保存成excel文件时需要：openpyxl
-RUN pip3 install convertdate pystan fbprophet \
-    && pip3 install eli5 PDPbox shap \
-    && pip3 install xgboost \
+#        notebook-as-pdf \
+RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
+    && pip3 --no-cache-dir install eli5 PDPbox shap \
+    && pip3 --no-cache-dir install xgboost \
         lightgbm \
         catboost \
         sklearn-contrib-lightning \
@@ -109,7 +115,6 @@ RUN pip3 install convertdate pystan fbprophet \
         pycaret \
         mlflow \
         pdf4py \
-        notebook-as-pdf \
         openpyxl \
         fuzzywuzzy \
         python-Levenshtein \
@@ -119,22 +124,22 @@ RUN pip3 install convertdate pystan fbprophet \
 
 # 安装ocr工具
 RUN apt-get update -y \
-    && apt-get install -y \
+    && apt-get install -y --no-install-recommends \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
         tesseract-ocr-chi-tra \
     && rm -rf /var/lib/apt/lists/* \
-    && pip3 install pytesseract
+    && pip3 --no-cache-dir install pytesseract
 
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装自有工具
-RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
-    && pip3 install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-image-utils.git \
-    && pip3 install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
-    && pip3 install git+https://github.com/ibbd-dev/python-fire-rest.git
+RUN pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
+    && pip3 --no-cache-dir install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
+    && pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
+    && pip3 --no-cache-dir install git+https://github.com/ibbd-dev/python-image-utils.git \
+    && pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-fire-rest/raw/master/requirements.txt \
+    && pip3 --no-cache-dir install git+https://github.com/ibbd-dev/python-fire-rest.git
 
 # 配置文件
 # 原配置文件已经备份

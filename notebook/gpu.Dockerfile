@@ -54,6 +54,8 @@ RUN pip3 --no-cache-dir install torch==1.5.1+cu101 torchvision==0.6.1+cu101 -f h
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         build-essential \
+        git \
+        curl \
         libxml2 \
         libxml2-dev \
         zlib1g-dev \

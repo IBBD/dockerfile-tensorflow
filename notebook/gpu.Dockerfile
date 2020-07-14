@@ -103,6 +103,11 @@ RUN pip3 --no-cache-dir install jieba jieba-fast gensim \
 # shap: 细分预测以显示每个特征的影响
 # hdbscan: https://hdbscan.readthedocs.io/en/latest/basic_hdbscan.html
 # PyCaret 库支持数据科学家快速高效地执行端到端实验，PyCaret 库只需几行代码即可执行复杂的机器学习任务
+# tensorflow-model-optimization: tf模型优化工具
+# NNI: https://nni.readthedocs.io/zh/latest/Compressor/QuickStart.html
+# NNI: https://github.com/microsoft/nni/blob/master/examples/model_compress/model_prune_torch.py
+# NNI: 提供了并行运行多个实例以查找最佳参数组合的能力。 此功能可用于各种领域，例如，为深度学习模型查找最佳超参数，或查找具有真实数据的数据库和其他复杂系统的最佳配置。
+# NNI: 还希望提供用于机器学习和深度学习的算法工具包，尤其是神经体系结构搜索（NAS）算法，模型压缩算法和特征工程算法。
 # https://github.com/betatim/notebook-as-pdf and pyppeteer-install
 # 保存成excel文件时需要：openpyxl
 #        notebook-as-pdf \
@@ -122,7 +127,9 @@ RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
         fuzzywuzzy \
         python-Levenshtein \
         diff-match-patch \
-        pypdf4
+        pypdf4 \
+        tensorflow-model-optimization \
+        nni
 
 # 安装ocr工具
 RUN apt-get update -y \

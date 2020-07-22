@@ -18,6 +18,7 @@ RUN apt-get update -y \
     && add-apt-repository ppa:jonathonf/python-3.6 -y \
     && apt-get update -y \
     && apt-get install -y --no-install-recommends \
+        git \
         wget \
         python3.6 \
         python3.6-dev \

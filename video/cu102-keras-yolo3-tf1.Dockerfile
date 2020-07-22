@@ -16,6 +16,7 @@ RUN apt-get update -y \
         pkg-config \
     && pip install -U setuptools \
     && pip --no-cache-dir install \
+        numpy \
         pandas \
         opencv-python \
         opencv-contrib-python \

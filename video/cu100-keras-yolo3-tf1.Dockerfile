@@ -5,6 +5,8 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda100-cudnn7-py36-ubuntu1804
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装基础库, opencv
+# keras与tensorflow的版本对应关系：
+# https://blog.csdn.net/weixin_40109345/article/details/106730050
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         libglib2.0-0 \
@@ -19,7 +21,7 @@ RUN apt-get update -y \
         opencv-contrib-python \
         imageio-ffmpeg \
         tensorflow-gpu==1.15 \
-        keras \
+        keras=2.3.1 \
         pillow \
         cython \
         tqdm

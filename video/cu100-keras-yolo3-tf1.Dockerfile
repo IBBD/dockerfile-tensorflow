@@ -21,7 +21,7 @@ RUN apt-get update -y \
         opencv-contrib-python \
         imageio-ffmpeg \
         tensorflow-gpu==1.15 \
-        keras=2.3.1 \
+        keras==2.3.1 \
         pillow \
         cython \
         tqdm

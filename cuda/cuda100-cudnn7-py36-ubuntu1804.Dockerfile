@@ -26,11 +26,7 @@ RUN pip install -U setuptools \
     && pip --no-cache-dir install \
         numpy \
         scipy \
-        scikit-learn \
-        matplotlib \
-        fastapi \
-        uvicorn \
-        python-multipart
+        scikit-learn 
 
 # 终端设置
 # 默认值是dumb，这时在终端操作时可能会出现：

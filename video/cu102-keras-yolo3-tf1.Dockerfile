@@ -18,6 +18,7 @@ RUN apt-get update -y \
     && pip --no-cache-dir install \
         numpy \
         pandas \
+        matplotlib \
         opencv-python \
         opencv-contrib-python \
         imageio-ffmpeg \

@@ -33,7 +33,7 @@ RUN pip3 --no-cache-dir install mmcv-full cython \
 RUN pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
     && pip3 --no-cache-dir install git+https://github.com/ibbd-dev/python-ibbd-algo.git \
     && pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-image-utils/raw/master/requirements.txt \
-    && --no-cache-dir pip3 install git+https://github.com/ibbd-dev/python-image-utils.git
+    && pip3 --no-cache-dir install git+https://github.com/ibbd-dev/python-image-utils.git
 
 # download models
 # pose_resnet_50: 0.718@AP 280ms

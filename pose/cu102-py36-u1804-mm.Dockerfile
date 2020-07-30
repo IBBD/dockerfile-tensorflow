@@ -36,13 +36,18 @@ RUN pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-ibbd-algo/
     && pip3 --no-cache-dir install git+https://github.com/ibbd-dev/python-image-utils.git
 
 # download models
+# Top-Down Method:
 # pose_resnet_50: 0.718@AP 280ms
 # hrnet_w32: 0.746@AP 540ms
 # hrnet_w48: 0.756@AP 660ms
 # dark_pose_resnet_50: 0.724@AP
+# Bottom-Up Method:
 RUN mkdir /models \
     && cd /models \
     && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/top_down/resnet/res50_coco_256x192-ec54d7f3_20200709.pth \
     && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/top_down/hrnet/hrnet_w32_coco_256x192-c78dce93_20200708.pth \
     && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/top_down/hrnet/hrnet_w48_coco_256x192-b9e0b3ab_20200708.pth \
-    && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/top_down/resnet/res50_coco_256x192_dark-43379d20_20200709.pth
+    && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/top_down/resnet/res50_coco_256x192_dark-43379d20_20200709.pth \
+    && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/bottom_up/higher_hrnet32_coco_512x512-8ae85183_20200713.pth \
+    && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/bottom_up/higher_hrnet32_coco_640x640-a22fe938_20200712.pth \
+    && wget https://openmmlab.oss-cn-hangzhou.aliyuncs.com/mmpose/bottom_up/higher_hrnet48_coco_512x512-60fedcbc_20200712.pth

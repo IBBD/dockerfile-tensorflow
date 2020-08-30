@@ -28,7 +28,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # Cupy: https://github.com/cupy/cupy
 RUN pip3 --no-cache-dir install torch torchvision \
     && pip3 --no-cache-dir install cupy-cuda102 \
-    && pip3 --no-cache-dir install visdom thop torchcontrib \
+    && pip3 --no-cache-dir install visdom thop torchcontrib
 
 # Paddle独立成一个单独的Notebook
 # install PaddlePaddle

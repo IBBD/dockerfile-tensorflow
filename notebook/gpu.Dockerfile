@@ -24,8 +24,11 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # thop: 模型参数及计算量统计
 # RUN pip3 install torch==1.5.0+cu101 torchvision==0.6.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
 # torchcontrib: https://github.com/pytorch/contrib
-RUN pip3 --no-cache-dir install torch==1.5.1+cu101 torchvision==0.6.1+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
-    && pip3 --no-cache-dir install visdom thop torchcontrib
+# RUN pip3 --no-cache-dir install torch==1.6.0+cu101 torchvision==0.7.0+cu101 -f https://download.pytorch.org/whl/torch_stable.html \
+# Cupy: https://github.com/cupy/cupy
+RUN pip3 --no-cache-dir install torch torchvision \
+    && pip3 --no-cache-dir install cupy-cuda102 \
+    && pip3 --no-cache-dir install visdom thop torchcontrib \
 
 # Paddle独立成一个单独的Notebook
 # install PaddlePaddle

@@ -136,6 +136,7 @@ RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
         nni
 
 # 安装ocr工具
+"""
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         tesseract-ocr \
@@ -145,6 +146,7 @@ RUN apt-get update -y \
     && pip3 --no-cache-dir install pytesseract
 
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+"""
 
 # 安装自有工具
 RUN pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \

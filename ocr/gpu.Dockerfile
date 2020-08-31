@@ -16,12 +16,12 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 #        tesseract-ocr \
 #        tesseract-ocr-chi-sim \
 #        tesseract-ocr-chi-tra \
-# opencv 4.4 报错：
+# opencv4.4 报错：(切换回4.3还是会报错)
 # ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 # 需要安装：libgl1-mesa-glx
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
-        libglib2.0-0 libsm6 libxext-dev libxrender1 \
+        libglib2.0-0 libsm6 libxext-dev libxrender1 libgl1-mesa-glx \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
@@ -52,7 +52,7 @@ RUN pip3 --no-cache-dir install \
         easydict \
         pillow \
         scikit-learn \
-        opencv-python<4.4 \
+        opencv-python \
         torch torchvision \
         fastapi \
         uvicorn \

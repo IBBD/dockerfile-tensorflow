@@ -1,5 +1,5 @@
 #
-# cuda10.2 cudnn7 python3.6 ubuntu18.04 Dockerfile
+# cuda10.2 cudnn7 python3.7 ubuntu18.04 Dockerfile
 # 安装基础包及工具
 
 # Pull base image.
@@ -9,6 +9,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.7, pip, git等
+# 安装pip时报错：ModuleNotFoundError: No module named 'distutils.util'
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \

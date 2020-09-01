@@ -137,17 +137,15 @@ RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
         nni
 
 # 安装ocr工具
-"""
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends \
-        tesseract-ocr \
-        tesseract-ocr-chi-sim \
-        tesseract-ocr-chi-tra \
-    && rm -rf /var/lib/apt/lists/* \
-    && pip3 --no-cache-dir install pytesseract
-
-COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
-"""
+# RUN apt-get update -y \
+#    && apt-get install -y --no-install-recommends \
+#        tesseract-ocr \
+#        tesseract-ocr-chi-sim \
+#        tesseract-ocr-chi-tra \
+#    && rm -rf /var/lib/apt/lists/* \
+#    && pip3 --no-cache-dir install pytesseract
+#
+#COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装自有工具
 RUN pip3 --no-cache-dir install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \
@@ -172,7 +170,7 @@ RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
 
 # fix
 # ModuleNotFoundError: No module named 'keyring.util.escape'
-RUN pip3 install --upgrade pip \
-    && pip3 install --upgrade keyrings.alt 
+#RUN pip3 install --upgrade pip \
+#    && pip3 install --upgrade keyrings.alt 
 
 CMD ["bash", "-c", "source /etc/bash.bashrc && jupyter lab --notebook-dir=/tf --ip 0.0.0.0 --no-browser --allow-root"]

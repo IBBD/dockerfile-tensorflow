@@ -56,7 +56,8 @@ RUN pip3 --no-cache-dir install \
         torch torchvision \
         fastapi \
         uvicorn \
-        python-multipart
+        python-multipart \
+    && python3 -c "import cv2"
 
 # install paddle
 # 约400M

@@ -10,17 +10,17 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # 安装git等
 # install tesseract
 # opencv依赖：libglib2.0-0, libsm6
+#        tesseract-ocr \
+#        tesseract-ocr-chi-sim \
+#        tesseract-ocr-chi-tra \
 RUN apt-get update -y \
     && apt-get install -y build-essential \
-        libglib2.0-0 libsm6 libxrender1 \
+        libglib2.0-0 libsm6 libxrender1 libgl1-mesa-glx \
         curl \
-        tesseract-ocr \
-        tesseract-ocr-chi-sim \
-        tesseract-ocr-chi-tra \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
-COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+# COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装基础库
 # opencv-contrib-python==3.4.2.16 \
@@ -28,18 +28,19 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 # tensorflow==1.14 \
 # tensorflow-gpu==1.14 \
 # keras \
+#        scikit-image \
+#        torch torchvision \
+#        pytesseract
+#        Cython \
+#        pandas \
 RUN pip3 --no-cache-dir install \
-        pandas \
+        numpy \
         easydict \
-        Cython \
         opencv-python \
         h5py \
         lmdb \
         lxml \
-        bs4 \
-        scikit-image \
-        torch torchvision \
-        pytesseract
+        bs4
 
 # install darknet
 # RUN cd / \

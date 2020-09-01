@@ -72,6 +72,7 @@ RUN apt-get update -y \
         htop \
         poppler-utils \
         ffmpeg dvipng \
+        libgl1-mesa-glx \
     && pip3 --no-cache-dir install \
         yellowbrick \
         opencv-python \

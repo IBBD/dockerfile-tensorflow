@@ -7,29 +7,32 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # 安装基础库, opencv
 # keras与tensorflow的版本对应关系：
 # https://blog.csdn.net/weixin_40109345/article/details/106730050
+# opencv新增依赖：libgl1-mesa-glx
+#    && pip install -U setuptools \
+#        opencv-contrib-python \
+#        imageio-ffmpeg \
+#        pandas \
+#        cython \
+#        tqdm \
+#        pkg-config \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         libglib2.0-0 \
         libsm6 \
         libxrender1 \
         libxext-dev \
-        pkg-config \
-    && pip install -U setuptools \
+        libgl1-mesa-glx \
     && pip --no-cache-dir install \
         numpy \
-        pandas \
         matplotlib \
         opencv-python \
-        opencv-contrib-python \
-        imageio-ffmpeg \
         tensorflow-gpu==1.15 \
         keras==2.3.1 \
         pillow \
-        cython \
-        tqdm \
         fastapi \
         uvicorn \
-        python-multipart
+        python-multipart \
+    && python3 -c "import cv2"
 
 # 安装自有工具
 RUN pip install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \

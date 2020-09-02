@@ -118,6 +118,7 @@ RUN pip3 --no-cache-dir install jieba jieba-fast gensim \
 # 保存成excel文件时需要：openpyxl
 #        notebook-as-pdf \
 #    && pyppeteer-install
+# imgaug: 图像数据扩增工具
 RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
     && pip3 --no-cache-dir install eli5 PDPbox shap \
     && pip3 --no-cache-dir install xgboost \
@@ -135,7 +136,8 @@ RUN pip3 --no-cache-dir install convertdate pystan fbprophet \
         diff-match-patch \
         pypdf4 \
         tensorflow-model-optimization \
-        nni
+        nni \
+        imgaug
 
 # 安装ocr工具
 # RUN apt-get update -y \

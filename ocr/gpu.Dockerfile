@@ -46,6 +46,7 @@ RUN apt-get update -y \
 #        bs4 \
 #        pytesseract \
 #        scikit-image \
+#        torch torchvision \
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
@@ -53,10 +54,11 @@ RUN pip3 --no-cache-dir install \
         pillow \
         scikit-learn \
         opencv-python \
-        torch torchvision \
         fastapi \
         uvicorn \
         python-multipart \
+        pyclipper \
+        shapely \
     && python3 -c "import cv2"
 
 # install paddle

@@ -1,14 +1,13 @@
-# 在Tensorflow Notebook常用的包的基础上加装：
+# 在Base Notebook常用的包的基础上加装：
+# 0. pytorch, paddlepaddle, tensorflow
 # 1. nlp类：jieba, gensim, fastText, pytext
 # 2. 时间序列：prophet
 # 3. 模型可解释性：eli5, pdpbox, shap
 # 4. xgboost, lightgbm, catboost, lightnig
-# 5. pytorch, keras
-# 6. opencv
-# 7. 图关系：networkx, igraph
-# 8. 其他：sk-disk
-# 9. pytorch, paddlepaddle
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:gpu-base
+# 5. opencv
+# 6. 图关系：networkx, igraph
+# 7. 其他：sk-disk
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/notebook:base
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
@@ -28,7 +27,8 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # Cupy: https://github.com/cupy/cupy
 RUN pip3 --no-cache-dir install torch torchvision \
     && pip3 --no-cache-dir install cupy-cuda102 \
-    && pip3 --no-cache-dir install visdom thop torchcontrib
+    && pip3 --no-cache-dir install visdom thop torchcontrib \
+    && pip3 --no-cache-dir install tensorflow
 
 # Paddle独立成一个单独的Notebook
 # install PaddlePaddle
@@ -55,6 +55,7 @@ RUN pip3 --no-cache-dir install torch torchvision \
 # keras已经内置在tf中
 # 网络关系挖掘包：networkx python-igraph 
 # graphviz实际上是一个绘图工具，可以根据dot脚本画出树形图等
+#        sk-dist \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         build-essential \
@@ -81,8 +82,8 @@ RUN apt-get update -y \
         graphviz \
         prettytable \
         pyarrow fastparquet \
-        sk-dist \
         datasketch \
+    && python3 -c "import cv2" \
     && apt-get autoremove -y \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*

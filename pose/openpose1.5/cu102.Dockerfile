@@ -66,9 +66,11 @@ COPY --from=build /openpose/build/caffe /opt/openpose/caffe
 # Building Linux wheels for Python 3.6 requires a compiler (e.g gcc).
 # But scikit-build does *NOT* know how to install it on ubuntu
 #     pip3 install --upgrade pip
+# ImportError: libGL.so.1: cannot open shared object file
+#     apt install libgl1-mesa-glx
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
-    libgflags2.2 liblmdb0 libgoogle-glog0v5 libatlas3-base libhdf5-100 libsnappy1v5 libleveldb1v5 libprotobuf10 libsm6 \
+    libgflags2.2 liblmdb0 libgoogle-glog0v5 libatlas3-base libhdf5-100 libsnappy1v5 libleveldb1v5 libprotobuf10 libsm6 libgl1-mesa-glx \
     python3 python3-numpy python3-pip python3-setuptools \
     libopencv-core3.2 libopencv-video3.2 libopencv-calib3d3.2 libopencv-objdetect3.2 \
     libopencv-highgui3.2 libopencv-videoio3.2 libopencv-imgcodecs3.2 libopencv-imgproc3.2 \

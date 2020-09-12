@@ -80,6 +80,7 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/* && \
     pip3 install --upgrade pip && \
     pip3 install opencv-python Pillow && \
+    python3 -c "import cv2" && \
     echo "QT_X11_NO_MITSHM=1" >> /etc/environment && \
     echo "/opt/openpose/lib" >  /etc/ld.so.conf.d/openpose.conf && \
     echo "/opt/openpose/caffe/lib" >  /etc/ld.so.conf.d/caffe.conf && \

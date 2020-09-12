@@ -62,6 +62,10 @@ COPY --from=build /openpose/build/caffe /opt/openpose/caffe
 # Install the runtime libraries. We don't need the dev packages.
 # ModuleNotFoundError: No module named 'skbuild'
 #     pip3 install scikit-build cmake
+# scikit-build could not get a working generator for your system. Aborting build.
+# Building Linux wheels for Python 3.6 requires a compiler (e.g gcc).
+# But scikit-build does *NOT* know how to install it on ubuntu
+#     pip3 install --upgrade pip
 RUN apt-get update && \
     DEBIAN_FRONTEND=noninteractive apt-get install -y --no-install-recommends \
     libgflags2.2 liblmdb0 libgoogle-glog0v5 libatlas3-base libhdf5-100 libsnappy1v5 libleveldb1v5 libprotobuf10 libsm6 \
@@ -72,7 +76,7 @@ RUN apt-get update && \
     && \
     apt-get clean && \
     rm -rf /var/lib/apt/lists/* && \
-    pip3 install scikit-build cmake && \
+    pip3 install --upgrade pip && \
     pip3 install opencv-python Pillow && \
     echo "QT_X11_NO_MITSHM=1" >> /etc/environment && \
     echo "/opt/openpose/lib" >  /etc/ld.so.conf.d/openpose.conf && \

@@ -6,7 +6,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/prince/alpine-bash
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 ENV VERSION=1.4.0
-ENV INSTALL_DIR /usr/local/go-fastdfs
+ENV INSTALL_DIR /dfs
 ENV PATH $PATH:$INSTALL_DIR/
 ENV GO_FASTDFS_DIR $INSTALL_DIR/data
 

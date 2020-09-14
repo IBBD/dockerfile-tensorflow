@@ -10,10 +10,8 @@ ENV INSTALL_DIR /usr/local/go-fastdfs
 ENV PATH $PATH:$INSTALL_DIR/
 ENV GO_FASTDFS_DIR $INSTALL_DIR/data
 
-RUN apt-get update -y \
-    && apt-get install -y --no-install-recommends \
-        wget \
-    && rm -rf /var/lib/apt/lists/* \
+RUN apk update \
+    && apk --no-cache add wget \
     && mkdir -p $GO_FASTDFS_DIR \
     && mkdir -p $GO_FASTDFS_DIR/conf \
     && mkdir -p $GO_FASTDFS_DIR/data \

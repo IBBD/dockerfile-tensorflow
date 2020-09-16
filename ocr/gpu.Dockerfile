@@ -60,6 +60,7 @@ RUN pip3 --no-cache-dir install \
         python-multipart \
         pyclipper \
         shapely \
+        torch torchvision \
     && python3 -c "import cv2"
 
 # install paddle

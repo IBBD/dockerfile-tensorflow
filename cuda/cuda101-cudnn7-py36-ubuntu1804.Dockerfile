@@ -19,6 +19,7 @@ RUN apt-get update -y \
     && wget https://bootstrap.pypa.io/get-pip.py \
     && python3 get-pip.py \
     && rm get-pip.py \
+    && alias cpip='pip install -i https://pypi.tuna.tsinghua.edu.cn/simple' \
     && rm -rf /var/lib/apt/lists/*
 
 # 终端设置

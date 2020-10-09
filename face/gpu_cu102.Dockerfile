@@ -20,6 +20,9 @@ RUN pip3 --no-cache-dir install \
         scikit-image \
         opencv-python \
         mxnet-cu102 \
+        fastapi \
+        uvicorn \
+        python-multipart \
     && python3 -c "import cv2"
 
 # 安装ibbd相关的基础模块

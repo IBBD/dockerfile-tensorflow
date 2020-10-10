@@ -1,5 +1,5 @@
 #
-# cuda10.2 cudnn7 python3.6 ubuntu18.04 Dockerfile
+# cuda10.2 cudnn7 python3.8 ubuntu20.04 Dockerfile
 # 安装基础包及工具
 
 # Pull base image.

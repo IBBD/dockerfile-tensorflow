@@ -8,7 +8,7 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda-base:cuda102-cudnn7-u2004
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
-# 安装Python3.6, pip, git等
+# 安装Python3.8, pip, git等
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \

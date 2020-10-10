@@ -15,7 +15,14 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 安装基础库
-RUN pip3 --no-cache-dir install \
+# mxnet: 有问题会报错
+# OSError: libgomp.so.1: cannot open shared object file: libgomp1
+# OSError: libquadmath.so.0: cannot open shared object file: libquadmath0
+RUN apt-get update -y \
+    && apt-get install -y --no-install-recommends \
+        libgomp1 libquadmath0 \
+    && rm -rf /var/lib/apt/lists/* \
+    && pip3 --no-cache-dir install \
         numpy \
         scikit-learn \
         scikit-image \

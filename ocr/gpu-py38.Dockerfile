@@ -4,7 +4,7 @@
 
 # 使用runtime报错：
 # Error: Failed to find dynamic library: libcublas.so 
-FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py38-ubuntu2004
+FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py38-ubuntu2004-dev
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 

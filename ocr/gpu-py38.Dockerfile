@@ -13,19 +13,19 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # opencv依赖：libglib2.0-0, libsm6, libxext-dev
 #        curl \
 #        build-essential \
-#        tesseract-ocr \
-#        tesseract-ocr-chi-sim \
-#        tesseract-ocr-chi-tra \
 # opencv4.4 报错：(切换回4.3还是会报错)
 # ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 # 需要安装：libgl1-mesa-glx
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         libglib2.0-0 libsm6 libxext-dev libxrender1 libgl1-mesa-glx \
+        tesseract-ocr \
+        tesseract-ocr-chi-sim \
+        tesseract-ocr-chi-tra \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
-# COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 安装基础库
 # 约830M

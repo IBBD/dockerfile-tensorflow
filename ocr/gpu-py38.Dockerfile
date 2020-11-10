@@ -44,9 +44,6 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 #        lmdb \
 #        lxml \
 #        bs4 \
-#        pytesseract \
-#        scikit-image \
-#        torch torchvision \
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
@@ -60,6 +57,7 @@ RUN pip3 --no-cache-dir install \
         pyclipper \
         shapely \
         torch torchvision \
+        pytesseract \
     && python3 -c "import cv2"
 
 # install paddle
@@ -67,7 +65,7 @@ RUN pip3 --no-cache-dir install \
 # 20201105: 1.7.2安装失败
 # RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107
 # RUN pip3 --no-cache-dir install paddlepaddle-gpu==2.0.0b0 -i https://mirror.baidu.com/pypi/simple
-RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post97
+RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post107
 
 # 安装ibbd相关的基础模块
 RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \

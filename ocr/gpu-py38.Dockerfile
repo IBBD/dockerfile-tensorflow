@@ -51,9 +51,8 @@ RUN pip3 --no-cache-dir install \
         pillow \
         scikit-learn \
         opencv-python \
-        fastapi \
-        uvicorn \
-        python-multipart \
+        fastapi uvicorn python-multipart \
+        gunicorn uvloop httptools \
         pyclipper \
         shapely \
         torch torchvision \

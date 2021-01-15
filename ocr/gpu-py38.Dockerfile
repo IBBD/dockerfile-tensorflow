@@ -23,7 +23,7 @@ RUN apt-get update -y \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
         tesseract-ocr-chi-tra \
-        ethtool, net-tools \
+        ethtool net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file

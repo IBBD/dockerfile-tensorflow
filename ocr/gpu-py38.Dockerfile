@@ -16,12 +16,14 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # opencv4.4 报错：(切换回4.3还是会报错)
 # ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 # 需要安装：libgl1-mesa-glx
+# ethtool: 获取硬件信息时依赖
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         libglib2.0-0 libsm6 libxext-dev libxrender1 libgl1-mesa-glx \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
         tesseract-ocr-chi-tra \
+        ethtool \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
@@ -44,7 +46,6 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 #        lmdb \
 #        lxml \
 #        bs4 \
-# ethtool: 获取硬件信息时依赖
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
@@ -58,7 +59,6 @@ RUN pip3 --no-cache-dir install \
         shapely \
         torch torchvision \
         pytesseract \
-        ethtool \
     && python3 -c "import cv2"
 
 # install paddle

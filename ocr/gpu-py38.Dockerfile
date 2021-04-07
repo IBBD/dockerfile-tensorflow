@@ -10,6 +10,7 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
 # 安装依赖软件
 # install tesseract
+# tesseract version: 4.1.1
 # opencv依赖：libglib2.0-0, libsm6, libxext-dev
 #        curl \
 #        build-essential \
@@ -49,9 +50,11 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
+        scipy \
         easydict \
         pillow \
         scikit-learn \
+        scikit-image \
         opencv-python \
         fastapi uvicorn python-multipart \
         gunicorn uvloop httptools \

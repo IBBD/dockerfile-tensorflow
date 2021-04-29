@@ -8,6 +8,15 @@ FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py38-ubuntu2004-
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# install paddle
+# 约400M
+# 20201105: 1.7.2安装失败
+# RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107
+# RUN pip3 --no-cache-dir install paddlepaddle-gpu==2.0.0b0 -i https://mirror.baidu.com/pypi/simple
+# 20210408: 依赖pytest
+RUN pip3 install --no-cache-dir pytest \
+    && pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post107
+
 # 安装依赖软件
 # install tesseract
 # tesseract version: 4.1.1
@@ -64,15 +73,6 @@ RUN pip3 --no-cache-dir install \
         pytesseract \
         fuzzywuzzy python-Levenshtein \
     && python3 -c "import cv2"
-
-# install paddle
-# 约400M
-# 20201105: 1.7.2安装失败
-# RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107
-# RUN pip3 --no-cache-dir install paddlepaddle-gpu==2.0.0b0 -i https://mirror.baidu.com/pypi/simple
-# 20210408: 依赖pytest
-RUN pip3 install --no-cache-dir pytest \
-    && pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post107
 
 # 安装ibbd相关的基础模块
 RUN pip3 install -r https://github.com/ibbd-dev/python-ibbd-algo/raw/master/requirements.txt \

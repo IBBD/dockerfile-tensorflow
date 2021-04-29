@@ -62,6 +62,7 @@ RUN pip3 --no-cache-dir install \
         shapely \
         torch torchvision \
         pytesseract \
+        fuzzywuzzy python-Levenshtein \
     && python3 -c "import cv2"
 
 # install paddle

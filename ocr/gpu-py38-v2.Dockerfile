@@ -1,6 +1,6 @@
 #
 # gpu Dockerfile
-#
+# v2: 20210728
 
 # 使用runtime报错：
 # Error: Failed to find dynamic library: libcublas.so
@@ -14,8 +14,11 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 # RUN pip3 --no-cache-dir install paddlepaddle-gpu==1.7.2.post107
 # RUN pip3 --no-cache-dir install paddlepaddle-gpu==2.0.0b0 -i https://mirror.baidu.com/pypi/simple
 # 20210408: 依赖pytest
-RUN pip3 install --no-cache-dir pytest \
-    && pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post107
+# RUN pip3 install --no-cache-dir pytest \
+#     && pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post107
+# 20210728: paddle2.0以上
+RUN pip3 install paddlepaddle-gpu -i https://mirror.baidu.com/pypi/simple \
+    && pip3 install paddleocr -i https://mirror.baidu.com/pypi/simple
 
 # 安装依赖软件
 # install tesseract
@@ -33,7 +36,6 @@ RUN apt-get update -y \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
         tesseract-ocr-chi-tra \
-        ethtool net-tools \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
@@ -56,6 +58,7 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 #        lmdb \
 #        lxml \
 #        bs4 \
+#        torch torchvision \
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
@@ -69,7 +72,6 @@ RUN pip3 --no-cache-dir install \
         gunicorn uvloop httptools \
         pyclipper \
         shapely \
-        torch torchvision \
         pytesseract \
         fuzzywuzzy python-Levenshtein \
     && python3 -c "import cv2"

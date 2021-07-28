@@ -6,7 +6,10 @@
 # Error: Failed to find dynamic library: libcublas.so
 FROM registry.cn-hangzhou.aliyuncs.com/ibbd/cuda:cuda102-cudnn7-py38-ubuntu2004-dev
 
-MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+LABEL user="Alex Cai"
+LABEL email="cyy0523xc@gmail.com"
+LABEL version="2.0"
+LABEL description="v2-20210728"
 
 # install paddle
 # 约400M

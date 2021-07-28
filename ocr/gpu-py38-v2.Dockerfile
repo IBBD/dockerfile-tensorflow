@@ -20,6 +20,8 @@ LABEL description="v2-20210728"
 # RUN pip3 install --no-cache-dir pytest \
 #     && pip3 --no-cache-dir install paddlepaddle-gpu==1.8.5.post107
 # 20210728: paddle2.0以上
+# paddlepaddle_gpu-2.1.1
+# paddleocr-2.0.6
 RUN pip3 install paddlepaddle-gpu -i https://mirror.baidu.com/pypi/simple \
     && pip3 install paddleocr -i https://mirror.baidu.com/pypi/simple
 
@@ -44,8 +46,13 @@ RUN apt-get update -y \
 # add ocr file
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
+# 阿里云的源是比较快的
+# RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+# RUN pip3 config set global.index-url http://mirrors.cloud.tencent.com/pypi/simple
+# RUN pip3 config set global.index-url http://pypi.douban.com/simple/
+# RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
 # 安装基础库
-# 约830M
 # EasyDict可以让你像访问属性一样访问dict里的变量
 # LMDB文件可以同时由多个进程打开，具有极高的数据存取速度，访问简单，不需要运行单独的数据库管理进程，只要在访问数据的代码里引用LMDB库，访问时给文件路径即可。
 # h5py: 操作HDF5

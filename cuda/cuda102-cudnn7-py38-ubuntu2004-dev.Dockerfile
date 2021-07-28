@@ -9,7 +9,9 @@ MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.8, pip, git等
-RUN apt-get update -y \
+RUN rm -rf /etc/apt/sources.list.d/ \
+    && mkdir /etc/apt/sources.list.d/ \
+    && apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
         wget \

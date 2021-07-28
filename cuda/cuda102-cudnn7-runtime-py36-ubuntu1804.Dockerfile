@@ -10,7 +10,9 @@ ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.6, pip, git等
 #    && pip3 install -U setuptools \
-RUN apt-get update -y \
+RUN rm -rf /etc/apt/sources.list.d/ \
+    && mkdir /etc/apt/sources.list.d/ \
+    && apt-get update -y \
     && apt-get install -y --no-install-recommends \
         git \
         wget \

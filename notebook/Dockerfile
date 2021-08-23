@@ -53,28 +53,9 @@ RUN apt-get update -y \
         tesseract-ocr \
         tesseract-ocr-chi-sim \
         tesseract-ocr-chi-tra \
-    && rm -rf /var/lib/apt/lists/* \
     && conda install -c conda-forge -y tesseract
 
 COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
-
-# install nodejs
-RUN apt-get update -y \
-    && apt-get install -y git curl wget \
-    && wget https://deb.nodesource.com/setup_12.x \
-    && bash setup_12.x \
-    && rm -f setup_12.x \
-    && apt-get install -y nodejs
-
-# https://github.com/krassowski/jupyterlab-lsp
-# debugger依赖于：ptvsd,  xeus-python
-RUN conda install -y jupyter-lsp \
-    && jupyter labextension install -y @krassowski/jupyterlab-lsp \
-    && conda install -y python-language-server[all] \
-    && conda install -y jupyterlab-git \
-    && jupyter labextension install @jupyterlab/debugger \
-    && conda install -y ptvsd \
-    && conda install -y xeus-python
 
 # 原来的用户
 USER jovyan
@@ -84,12 +65,14 @@ USER jovyan
 # /opt/conda/lib/python3.7/site-packages
 # ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
 # ENV mpl_path /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
-ENV matplotlibrc /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/matplotlibrc
-ENV mpl_path /opt/conda/lib/python3.7/site-packages/matplotlib/mpl-data/fonts/ttf/
+# `find /opt/conda/lib/ -maxdepth 1 -name python3.*`
+# output: /opt/conda/lib/python3.9
+ENV matplotlibrc `find /opt/conda/lib/ -maxdepth 1 -name python3.*`/site-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path `find /opt/conda/lib/ -maxdepth 1 -name python3.*`/site-packages/matplotlib/mpl-data/fonts/ttf/
 ADD ./SimHei.ttf "$mpl_path"
 RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
-    && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc" 
+    && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc"
 
 # install nbgrader
 # https://nbgrader.readthedocs.io/en/stable/user_guide/installation.html

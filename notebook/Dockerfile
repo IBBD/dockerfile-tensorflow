@@ -8,6 +8,16 @@ FROM jupyter/tensorflow-notebook
 
 MAINTAINER Alex Cai "cyy0523xc@gmail.com"
 
+# conda国内源
+RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+
+# pip国内源
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+# RUN pip3 config set global.index-url http://mirrors.cloud.tencent.com/pypi/simple
+# RUN pip3 config set global.index-url http://pypi.douban.com/simple/
+# RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
+
 # update conda
 # https://anaconda.org/anaconda/conda
 # RUN conda update -n base -qy conda
@@ -27,35 +37,35 @@ RUN conda install --quiet --yes jieba gensim prettytable fasttext nltk
 # yellowbrick \
 # Initial quick solve with frozen env failed. Unfreezing env and trying again.
 # 保存成excel文件时需要：openpyxl
+# networkx: 默认已经有这个
+#        pydotplus \
+#        python-graphviz \
+#        python-igraph \
+#        pdf2image \
+#        mlflow \
 RUN conda install -c conda-forge -y \
         opencv \
-        pydotplus \
-        python-graphviz \
-        networkx \
-        python-igraph \
-        pdf2image \
-        mlflow \
         openpyxl \
         fuzzywuzzy \
         python-Levenshtein \
     && conda install -c conda-forge -y pyarrow fastparquet
 
 # install 时间序列&关系网络
-RUN conda install -c conda-forge -y fbprophet networkx
+# RUN conda install -c conda-forge -y fbprophet
 
 # 安装ocr时报错:
 # List directory /var/lib/apt/lists/partial is missing. - Acquire (13: Permission denied)
 USER root
 
 # 安装ocr工具
-RUN apt-get update -y \
-    && apt-get install -y \
-        tesseract-ocr \
-        tesseract-ocr-chi-sim \
-        tesseract-ocr-chi-tra \
-    && conda install -c conda-forge -y tesseract
+#RUN apt-get update -y \
+#    && apt-get install -y \
+#        tesseract-ocr \
+#        tesseract-ocr-chi-sim \
+#        tesseract-ocr-chi-tra \
+#    && conda install -c conda-forge -y tesseract
 
-COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+#COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 原来的用户
 USER jovyan

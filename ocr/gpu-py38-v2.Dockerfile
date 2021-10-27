@@ -69,6 +69,7 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 #        lxml \
 #        bs4 \
 #        torch torchvision \
+# 20211027 flashtext: 高效的文本处理工具
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
@@ -84,6 +85,7 @@ RUN pip3 --no-cache-dir install \
         shapely \
         pytesseract \
         fuzzywuzzy python-Levenshtein \
+        flashtext \
     && python3 -c "import cv2"
 
 # 安装ibbd相关的基础模块

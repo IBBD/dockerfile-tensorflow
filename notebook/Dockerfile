@@ -28,8 +28,8 @@ RUN conda update --all -y
 RUN conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch
 
 # install nlp工具
-# install jieba, fasttext, gensim, nltk
-RUN conda install --quiet --yes jieba gensim prettytable fasttext nltk
+# install jieba, fasttext, gensim
+RUN conda install --quiet --yes jieba gensim fasttext
 
 # 附加工具
 # yellowbrick: Visual analysis and diagnostic tools to facilitate machine learning model selection. 可视化分析
@@ -48,7 +48,7 @@ RUN conda install -c conda-forge -y \
         openpyxl \
         fuzzywuzzy \
         python-Levenshtein \
-    && conda install -c conda-forge -y pyarrow fastparquet
+        flashtext
 
 # install 时间序列&关系网络
 # RUN conda install -c conda-forge -y fbprophet

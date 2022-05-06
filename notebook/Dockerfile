@@ -53,20 +53,6 @@ RUN conda install -c conda-forge -y \
 # install 时间序列&关系网络
 # RUN conda install -c conda-forge -y fbprophet
 
-# 安装ocr时报错:
-# List directory /var/lib/apt/lists/partial is missing. - Acquire (13: Permission denied)
-USER root
-
-# 安装ocr工具
-#RUN apt-get update -y \
-#    && apt-get install -y \
-#        tesseract-ocr \
-#        tesseract-ocr-chi-sim \
-#        tesseract-ocr-chi-tra \
-#    && conda install -c conda-forge -y tesseract
-
-#COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
-
 # 原来的用户
 USER jovyan
 

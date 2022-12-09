@@ -8,8 +8,9 @@ FROM jupyter/tensorflow-notebook
 
 LABEL maintainer="Alex Cai <cyy0523xc@gmail.com>"
 
-# conda国内源
 # 使用在线编译时可以使用国外节点，则不要开始就设置国内源
+# 如果使用本地编译，则应该开启国内源
+# conda国内源
 # RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
 # RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
 # pip使用阿里云的比较好

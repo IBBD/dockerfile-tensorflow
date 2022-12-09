@@ -9,11 +9,11 @@ FROM jupyter/tensorflow-notebook
 LABEL maintainer="Alex Cai <cyy0523xc@gmail.com>"
 
 # conda国内源
-RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
-RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
-
-# pip国内源
-RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+# 使用在线编译时可以使用国外节点，则不要开始就设置国内源
+# RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+# RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+# pip使用阿里云的比较好
+# RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 # RUN pip3 config set global.index-url http://mirrors.cloud.tencent.com/pypi/simple
 # RUN pip3 config set global.index-url http://pypi.douban.com/simple/
 # RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
@@ -53,6 +53,13 @@ RUN conda install -c conda-forge -y \
 
 # install 时间序列&关系网络
 # RUN conda install -c conda-forge -y fbprophet
+
+# conda国内源
+RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
+RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/main/
+
+# pip国内源
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 
 # 原来的用户
 USER jovyan

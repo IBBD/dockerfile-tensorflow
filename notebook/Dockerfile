@@ -6,7 +6,7 @@
 # Pull base image.
 FROM jupyter/tensorflow-notebook
 
-MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+LABEL maintainer="Alex Cai <cyy0523xc@gmail.com>"
 
 # conda国内源
 RUN conda config --add channels https://mirrors.ustc.edu.cn/anaconda/pkgs/free/
@@ -25,7 +25,8 @@ RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 RUN conda update --all -y
 
 # 安装pytorch
-RUN conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch
+# RUN conda install --quiet --yes pytorch-cpu torchvision-cpu -c pytorch
+RUN conda install --quiet --yes pytorch torchvision torchaudio cpuonly -c pytorch
 
 # install nlp工具
 # install jieba, fasttext, gensim
@@ -59,12 +60,8 @@ USER jovyan
 # 配置matplotlib
 # ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
 # /opt/conda/lib/python3.7/site-packages
-# ENV matplotlibrc /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/matplotlibrc
-# ENV mpl_path /usr/local/lib/python3.5/dist-packages/matplotlib/mpl-data/fonts/ttf/
-# `find /opt/conda/lib/ -maxdepth 1 -name python3.*`
-# output: /opt/conda/lib/python3.9
-ENV matplotlibrc `find /opt/conda/lib/ -maxdepth 1 -name python3.*`/site-packages/matplotlib/mpl-data/matplotlibrc
-ENV mpl_path `find /opt/conda/lib/ -maxdepth 1 -name python3.*`/site-packages/matplotlib/mpl-data/fonts/ttf/
+ENV matplotlibrc /opt/conda/lib/python`python3 -V|sed -r "s/.*?(3\.[0-9]+).*/\1/"`/site-packages/matplotlib/mpl-data/matplotlibrc
+ENV mpl_path /opt/conda/lib/python`python3 -V|sed -r "s/.*?(3\.[0-9]+).*/\1/"`/site-packages/matplotlib/mpl-data/fonts/ttf/
 ADD ./SimHei.ttf "$mpl_path"
 RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \

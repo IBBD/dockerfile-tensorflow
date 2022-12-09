@@ -1,4 +1,4 @@
-# Python 3.7
+# Python 3.10
 # base image: tensorflow-notebook
 # add pytorch, jieba, fasttext, gensim, nltk
 #
@@ -66,12 +66,12 @@ USER jovyan
 # 配置matplotlib
 # ENV matplotlibrc `python3 -c "import matplotlib;print(matplotlib.matplotlib_fname())"`
 # /opt/conda/lib/python3.7/site-packages
-ENV matplotlibrc /opt/conda/lib/python`python3 -V|sed -r "s/.*?(3\.[0-9]+).*/\1/"`/site-packages/matplotlib/mpl-data/matplotlibrc
-ENV mpl_path /opt/conda/lib/python`python3 -V|sed -r "s/.*?(3\.[0-9]+).*/\1/"`/site-packages/matplotlib/mpl-data/fonts/ttf/
-ADD ./SimHei.ttf "$mpl_path"
-RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
-    && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
-    && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc"
+# ENV matplotlibrc /opt/conda/lib/python`python3 -V|sed -r "s/.*?(3\.[0-9]+).*/\1/"`/site-packages/matplotlib/mpl-data/matplotlibrc
+# ENV mpl_path /opt/conda/lib/python`python3 -V|sed -r "s/.*?(3\.[0-9]+).*/\1/"`/site-packages/matplotlib/mpl-data/fonts/ttf/
+# ADD ./SimHei.ttf "$mpl_path"
+# RUN sed -i 's/#font.family/font.family/' "$matplotlibrc" \
+#     && sed -i 's/#font.sans-serif\s*:/font.sans-serif : SimHei, /' "$matplotlibrc" \
+#     && sed -i 's/#axes.unicode_minus\s*:\s*True/axes.unicode_minus  : False/' "$matplotlibrc"
 
 # install nbgrader
 # https://nbgrader.readthedocs.io/en/stable/user_guide/installation.html

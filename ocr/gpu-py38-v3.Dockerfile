@@ -35,16 +35,16 @@ RUN pip3 install paddlepaddle-gpu -i https://mirror.baidu.com/pypi/simple \
 # ImportError: libGL.so.1: cannot open shared object file: No such file or directory
 # 需要安装：libgl1-mesa-glx
 # ethtool, net-tools: 获取硬件信息时依赖
+# tesseract-ocr \
+# tesseract-ocr-chi-sim \
+# tesseract-ocr-chi-tra \
 RUN apt-get update -y \
     && apt-get install -y --no-install-recommends \
         libglib2.0-0 libsm6 libxext-dev libxrender1 libgl1-mesa-glx \
-        tesseract-ocr \
-        tesseract-ocr-chi-sim \
-        tesseract-ocr-chi-tra \
     && rm -rf /var/lib/apt/lists/*
 
 # add ocr file
-COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
+# COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_best.traineddata
 
 # 阿里云的源是比较快的
 # RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
@@ -70,6 +70,7 @@ COPY ./chi_sim_best.traineddata /usr/share/tesseract-ocr/4.00/tessdata/chi_sim_b
 #        bs4 \
 #        torch torchvision \
 # 20211027 flashtext: 高效的文本处理工具
+# pytesseract \
 RUN pip3 --no-cache-dir install \
         numpy \
         pandas \
@@ -83,7 +84,6 @@ RUN pip3 --no-cache-dir install \
         gunicorn uvloop httptools \
         pyclipper \
         shapely \
-        pytesseract \
         fuzzywuzzy python-Levenshtein \
         flashtext \
     && python3 -c "import cv2"

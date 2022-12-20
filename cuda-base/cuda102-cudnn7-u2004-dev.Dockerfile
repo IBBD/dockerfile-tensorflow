@@ -3,7 +3,7 @@
 # copy from: https://gitlab.com/nvidia/container-images/cuda/-/blob/master/dist/10.2/ubuntu18.04-x86_64/base/Dockerfile
 FROM ubuntu:20.04
 
-LABEL maintainer "NVIDIA CORPORATION <cudatools@nvidia.com>"
+LABEL maintainer "Alex Cai <cyy0523xc@qq.com>"
 
 # 在2004的源里没有10.2这个版本，安装不了
 RUN apt-get update && apt-get install -y --no-install-recommends \

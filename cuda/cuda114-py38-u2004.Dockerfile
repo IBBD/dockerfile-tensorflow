@@ -3,7 +3,7 @@
 # docker pull nvidia/cuda:11.4.0-devel-ubuntu20.04
 FROM nvidia/cuda:11.4.0-devel-ubuntu20.04
 
-MAINTAINER Alex Cai "cyy0523xc@gmail.com"
+LABEL user="Alex Cai<cyy0523xc@gmail.com>"
 ENV DEBIAN_FRONTEND noninteractive
 
 # 安装Python3.8, pip, git等

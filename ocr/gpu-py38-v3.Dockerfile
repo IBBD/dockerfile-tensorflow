@@ -1,6 +1,7 @@
 #
 # gpu Dockerfile
 # v2: 20210728
+# 20221220: 移除tesseract
 
 # 使用runtime报错：
 # Error: Failed to find dynamic library: libcublas.so

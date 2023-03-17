@@ -45,7 +45,7 @@ RUN apt-get update -y \
     && rm -rf /var/lib/apt/lists/*
 
 # 阿里云的源是比较快的
-# RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
+RUN pip3 config set global.index-url https://mirrors.aliyun.com/pypi/simple/
 # RUN pip3 config set global.index-url http://mirrors.cloud.tencent.com/pypi/simple
 # RUN pip3 config set global.index-url http://pypi.douban.com/simple/
 # RUN pip3 config set global.index-url https://pypi.tuna.tsinghua.edu.cn/simple
